@@ -1209,11 +1209,11 @@ ACT.ckReset = () => { CK.stage = 'otp'; CK.otp = ''; CK.up = {}; toast('أُلغ
 
 // ===== pricing & pre-order =====
 const PLANS = [
-  { id: 'start', name: 'البداية', who: 'محامٍ مستقل أو مكتب صغير', users: 'حتى 3 مستخدمين', price: 399, pre: 239,
+  { id: 'start', name: 'البداية', who: 'محامٍ مستقل أو مكتب صغير', users: 'حتى 3 مستخدمين', price: 499, pre: 299,
     f: ['الاستشارات والقضايا والجلسات والأحكام', 'التقويم وتنبيهات مواعيد الطعن', 'ملف الموكل وعقد الأتعاب بالدفعات', 'رابط الموكل المؤقت ورفع المستندات', 'تذكير بالبريد والواتساب (حساب مكتبك)'], ai: '300 مهمة ذكية شهرياً' },
-  { id: 'office', name: 'المكتب', who: 'مكتب من 4 إلى 15 محامياً', users: 'حتى 15 مستخدماً', price: 899, pre: 539, hot: true,
+  { id: 'office', name: 'المكتب', who: 'مكتب من 4 إلى 15 محامياً', users: 'حتى 15 مستخدماً', price: 1124, pre: 674, hot: true,
     f: ['كل ما في «البداية»', 'المساعد الذكي على خوادم داخل المملكة', 'المتصفح السحابي المؤقت لناجز', 'الصلاحيات حسب الدور والفرع', 'سجل تدقيق كامل وتقارير الأداء'], ai: '1,500 مهمة ذكية شهرياً ≈ 10 قضايا يومياً' },
-  { id: 'box', name: 'صندوق وصل', who: 'مكاتب تشترط بقاء البيانات داخلها', users: 'مستخدمون بلا حد', price: 1690, pre: 1190,
+  { id: 'box', name: 'صندوق وصل', who: 'مكاتب تشترط بقاء البيانات داخلها', users: 'مستخدمون بلا حد', price: 2113, pre: 1488,
     f: ['كل ما في «المكتب»', 'جهاز ذكاء خاص يُركّب في مكتبك', 'المستندات لا تغادر المكتب أبداً', 'مهام ذكية بلا عدّاد (حسب قدرة الجهاز)', 'دعم أولوية ومدير حساب'], ai: 'بلا عدّاد — الجهاز ملك المكتب بعد 24 شهراً' }
 ];
 const PR = { yearly: false, plan: 'office', f: { office: '', name: '', phone: '', city: 'الرياض', size: '4–15', note: '' }, done: null };
@@ -1228,24 +1228,13 @@ VIEWS.pricing = () => {
     <div><small class="muted2" style="text-decoration:line-through">${fmt(yp(x.price))} ر.س</small><div class="row" style="gap:6px;align-items:baseline"><b class="num" style="font-size:40px;color:var(--mint)">${fmt(yp(x.pre))}</b><span class="muted">ر.س / شهرياً</span></div><small class="muted2">سعر الطلب المسبق${PR.yearly ? ' · يُدفع سنوياً' : ''} · غير شامل الضريبة</small></div>
     <div class="item" style="padding:10px 12px">${ic('spark', 16)}<b class="sp" style="font-size:13px">${x.ai}</b></div>
     <div class="col" style="gap:8px">${x.f.map((t) => `<div class="row" style="flex-wrap:nowrap;font-size:14px;gap:8px">${ic('check', 14, 3)}<span>${t}</span></div>`).join('')}</div>
-    <span class="sp"></span><button class="btn ${x.hot ? 'p' : ''}" style="min-height:46px" data-a="prPick" data-v="${x.id}">اطلب «${x.name}» مسبقاً</button></article>`).join('')}</div>
+    </article>`).join('')}</div>
   <div class="grid g2">
     <section class="card col rise"><h2 class="t">إذا تجاوزتم الحد؟</h2>
       <p class="muted" style="margin:0">المهمة الذكية = عملية واحدة ينفذها المساعد (تلخيص ملف، فتح ناجز، صياغة رسالة). لا يتوقف شيء عند التجاوز:</p>
       <table class="tb"><tbody><tr><td>كل 100 مهمة إضافية</td><td class="num"><b>9 ر.س</b></td></tr><tr><td>سقف شهري تختاره أنت</td><td>لا فاتورة مفاجئة</td></tr><tr><td>تنبيه عند 80% و 100%</td><td>للشريك المدير</td></tr><tr><td>رسائل الواتساب</td><td>على حساب Meta الخاص بمكتبك (≈ 4 هللات للتذكير)</td></tr></tbody></table></section>
     <section class="card col rise"><h2 class="t">ما يحصل عليه المكتب المبكر</h2>${[['tag', 'خصم 40% مثبت لمدة 24 شهراً'], ['users', 'إعداد ونقل بيانات المكتب مجاناً (Excel أو نظامكم الحالي)'], ['shield', 'بيئة مستقلة لكل مكتب ودخول بمفتاح مرور أو رمز ثنائي'], ['spark', 'صوت مباشر في تطوير المزايا القادمة'], ['x', 'إلغاء الطلب في أي وقت قبل التشغيل دون أي التزام']].map(([i, t]) => `<div class="item"><span class="ico">${ic(i, 16)}</span><span class="sp" style="font-size:14px">${t}</span></div>`).join('')}</section>
-  </div>
-  <section class="card hot rise" id="preorder" style="scroll-margin-top:80px">${PR.done ? `<div class="col pop" style="align-items:center;text-align:center;gap:10px;padding:20px 0"><span class="ico" style="width:60px;height:60px">${ic('check', 28, 3)}</span><b class="hd" style="font-size:22px">وصلنا طلبكم — شكراً ${esc(PR.done.name)}</b><p class="muted" style="margin:0">رقم الطلب <b class="num">${PR.done.no}</b> · باقة «${PR.done.plan}» بسعر ${fmt(PR.done.price)} ر.س شهرياً مثبت 24 شهراً.<br>أرسلوا الملخص عبر الواتساب لإتمام التسجيل، وسنتواصل خلال يوم عمل.</p>
-      <div class="row" style="justify-content:center"><a class="btn p" href="${PR.done.wa}" target="_blank" rel="noopener">${ic('wa', 16)} إرسال الملخص عبر واتساب</a><button class="btn" data-a="prCopy">${ic('copy', 16)} نسخ الملخص</button><button class="btn g" data-a="prAgain">طلب آخر</button></div></div>`
-    : `<form class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px" data-sub="prSend"><div class="col"><span class="kicker">الطلب المسبق</span><b class="hd" style="font-size:24px">احجز سعر الإطلاق لمكتبك</b><p class="muted" style="margin:0">باقة «${p.name}» — <b class="num" style="color:var(--mint)">${fmt(yp(p.pre))}</b> ر.س شهرياً بدلاً من ${fmt(yp(p.price))}.</p><div class="tabs">${PLANS.map((x) => `<button type="button" class="tab ${PR.plan === x.id ? 'on' : ''}" data-a="prPlan" data-v="${x.id}">${x.name}</button>`).join('')}</div><small class="muted2">لا نطلب بيانات دفع. نتواصل معكم لتحديد موعد التشغيل.</small></div>
-      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
-        <div style="grid-column:1/-1"><label class="f" for="po-o">اسم المكتب</label><input id="po-o" class="in" required data-in="prF" data-k="office" value="${esc(PR.f.office)}"></div>
-        <div><label class="f" for="po-n">اسم المسؤول</label><input id="po-n" class="in" required data-in="prF" data-k="name" value="${esc(PR.f.name)}"></div>
-        <div><label class="f" for="po-p">الجوال</label><input id="po-p" class="in num" required dir="ltr" inputmode="tel" pattern="^(05|\\+9665|9665)[0-9]{8}$" title="رقم جوال سعودي مثل 05xxxxxxxx" placeholder="05xxxxxxxx" data-in="prF" data-k="phone" value="${esc(PR.f.phone)}"></div>
-        <div><label class="f" for="po-c">المدينة</label><select id="po-c" class="in" data-ch="prF" data-k="city">${['الرياض', 'جدة', 'الدمام والخبر', 'مكة المكرمة', 'المدينة المنورة', 'أخرى'].map((c) => `<option ${PR.f.city === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
-        <div><label class="f" for="po-s">عدد المحامين</label><select id="po-s" class="in" data-ch="prF" data-k="size">${['1–3', '4–15', '16–40', 'أكثر من 40'].map((c) => `<option ${PR.f.size === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
-        <div style="grid-column:1/-1"><label class="f" for="po-x">أكثر ما يهمكم (اختياري)</label><input id="po-x" class="in" data-in="prF" data-k="note" value="${esc(PR.f.note)}" placeholder="مثال: مواعيد الطعن، المساعد مع ناجز…"></div>
-        <button class="btn p" type="submit" style="grid-column:1/-1;min-height:50px">تأكيد الطلب المسبق</button></div></form>`}</section>`;
+  </div>`;
 };
 ACT.prYear = (v) => { PR.yearly = v === '1'; render(); };
 ACT.prPlan = (v) => { PR.plan = v; render(); };
