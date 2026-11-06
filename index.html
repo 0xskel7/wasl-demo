@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>وصل — العرض التجريبي</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+<style>:root{--bg:#12291F;--bg2:#0E2219;--card:#1F4535;--line:#2F5E4A;--row:#25503F;--row2:#285542;--mint:#A8D5BA;--mint2:#C2E3CF;--ink:#173A2C;--tx:#E9F0EC;--mut:#C3D6CB;--mut2:#B5CCBF;--paper:#FBFAF5;--ptx:#1E2A23}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
+body{min-height:100vh}
+a{color:var(--mint)}a:hover{color:var(--mint2)}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+.hd{font-family:'Readex Pro',sans-serif}
+.num{font-family:'Readex Pro',sans-serif;font-variant-numeric:tabular-nums}
+.muted{color:var(--mut)}.muted2{color:var(--mut2)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* shell */
+.shell{display:flex;min-height:100vh}
+.side{width:248px;flex:none;background:var(--bg2);border-inline-start:1px solid #1C3A2D;padding:18px 12px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.brand{display:flex;align-items:center;gap:10px;padding:4px 8px 16px}
+.brand b{font-family:'Readex Pro';font-size:22px}
+.brand small{display:block;font-size:11px;color:var(--mut2)}
+.nav{display:flex;align-items:center;gap:10px;min-height:42px;padding:0 12px;border-radius:12px;color:var(--mut);text-decoration:none;font-size:14px;border:0;background:transparent;width:100%;text-align:right;transition:background .2s}
+.nav:hover{background:#1A3A2C;color:var(--tx)}
+.nav.on{background:var(--mint);color:var(--ink);font-weight:700}
+.nav .cnt{margin-inline-start:auto;font-size:11px;background:#2F5E4A;color:var(--tx);border-radius:99px;padding:1px 8px}
+.nav.on .cnt{background:var(--ink);color:var(--mint)}
+.navsec{font-size:11px;color:#7FA08D;padding:12px 12px 4px}
+.main{flex:1;min-width:0;display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #1C3A2D;background:rgba(18,41,31,.92);position:sticky;top:0;z-index:5;backdrop-filter:blur(6px);flex-wrap:wrap}
+.demo-pill{font-size:12px;background:#2A4A2F;border:1px solid var(--mint);color:var(--mint);border-radius:99px;padding:4px 10px;font-weight:600}
+.page{padding:24px;display:flex;flex-direction:column;gap:16px;max-width:1440px;width:100%;margin:0 auto}
+@media (max-width:900px){.shell{flex-direction:column}.side{width:100%;height:auto;position:static;flex-direction:row;overflow-x:auto;padding:10px}.side .navsec,.brand small,.side .sidefoot{display:none}.nav{width:auto;white-space:nowrap}.brand{padding:0 8px}.page{padding:14px}}
+
+/* primitives */
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:20px}
+.card.hot{border:1.5px solid var(--mint)}
+.card.dark{background:var(--bg2)}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(170px,1fr))}
+.row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.col{display:flex;flex-direction:column;gap:10px}
+.split{display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start}
+.split>.wide{flex:999 1 560px;min-width:0}
+.split>.narrow{flex:1 1 320px;min-width:0}
+.sp{flex:1}
+h1.t{margin:0;font-family:'Readex Pro';font-weight:300;font-size:32px;line-height:1.3}
+h1.t b{font-weight:600;color:var(--mint)}
+h2.t{margin:0;font-family:'Readex Pro';font-weight:600;font-size:17px}
+.kicker{font-size:13px;color:var(--mut2)}
+.btn{min-height:42px;padding:0 16px;border-radius:12px;border:1px solid #40725C;background:transparent;color:var(--tx);font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:filter .2s,transform .15s}
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:scale(.98)}
+.btn.p{background:var(--mint);color:var(--ink);border-color:var(--mint);font-weight:700}
+.btn.s{min-height:34px;padding:0 12px;font-size:13px;border-radius:10px}
+.btn.g{border-color:transparent;background:#25503F}
+.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:#2F5E4A;color:var(--tx);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.chip.m{background:var(--mint);color:var(--ink)}
+.chip.o{background:transparent;border:1px solid var(--mint);color:var(--mint)}
+.chip.d{background:transparent;border:1px dashed var(--mut2);color:var(--tx)}
+.kpi{display:flex;flex-direction:column;gap:4px}
+.kpi .v{font-family:'Readex Pro';font-size:30px;font-weight:600}
+.kpi .l{font-size:13px;color:var(--mut)}
+.bar{height:8px;border-radius:8px;background:#2F5E4A;overflow:hidden}
+.bar>i{display:block;height:100%;border-radius:8px;background:var(--mint)}
+.tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;overflow-x:auto}
+.tab{flex:1;min-height:40px;padding:0 14px;border:0;border-radius:10px;background:transparent;color:var(--mut);font-size:14px;white-space:nowrap}
+.tab.on{background:var(--mint);color:var(--ink);font-weight:700}
+.list>*+*{border-top:1px solid #285542}
+.item{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 6px;border-radius:12px}
+.item.click{cursor:pointer;transition:background .2s}
+button.item,a.item{width:100%;background:none;border:0;color:inherit;font:inherit;text-align:right}
+.card>.item:not(.click),.col>.item:not(.click){background:var(--row);padding:10px 12px}
+.item.click:hover,.item.sel{background:var(--row2)}
+.av{width:38px;height:38px;border-radius:12px;background:#2F5E4A;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.av.m{background:var(--mint);color:var(--ink)}
+table.tb{width:100%;border-collapse:collapse;font-size:13px}
+table.tb th{text-align:start;font-weight:500;color:var(--mut2);padding:8px 10px;border-bottom:1px solid var(--line)}
+table.tb td{padding:11px 10px;border-bottom:1px solid #285542;vertical-align:middle}
+table.tb tr.sel td{background:var(--row2)}
+.scroll{overflow-x:auto}
+label.f{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
+.in{width:100%;min-height:44px;border-radius:12px;border:1px solid #40725C;background:var(--row);color:var(--tx);font-size:14px;padding:0 12px}
+textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
+.in:focus{outline:2px solid var(--mint);outline-offset:1px}
+.note{font-size:12px;color:var(--mut2);line-height:1.8}
+.banner{border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#2A4A2F;border:1.5px solid var(--mint)}
+.ico{width:40px;height:40px;border-radius:12px;background:var(--mint);color:var(--ink);display:flex;align-items:center;justify-content:center;flex:none}
+.ico.d{background:#2F5E4A;color:var(--mint)}
+
+/* paper docs */
+.paper{background:var(--paper);color:var(--ptx);border-radius:16px;padding:30px 34px;box-shadow:0 18px 40px rgba(0,0,0,.28);font-family:'Amiri','IBM Plex Sans Arabic',serif;font-size:15.5px;line-height:2}
+.paper .ph{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px solid #1F4535;padding-bottom:10px;margin-bottom:14px;font-family:'IBM Plex Sans Arabic';line-height:1.6}
+.paper .ph b{color:#1F4535;font-size:15px}
+.paper .ph small{display:block;font-size:11px;color:#4B6355}
+.paper h3{margin:0 0 10px;text-align:center;color:#1F4535;font-size:22px}
+.paper p{margin:0 0 8px}
+.paper table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Arabic';font-size:13px;line-height:1.6;margin:6px 0 12px}
+.paper td,.paper th{border:1px solid #CBD6CE;padding:7px 10px;text-align:start}
+.paper th,.paper td.k{background:#EEF2EE;font-weight:600}
+.fld{background:#DCEBE1;padding:0 6px;border-radius:4px}
+.sig{display:grid;grid-template-columns:1fr 1fr;gap:18px;font-family:'IBM Plex Sans Arabic';font-size:12px;margin-top:18px}
+.sig div{border-top:1px solid var(--ptx);padding-top:6px}
+
+/* modal */
+.ov{position:fixed;inset:0;background:rgba(10,26,19,.75);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.dlg{width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:var(--card);border:1px solid #40725C;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.dlg.w{max-width:760px}
+
+/* toast */
+.toast{position:fixed;bottom:20px;left:20px;z-index:60;background:var(--mint);color:var(--ink);font-weight:700;border-radius:14px;padding:12px 16px;box-shadow:0 12px 30px rgba(0,0,0,.3);max-width:420px;font-size:14px;line-height:1.7}
+
+/* anim */
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes grow{from{transform:scaleX(0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,213,186,.6)}100%{box-shadow:0 0 0 11px rgba(168,213,186,0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
+@keyframes slidein{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes ripple{0%{transform:scale(.4);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(-14px,8px)}}
+.anim .rise{animation:rise .55s cubic-bezier(.2,.8,.2,1) both}
+.anim .grow{transform-origin:right center;animation:grow 1.1s cubic-bezier(.2,.8,.2,1) both}
+.pulse{animation:pulse 1.8s ease-out infinite}
+.spin{animation:spin .9s linear infinite}
+.caret{animation:blink 1s steps(1) infinite}
+.pop{animation:pop .3s cubic-bezier(.2,.8,.2,1) both}
+.slidein{animation:slidein .45s cubic-bezier(.2,.8,.2,1) both}
+.ripple{animation:ripple 1.1s ease-out infinite}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block;flex:none}
+.spinner{width:20px;height:20px;border-radius:50%;border:3px solid #2F5E4A;border-top-color:var(--mint);flex:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* calendar */
+.evc{display:block;width:100%;text-align:right;border:0;border-right:3px solid var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--tx);border-radius:6px;padding:3px 6px;font-size:11px;font-weight:500;line-height:1.4;font-family:inherit;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.evc.sel,.calev.sel{outline:2px solid var(--c);outline-offset:1px}
+.evc small{display:block;color:var(--mut2)}
+.calm{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.calh{font-size:12px;color:var(--mut2);text-align:center;padding:6px 0;font-weight:600}
+.calc{min-height:104px;background:var(--row);border-radius:10px;padding:6px;overflow:hidden}
+.calc.out{opacity:.4}.calc.we{background:color-mix(in srgb,var(--row) 60%,var(--bg))}
+.calc.today{box-shadow:inset 0 0 0 2px var(--mint)}
+.cald{background:none;border:0;color:var(--tx);font-size:13px;font-weight:700;font-family:inherit;cursor:pointer;padding:2px 4px;border-radius:6px}
+.calc.today .cald{background:var(--mint);color:var(--ink)}
+.more{background:none;border:0;color:var(--mint);font-size:11px;font-weight:600;font-family:inherit;cursor:pointer;padding:2px 0}
+.calw{display:grid;gap:0 4px;min-width:100%}
+.calwh{background:none;border:0;color:var(--tx);font-family:inherit;cursor:pointer;padding:6px 0 10px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.calwh small{color:var(--mut2);font-size:12px}.calwh b{font-size:20px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center}
+.calwh.today b{background:var(--mint);color:var(--ink)}
+.calt{display:flex;flex-direction:column}.calt small{font-size:11px;color:var(--mut2);transform:translateY(-7px)}
+.calcol{position:relative;background:var(--row);border-radius:10px;overflow:hidden}
+.calcol.we{background:color-mix(in srgb,var(--row) 55%,var(--bg))}
+.calcol>i{display:block;border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.calev{position:absolute;border:0;border-right:3px solid var(--c);background:color-mix(in srgb,var(--c) 22%,var(--card));color:var(--tx);border-radius:8px;padding:4px 6px;font-size:11px;font-weight:500;line-height:1.35;font-family:inherit;text-align:right;overflow:hidden;cursor:pointer;margin:0 2px}
+.calev small{display:block;color:var(--mut2);margin-top:2px}
+.calev em{position:absolute;bottom:3px;left:4px;font-style:normal;font-size:10px;background:#E9C46A;color:#173A2C;border-radius:6px;padding:0 5px;font-weight:700}
+.nowl{position:absolute;right:0;left:0;height:2px;background:var(--mint);z-index:2}
+.nowl::before{content:"";position:absolute;right:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--mint)}
+@media(max-width:1100px){[style*="grid-column:span"]{grid-column:1/-1!important}}
+/* phone + browser */
+.phone{width:320px;max-width:100%;margin:0 auto;border-radius:38px;padding:12px;background:#0B1A13;box-shadow:0 0 0 2px #2F5E4A,0 30px 60px -30px #000}
+.phone .scr{border-radius:28px;background:var(--paper);color:var(--ptx);min-height:560px;overflow:hidden;display:flex;flex-direction:column}
+.bw{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;color:#1E2A23}
+.bw .bar2{display:flex;gap:8px;align-items:center;background:#E8EEEA;padding:8px 12px;font-size:12px;color:#3B5246}
+.bw .url{flex:1;background:#fff;border-radius:8px;padding:4px 10px;direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:12px}
+.cursor{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(23,58,44,.25);border:2px solid #173A2C;transition:all .7s cubic-bezier(.5,0,.2,1);pointer-events:none;z-index:3}
+.hl{outline:3px solid #A8D5BA;outline-offset:2px;border-radius:8px;transition:outline-color .3s}
+.bub{max-width:82%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.7}
+.bub.me{align-self:flex-start;background:var(--mint);color:var(--ink);border-bottom-left-radius:4px}
+.bub.ai{align-self:flex-end;background:var(--row);border-bottom-right-radius:4px}
+.step{display:flex;gap:10px;align-items:flex-start;font-size:13px;padding:6px 0}
+.step i{width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;background:var(--row);color:var(--mut2)}
+.step.done i{background:var(--mint);color:var(--ink)}.step.now i{background:var(--tx);color:var(--ink);animation:pulse 1.4s infinite}
+.step.todo{opacity:.55}
+</style></head><body><div id="app"></div><script>// ===== helpers =====
+const $ = (s, r = document) => r.querySelector(s);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const fmt = (n) => Math.round(n).toLocaleString('en-US');
+const MONTHS = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+const DAYS = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+const TODAY = new Date(2026, 10, 5);
+const D = (y, m, d) => new Date(y, m - 1, d);
+const addD = (dt, n) => { const x = new Date(dt); x.setDate(x.getDate() + n); return x; };
+const diffD = (a, b) => Math.round((a - b) / 864e5);
+const dTxt = (dt, wd) => (wd ? DAYS[dt.getDay()] + ' ' : '') + dt.getDate() + ' ' + MONTHS[dt.getMonth()];
+const clock = (h) => { const hh = Math.floor(h), mm = Math.round((h - hh) * 60); return (hh > 12 ? hh - 12 : hh) + ':' + String(mm).padStart(2, '0') + (hh < 12 ? ' ص' : ' م'); };
+const sameDay = (a, b) => a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
+
+const P = {
+  home: 'M3 3h8v10H3zM13 3h8v6h-8zM13 11h8v10h-8zM3 15h8v6H3z',
+  consult: 'M4 5h16v11H9l-5 4zM10 9a2 2 0 1 1 3 1.7c-.6.4-1 .8-1 1.3M12 14h.01',
+  cases: 'M3 7h18v13H3zM8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18',
+  gavel: 'm14 5 5 5M11.5 7.5l5 5M8 17l6-6M3 21h9M12.5 3.5l-3 3 5 5 3-3z',
+  scale: 'M12 3v18M7 21h10M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z',
+  cal: 'M3 5h18v16H3zM16 3v4M8 3v4M3 10h18',
+  users: 'M9 4.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zM2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M18 14.5a6 6 0 0 1 3.5 5.5',
+  spark: 'M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z',
+  cloud: 'M7 18a4.5 4.5 0 0 1-.5-9 6 6 0 0 1 11.5 1.5A3.75 3.75 0 0 1 17.5 18z',
+  link: 'M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1',
+  tag: 'M3 12V3h9l9 9-9 9zM7.5 7.5h.01',
+  check: 'm5 12 5 5 9-10',
+  plus: 'M12 5v14M5 12h14',
+  x: 'M6 6l12 12M18 6 6 18',
+  bell: 'M6 16v-5a6 6 0 0 1 12 0v5l2 2H4zM10 21h4',
+  print: 'M7 9V3h10v6M7 17H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-2M7 14h10v7H7z',
+  wa: 'M4 20l1.3-3.9A8 8 0 1 1 8 19z',
+  lock: 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4',
+  shield: 'M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6zM9 12l2 2 4-4',
+  up: 'M12 16V4M7 9l5-5 5 5M5 20h14',
+  doc: 'M14 3H6v18h12V8zM14 3v5h5M9 13h6M9 17h6',
+  arrow: 'M20 12H5M11 6l-6 6 6 6',
+  next: 'm15 6-6 6 6 6', prev: 'm9 6 6 6-6 6',
+  clock: 'M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM12 7v5l3 2',
+  copy: 'M8 8h12v12H8zM16 8V4H4v12h4',
+  play: 'M3 12a9 9 0 1 0 3-6.7L3 8M3 3v5h5',
+  pause: 'M7 5v14M17 5v14',
+  hand: 'M8 13V5a1.5 1.5 0 0 1 3 0v6M11 10V4a1.5 1.5 0 0 1 3 0v6M14 10V5.5a1.5 1.5 0 0 1 3 0V14a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.7L3 14a1.5 1.5 0 0 1 2.5-1.6L8 15',
+  trash: 'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13'
+};
+const ic = (n, s = 18, w = 1.9) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
+const logo = (s = 38, bg = '#A8D5BA', fg = '#1F4535') => `<svg width="${s}" height="${s}" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="${bg}"/><path d="M11.5 25c0-9.5 17-9.5 17 0" stroke="${fg}" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="11.5" cy="25.5" r="3.6" fill="${fg}"/><circle cx="28.5" cy="25.5" r="3.6" fill="${fg}"/></svg>`;
+const paperHead = (right) => `<div class="ph"><span><b>مكتب القحطاني للمحاماة والاستشارات القانونية</b><small>الرياض · ترخيص رقم [رقم الترخيص] · [هاتف المكتب]</small></span>${right || logo(38, '#1F4535', '#A8D5BA')}</div>`;
+
+// ===== demo data =====
+const LAWYERS = ['أ. سارة القحطاني', 'أ. فهد العتيبي', 'أ. لمى الزهراني', 'أ. خالد الحربي'];
+const CLIENTS = [
+  { id: 'c1', name: 'شركة الأفق للتطوير العقاري', kind: 'شركة', rep: 'م. ماجد الدوسري', since: 2024, lawyer: 'أ. فهد العتيبي' },
+  { id: 'c2', name: 'نورة السبيعي', kind: 'فرد', rep: '—', since: 2025, lawyer: 'أ. سارة القحطاني' },
+  { id: 'c3', name: 'مؤسسة رواسي للمقاولات', kind: 'منشأة', rep: 'أ. سامي الغامدي', since: 2025, lawyer: 'أ. خالد الحربي' },
+  { id: 'c4', name: 'مجموعة سنا الطبية', kind: 'شركة', rep: 'د. هالة الشمري', since: 2023, lawyer: 'أ. سارة القحطاني' },
+  { id: 'c5', name: 'عبدالله المطيري', kind: 'فرد', rep: '—', since: 2026, lawyer: 'أ. فهد العتيبي' }
+];
+const CASES = [
+  { ref: '1447/0213', client: 'c1', title: 'دعوى فسخ عقد مقاولة «أبراج الأفق»', type: 'تجاري', court: 'المحكمة التجارية — الدائرة الرابعة', stage: 2, claim: 2350000, lawyer: 'أ. فهد العتيبي', opened: 'مارس 2026' },
+  { ref: '1447/0198', client: 'c2', title: 'دعوى حضانة وزيارة', type: 'أحوال شخصية', court: 'محكمة الأحوال الشخصية', stage: 3, claim: 0, lawyer: 'أ. سارة القحطاني', opened: 'فبراير 2026' },
+  { ref: '1447/0187', client: 'c3', title: 'مطالبة مستحقات مقاول باطن', type: 'تجاري', court: 'المحكمة التجارية — الدائرة السابعة', stage: 2, claim: 640000, lawyer: 'أ. خالد الحربي', opened: 'يناير 2026' },
+  { ref: '1447/0164', client: 'c4', title: 'تظلم من قرار إداري', type: 'إداري', court: 'ديوان المظالم — المحكمة الإدارية', stage: 4, claim: 0, lawyer: 'أ. سارة القحطاني', opened: 'ديسمبر 2025' },
+  { ref: '1447/0151', client: 'c5', title: 'مطالبة مالية — قرض شخصي', type: 'حقوقي', court: 'المحكمة العامة — الدائرة الثالثة', stage: 2, claim: 180000, lawyer: 'أ. فهد العتيبي', opened: 'يناير 2026' }
+];
+const STAGES = ['قيد الدعوى', 'التبليغ', 'المرافعة', 'الحكم', 'الاستئناف', 'التنفيذ'];
+const clientOf = (id) => CLIENTS.find((c) => c.id === id) || CLIENTS[0];
+const caseOf = (ref) => CASES.find((c) => c.ref === ref) || CASES[0];
+
+// ===== state =====
+const S = {
+  route: 'home', prevRoute: '', toast: '', toastT: 0,
+  caseRef: '1447/0213', caseTab: 'overview',
+  modal: null
+};
+const VIEWS = {};
+const ACT = {};
+const INPUT = {};
+const ROUTES = [
+  ['home', 'الرئيسية', 'home', 'يومك'],
+  ['consult', 'الاستشارات', 'consult', 'يومك'],
+  ['cases', 'القضايا', 'cases', 'يومك'],
+  ['hearings', 'الجلسات', 'gavel', 'يومك'],
+  ['judgments', 'الأحكام والطعن', 'scale', 'يومك'],
+  ['calendar', 'التقويم', 'cal', 'يومك'],
+  ['clients', 'الموكلون والعقود', 'users', 'يومك'],
+  ['assistant', 'مساعد وصل', 'spark', 'الذكاء'],
+  ['cloud', 'المتصفح السحابي', 'cloud', 'الذكاء'],
+  ['clientlink', 'رابط الموكل', 'link', 'الذكاء'],
+  ['pricing', 'الباقات والطلب المسبق', 'tag', 'الاشتراك']
+];
+
+function toast(msg) {
+  S.toast = msg;
+  clearTimeout(S.toastT);
+  S.toastT = setTimeout(() => { S.toast = ''; const t = $('#toast'); if (t) t.remove(); }, 4200);
+  render();
+}
+function go(r) { if (location.hash.slice(1) === r) { render(); } else { location.hash = r; } }
+
+function shell(inner) {
+  let lastSec = '';
+  const nav = ROUTES.map(([id, label, icon, sec]) => {
+    let h = '';
+    if (sec !== lastSec) { h += `<div class="navsec">${sec}</div>`; lastSec = sec; }
+    const badge = id === 'hearings' ? '<span class="cnt">5</span>' : id === 'judgments' ? '<span class="cnt">2</span>' : '';
+    return h + `<a href="#${id}" class="nav ${S.route === id ? 'on' : ''}" ${S.route === id ? 'aria-current="page"' : ''}>${ic(icon)}${label}${badge}</a>`;
+  }).join('');
+  return `<div class="shell">
+  <nav class="side" aria-label="القائمة الرئيسية">
+    <div class="brand">${logo(40)}<span><b>وصل</b><small>مكتب القحطاني للمحاماة</small></span></div>
+    ${nav}
+    <div class="sidefoot" style="margin-top:auto;padding:12px 8px 0">
+      <div class="card" style="padding:14px;border-radius:16px;background:#1A3A2C"><div style="font-size:13px;font-weight:700">عرض تجريبي</div><div class="note">كل البيانات وهمية لأغراض العرض. جرّب الأزرار بحرية.</div><a href="#pricing" class="btn p s" style="margin-top:8px;width:100%">احجز مسبقاً</a></div>
+    </div>
+  </nav>
+  <div class="main">
+    <header class="top">
+      <span class="demo-pill">نسخة العرض · بيانات يوم الخميس 5 نوفمبر 2026</span>
+      <span class="sp"></span>
+      <button class="btn s g" data-a="go" data-v="assistant">${ic('spark', 16)} اسأل المساعد</button>
+      <a href="#pricing" class="btn p s">احجز مسبقاً بسعر الإطلاق</a>
+      <span class="av m" title="أ. سارة القحطاني — الشريك المدير">س</span>
+    </header>
+    <main id="page" class="page ${S.route !== S.prevRoute ? 'anim' : ''}">${inner}</main>
+  </div>
+</div>
+${S.modal ? `<div class="ov" data-a="closeModal" data-self="1">${S.modal()}</div>` : ''}
+${S.toast ? `<div id="toast" class="toast pop" role="status">${esc(S.toast)}</div>` : ''}`;
+}
+
+function render() {
+  const act = document.activeElement;
+  const fid = act && act.id ? act.id : null;
+  const sel = fid && act.selectionStart != null ? [act.selectionStart, act.selectionEnd] : null;
+  const v = VIEWS[S.route] || VIEWS.home;
+  document.getElementById('app').innerHTML = shell(v());
+  S.prevRoute = S.route;
+  if (fid) { const el = document.getElementById(fid); if (el) { el.focus(); if (sel && el.setSelectionRange) { try { el.setSelectionRange(sel[0], sel[1]); } catch (e) {} } } }
+  if (VIEWS[S.route] && VIEWS[S.route].after) VIEWS[S.route].after();
+}
+
+function onRoute() {
+  const r = location.hash.slice(1);
+  S.route = ROUTES.some((x) => x[0] === r) ? r : 'home';
+  S.modal = null;
+  render();
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener('click', (e) => {
+  const el = e.target.closest('[data-a]');
+  if (!el) return;
+  if (el.dataset.self && e.target !== el) return;
+  const fn = ACT[el.dataset.a];
+  if (fn) { e.preventDefault(); fn(el.dataset.v, el); }
+});
+document.addEventListener('input', (e) => { const el = e.target; if (el.dataset && el.dataset.in && INPUT[el.dataset.in]) INPUT[el.dataset.in](el.value, el, false); });
+document.addEventListener('change', (e) => { const el = e.target; if (el.dataset && el.dataset.ch && INPUT[el.dataset.ch]) INPUT[el.dataset.ch](el.type === 'checkbox' ? el.checked : el.value, el, true); });
+document.addEventListener('submit', (e) => { const f = e.target; e.preventDefault(); if (f.dataset.sub && ACT[f.dataset.sub]) ACT[f.dataset.sub](null, f); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && S.modal) { S.modal = null; render(); } });
+
+ACT.go = (v) => go(v);
+ACT.closeModal = () => { S.modal = null; render(); };
+
+// ===== home =====
+const HOME = { tt: 0, sec: 0, fi: 0, timer: null };
+const PHRASES = ['افتح ناجز وتحقق من جلسات الأسبوع', 'أرسل لشركة الأفق رابط متابعة واطلب النواقص', 'لخّص آخر مذكرة للخصم في قضية 0213', 'ذكّر موكلي جلسات الغد عبر واتساب'];
+const FEED = [
+  ['م', 'م. ماجد — شركة الأفق', 'رفع «السجل التجاري المحدّث» عبر الرابط'],
+  ['ن', 'نورة السبيعي', 'فتحت رابط المتابعة واطّلعت على موعد الحكم'],
+  ['ر', 'مؤسسة رواسي', 'رفعت «عقد الأتعاب موقّعاً»'],
+  ['ه', 'د. هالة — مجموعة سنا', 'أرسلت ملاحظاتها على مسودة الاستئناف']
+];
+function typed() {
+  const hold = 34; let t = HOME.tt % PHRASES.reduce((n, p) => n + p.length + hold, 0);
+  for (const p of PHRASES) { const span = p.length + hold; if (t < span) return p.slice(0, Math.min(t, p.length)); t -= span; }
+  return PHRASES[0];
+}
+function cd() {
+  const left = Math.max(0, 47 * 3600 + 54 * 60 + 12 - HOME.sec);
+  const p = (n) => String(n).padStart(2, '0');
+  return [p(Math.floor(left / 3600)), p(Math.floor((left % 3600) / 60)), p(left % 60)];
+}
+VIEWS.home = () => {
+  const start = 8, span = 10, pos = (h) => ((h - start) / span * 100).toFixed(2) + '%';
+  const hours = []; for (let h = 8; h <= 18; h++) hours.push(h);
+  const blocks = [
+    [9.5, 10.75, 'مرافعة — الأفق', '9:30', 'background:#A8D5BA;color:#173A2C', 8],
+    [11, 12, 'صلح عن بُعد — رواسي', '11:00', 'border:1.5px solid #A8D5BA;color:#A8D5BA', 62],
+    [13.25, 14.25, 'اجتماع موكلة', '1:15', 'background:#2F5E4A', 8],
+    [15, 16, 'مهلة مذكرة — سنا', 'قبل 4:00', 'border:1.5px dashed #C3D6CB', 62]
+  ];
+  const pipe = [['قيد الدعوى', 6], ['التبليغ', 5], ['المرافعة', 21], ['الحكم', 8], ['الاستئناف', 5], ['التنفيذ', 3]];
+  const c = cd();
+  const f = FEED[HOME.fi % FEED.length];
+  const att = [['1447/0164', 'مجموعة سنا الطبية', 'مهلة الاستئناف خلال 48 ساعة', 'استئناف', 5, true, 'judgments'], ['1447/0213', 'شركة الأفق للتطوير العقاري', 'جلسة اليوم 9:30 ص', 'المرافعة', 3, true, 'cases'], ['1447/0198', 'نورة السبيعي', 'النطق بالحكم الأحد', 'بانتظار الحكم', 4, false, 'hearings'], ['1447/0187', 'مؤسسة رواسي للمقاولات', 'جلسة صلح 11:00 ص', 'صلح', 3, false, 'hearings']];
+  return `
+  <div class="row rise" style="align-items:flex-end">
+    <div class="col sp" style="gap:4px"><span class="kicker">الخميس · 5 نوفمبر 2026</span><h1 class="t">صباح الخير، <b>سارة</b></h1></div>
+  </div>
+  <div class="grid" style="grid-template-columns:repeat(12,minmax(0,1fr))">
+    <section class="card rise" style="grid-column:span 8;min-width:0" aria-label="يومك">
+      <div class="row" style="justify-content:space-between;align-items:flex-start">
+        <h2 class="hd" style="margin:0;font-weight:300;font-size:28px;line-height:1.4">اليوم <b style="font-weight:600;color:var(--mint)">5 جلسات</b>، ومهلة واحدة قبل الرابعة.</h2>
+        <a href="#calendar" class="chip" style="text-decoration:none;padding:7px 12px"><span class="dot pulse"></span> الآن 10:05 ص · التقويم</a>
+      </div>
+      <div style="position:relative;height:150px;margin-top:22px">
+        ${hours.map((h) => `<span style="position:absolute;top:0;bottom:24px;right:${pos(h)};width:1px;background:#2F5E4A"></span><span class="num" style="position:absolute;bottom:0;right:${pos(h)};transform:translateX(50%);font-size:11px;color:#9FBFAD">${h > 12 ? h - 12 : h}</span>`).join('')}
+        ${blocks.map((b, i) => `<a href="#hearings" class="grow" style="position:absolute;top:${b[5]}px;right:${pos(b[0])};width:${((b[1] - b[0]) / span * 100).toFixed(2)}%;height:50px;border-radius:12px;padding:6px 9px;text-decoration:none;color:#E9F0EC;overflow:hidden;animation-delay:${0.3 + i * 0.1}s;${b[4]}"><div style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b[2]}</div><div class="num" style="font-size:11px;opacity:.85">${b[3]}</div></a>`).join('')}
+        <span style="position:absolute;top:-6px;bottom:20px;right:20.8%;width:2px;background:#E9F0EC"></span>
+        <span class="pulse" style="position:absolute;top:-10px;right:20.8%;transform:translateX(50%);width:10px;height:10px;border-radius:50%;background:#E9F0EC"></span>
+      </div>
+    </section>
+    <section class="card rise" style="grid-column:span 4;min-width:0;background:var(--mint);color:var(--ink);border:0;display:flex;flex-direction:column;gap:14px;animation-delay:.1s" aria-label="مساعد وصل">
+      <div class="row"><span class="ico" style="background:var(--ink);color:var(--mint)">${ic('spark', 22)}</span><span><b class="hd" style="font-size:19px">مساعد وصل</b><br><small style="font-weight:600">نموذج ذكي داخل المملكة · بإذنك فقط</small></span></div>
+      <div style="background:var(--ink);color:#E9F0EC;border-radius:16px;padding:14px;min-height:86px;font-size:15px;line-height:1.8"><small style="color:#9FBFAD;display:block">جرّب أن تقول:</small><span id="typed">${esc(typed())}</span><span class="caret" style="display:inline-block;width:2px;height:17px;background:var(--mint);vertical-align:middle"></span></div>
+      <a href="#assistant" class="btn" style="background:var(--ink);color:var(--mint);border:0;margin-top:auto">افتح المساعد ${ic('arrow', 16)}</a>
+    </section>
+    <section class="card hot rise" style="grid-column:span 4;min-width:0;animation-delay:.15s" aria-label="أقرب مهلة">
+      <div class="row" style="justify-content:space-between"><span style="font-size:13px;color:var(--mint);font-weight:600">أقرب مهلة نظامية</span><span class="chip m">حرجة</span></div>
+      <div dir="ltr" class="num" id="cd" style="font-size:42px;font-weight:500;text-align:right;margin:10px 0 6px">${c[0]}<span style="color:#55876F">:</span>${c[1]}<span style="color:#55876F">:</span><span style="color:var(--mint)">${c[2]}</span></div>
+      <div class="bar"><i class="grow" style="width:34%"></i></div>
+      <p style="margin:10px 0 0;font-size:14px">رفع مذكرة الاستئناف — <a href="#judgments" style="font-weight:600">مجموعة سنا الطبية</a></p>
+    </section>
+    <section class="card rise" style="grid-column:span 5;min-width:0;animation-delay:.2s" aria-label="مسار القضايا">
+      <div class="row" style="justify-content:space-between"><h2 class="t">مسار القضايا</h2><span class="num" style="font-size:26px;font-weight:600">48 <small class="muted" style="font-size:13px">نشطة</small></span></div>
+      <div class="col" style="margin-top:10px">${pipe.map((p, i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:74px;font-size:13px;color:var(--mut)">${p[0]}</span><span style="flex:1;height:20px;border-radius:7px;background:#173A2C;overflow:hidden"><i class="grow" style="display:block;height:20px;border-radius:7px;width:${p[1] / 21 * 100}%;background:${p[1] === 21 ? '#A8D5BA' : '#55876F'};animation-delay:${0.4 + i * 0.07}s"></i></span><b class="num" style="width:22px">${p[1]}</b></div>`).join('')}</div>
+    </section>
+    <section class="card rise" style="grid-column:span 3;min-width:0;text-align:center;animation-delay:.25s" aria-label="الأتعاب">
+      <h2 class="t" style="text-align:right">تحصيل الأتعاب</h2>
+      <div style="position:relative;width:128px;height:128px;margin:10px auto">
+        <svg width="128" height="128" viewBox="0 0 120 120" style="transform:rotate(-90deg)" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#2F5E4A" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#A8D5BA" stroke-width="12" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="103"/></svg>
+        <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><b class="num" style="font-size:28px">66%</b><small class="muted">هذا الربع</small></span>
+      </div>
+      <div class="muted" style="font-size:13px"><b class="num" style="color:var(--tx)">86,400 ر.س</b> مستحقة في 7 فواتير</div>
+    </section>
+    <section class="card rise" style="grid-column:span 5;min-width:0;animation-delay:.3s" aria-label="مباشر من روابط الموكلين">
+      <div class="row" style="justify-content:space-between"><h2 class="t">مباشر من روابط الموكلين</h2><span class="chip o"><span class="dot pulse"></span> مباشر</span></div>
+      <a href="#clientlink" id="feed" class="slidein" style="display:flex;gap:12px;align-items:center;background:var(--mint);color:var(--ink);border-radius:16px;padding:12px;margin-top:12px;text-decoration:none"><span class="av" style="background:var(--ink);color:var(--mint)">${f[0]}</span><span class="sp"><b style="font-size:14px">${f[1]}</b><br><span style="font-size:13px">${f[2]}</span></span><small style="font-weight:700">الآن</small></a>
+      <div class="col" style="margin-top:8px">${[1, 2].map((k) => { const o = FEED[(HOME.fi - k + 40) % FEED.length]; return `<div class="row" style="flex-wrap:nowrap;padding:2px 12px"><span class="av" style="width:32px;height:32px">${o[0]}</span><span class="sp"><b style="font-size:13px">${o[1]}</b><br><small class="muted">${o[2]}</small></span><small class="muted2">${k * 7} د</small></div>`; }).join('')}</div>
+    </section>
+    <section class="card rise" style="grid-column:span 7;min-width:0;animation-delay:.35s" aria-label="تتطلب انتباهك">
+      <div class="row" style="justify-content:space-between"><h2 class="t">تتطلب انتباهك</h2><a href="#cases" style="font-size:13px;font-weight:600">كل القضايا</a></div>
+      <div class="col" style="margin-top:10px;gap:8px">${att.map((a) => `<a href="#${a[6]}" class="item click" style="background:#173A2C;border:1px solid #25503F;text-decoration:none;color:inherit;padding:12px 14px"><span class="num muted2" style="font-size:13px;width:74px">${a[0]}</span><span class="sp" style="min-width:160px"><b>${a[1]}</b><br><small class="muted">${a[2]}</small></span><span class="row" style="gap:3px" aria-label="المرحلة ${a[4]} من 6">${[0, 1, 2, 3, 4, 5].map((i) => `<i style="width:13px;height:6px;border-radius:3px;background:${i < a[4] ? '#A8D5BA' : '#2F5E4A'}"></i>`).join('')}</span><span class="chip ${a[5] ? 'm' : ''}">${a[3]}</span></a>`).join('')}</div>
+    </section>
+  </div>`;
+};
+VIEWS.home.after = () => {
+  clearInterval(HOME.timer);
+  HOME.timer = setInterval(() => {
+    if (S.route !== 'home') { clearInterval(HOME.timer); return; }
+    HOME.tt++;
+    const t = $('#typed'); if (t) t.textContent = typed();
+    if (HOME.tt % 18 === 0) {
+      HOME.sec++;
+      const c = cd(); const el = $('#cd');
+      if (el) el.innerHTML = `${c[0]}<span style="color:#55876F">:</span>${c[1]}<span style="color:#55876F">:</span><span style="color:var(--mint)">${c[2]}</span>`;
+    }
+    if (HOME.tt % 70 === 0) {
+      HOME.fi++;
+      const f = FEED[HOME.fi % FEED.length]; const el = $('#feed');
+      if (el) { el.classList.remove('slidein'); void el.offsetWidth; el.classList.add('slidein'); el.innerHTML = `<span class="av" style="background:var(--ink);color:var(--mint)">${f[0]}</span><span class="sp"><b style="font-size:14px">${f[1]}</b><br><span style="font-size:13px">${f[2]}</span></span><small style="font-weight:700">الآن</small>`; }
+    }
+  }, 55);
+};
+
+// ===== consultations =====
+const CONS = {
+  role: 'partner', cat: 'all', con: 'all', sel: 'C-1447-068',
+  form: { requester: '', phone: '', cat: 'تجاري', consultant: LAWYERS[0], mode: 'حضوري', topic: '', fee: '500', paid: '0' },
+  items: [
+    ['C-1447-068', 5, 'شركة الأفق للتطوير العقاري', '+966 5• ••• ••47', 'تجاري', LAWYERS[0], 'حضوري', 'أثر نظام المعاملات المدنية على التعويض عن التأخير في عقود المقاولة.', 1500, 1500, 'مكتملة', 'يحق للموكلة المطالبة بالتعويض عن الضرر الفعلي الثابت مع مراعاة الشرط الجزائي في العقد. نوصي بالمطالبة القضائية.'],
+    ['C-1447-067', 5, 'نايف القرني', '+966 5• ••• ••12', 'عمالي', LAWYERS[1], 'هاتفي', 'فصل تعسفي بعد ثماني سنوات خدمة وعدم صرف مكافأة نهاية الخدمة.', 500, 0, 'مجدولة', ''],
+    ['C-1447-066', 4, 'ريم العنزي', '+966 5• ••• ••90', 'أحوال شخصية', LAWYERS[2], 'مرئي', 'حضانة الأطفال بعد الطلاق وترتيبات الزيارة.', 800, 800, 'مكتملة', 'شرحنا الإجراءات أمام محكمة الأحوال الشخصية وطلب الحضانة المؤقتة.'],
+    ['C-1447-065', 4, 'مؤسسة رواسي للمقاولات', '+966 5• ••• ••33', 'تجاري', LAWYERS[3], 'حضوري', 'تحصيل مستحقات متأخرة من مقاول رئيسي.', 1200, 600, 'تحولت لقضية', 'نوصي بالإنذار الرسمي ثم رفع دعوى مطالبة.'],
+    ['C-1447-064', 3, 'سلطان الحربي', '+966 5• ••• ••58', 'عقاري', LAWYERS[0], 'مكتوبة', 'إخلاء مستأجر تجاري متعثر عن السداد.', 700, 700, 'مكتملة', 'العقد الموثق سند تنفيذي، ويمكن التقدم لمحكمة التنفيذ مباشرة.'],
+    ['C-1447-063', 3, 'هيفاء المالكي', '+966 5• ••• ••21', 'عمالي', LAWYERS[1], 'مرئي', 'احتساب ساعات العمل الإضافية غير المدفوعة.', 500, 500, 'مكتملة', 'تقديم شكوى ودية عبر وزارة الموارد البشرية أولاً.'],
+    ['C-1447-062', 2, 'شركة نخبة الغذاء', '+966 5• ••• ••76', 'إداري', LAWYERS[3], 'حضوري', 'التظلم من غرامة بلدية على ترخيص منشأة.', 1000, 0, 'تحولت لقضية', 'يُرفع تظلم أمام ديوان المظالم خلال المدة النظامية.'],
+    ['C-1447-061', 2, 'عبدالعزيز الشهري', '+966 5• ••• ••04', 'جزائي', LAWYERS[1], 'حضوري', 'بلاغ احتيال إلكتروني وإجراءات استرداد المبلغ.', 900, 450, 'مكتملة', 'تقديم بلاغ رسمي ومتابعة النيابة العامة.'],
+    ['C-1447-060', 1, 'منيرة الدوسري', '+966 5• ••• ••65', 'أحوال شخصية', LAWYERS[2], 'هاتفي', 'إجراءات حصر الورثة وتقسيم التركة.', 600, 600, 'مكتملة', 'البدء بصك حصر الورثة عبر ناجز.'],
+    ['C-1447-059', 1, 'شركة بوابة التقنية', '+966 5• ••• ••88', 'تجاري', LAWYERS[0], 'مرئي', 'مراجعة اتفاقية شراكة مع مستثمر أجنبي.', 2500, 1250, 'تحولت لقضية', 'تعديل بنود التخارج والتحكيم قبل التوقيع.']
+  ].map((a) => ({ no: a[0], d: a[1], requester: a[2], phone: a[3], cat: a[4], consultant: a[5], mode: a[6], topic: a[7], fee: a[8], paid: a[9], status: a[10], opinion: a[11] }))
+};
+const CATS = ['تجاري', 'عمالي', 'أحوال شخصية', 'عقاري', 'إداري', 'جزائي'];
+const stChip = (s) => s === 'تحولت لقضية' ? 'chip m' : s === 'مجدولة' ? 'chip o' : 'chip';
+VIEWS.consult = () => {
+  const C = CONS, money = C.role === 'partner';
+  const items = C.items;
+  const rows = items.filter((i) => (C.cat === 'all' || i.cat === C.cat) && (C.con === 'all' || i.consultant === C.con));
+  const fee = items.reduce((a, i) => a + i.fee, 0), paid = items.reduce((a, i) => a + i.paid, 0);
+  const conv = items.filter((i) => i.status === 'تحولت لقضية').length;
+  const s = items.find((i) => i.no === C.sel) || items[0];
+  const bars = (list, labelFn) => { const mx = Math.max(1, ...list.map((x) => x[1].length)); return list.map(([k, arr], i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:104px;font-size:13px">${labelFn(k)}</span><span style="flex:1;height:18px;border-radius:6px;background:var(--row);overflow:hidden"><i class="grow" style="display:block;height:18px;border-radius:6px;width:${arr.length / mx * 100}%;background:${arr.length === mx ? '#A8D5BA' : '#55876F'};animation-delay:${0.2 + i * .06}s"></i></span><b class="num" style="width:74px;text-align:left;font-size:13px">${arr.length}${money ? `<span class="muted2" style="font-weight:400"> · ${fmt(arr.reduce((a, x) => a + x.fee, 0) / 1000)}k</span>` : ''}</b></div>`).join(''); };
+  return `
+  <div class="row rise" style="align-items:flex-end">
+    <div class="col sp" style="gap:4px"><span class="kicker">الاستشارات · نوفمبر 2026</span><h1 class="t">تبدأ الحكاية <b>باستشارة</b></h1></div>
+    <div class="tabs" role="group" aria-label="عرض بصلاحية" style="flex:none"><span class="muted2" style="font-size:12px;align-self:center;padding:0 8px">عرض كـ</span>
+      <button class="tab ${money ? 'on' : ''}" data-a="consRole" data-v="partner" aria-pressed="${money}">الشريك المدير</button>
+      <button class="tab ${!money ? 'on' : ''}" data-a="consRole" data-v="consultant" aria-pressed="${!money}">مستشار</button></div>
+    <button class="btn p" data-a="consAdd">${ic('plus', 16)} تسجيل استشارة</button>
+  </div>
+  <div class="grid g4 rise">
+    <div class="card kpi"><span class="l">استشارات مسجّلة</span><span class="v">${items.length}</span></div>
+    <div class="card kpi"><span class="l">تحوّلت إلى قضايا</span><span class="v">${conv} <small style="font-size:14px;color:var(--mint)">${Math.round(conv / items.length * 100)}%</small></span></div>
+    ${money ? `<div class="card kpi"><span class="l">المسدّد من الرسوم</span><span class="v">${fmt(paid)} <small class="muted2" style="font-size:13px">من ${fmt(fee)}</small></span></div><div class="card hot kpi"><span class="l">المتبقي</span><span class="v" style="color:var(--mint)">${fmt(fee - paid)} <small style="font-size:13px">ر.س</small></span></div>`
+      : `<div class="card" style="grid-column:span 2;border-style:dashed;display:flex;gap:10px;align-items:center;color:var(--mut)">${ic('lock', 22)} الرسوم والمسدّد والمتبقي تظهر لمن يملك الصلاحية المالية فقط.</div>`}
+  </div>
+  <div class="split">
+    <div class="wide col">
+      <section class="card rise">
+        <div class="row" style="margin-bottom:10px">
+          ${[['all', 'الكل', items.length]].concat(CATS.map((c) => [c, c, items.filter((i) => i.cat === c).length])).map(([id, l, n]) => `<button class="chip ${C.cat === id ? 'm' : 'd'}" style="min-height:34px;padding:0 12px;border-style:solid" data-a="consCat" data-v="${id}" aria-pressed="${C.cat === id}">${l} <span style="opacity:.7">${n}</span></button>`).join('')}
+          <span class="sp"></span>
+          <label for="cf" class="muted2" style="font-size:13px">المستشار</label>
+          <select id="cf" class="in" style="width:auto;min-height:36px" data-ch="consCon"><option value="all">الكل</option>${LAWYERS.map((l) => `<option ${C.con === l ? 'selected' : ''}>${l}</option>`).join('')}</select>
+        </div>
+        <div class="scroll"><table class="tb" style="min-width:720px"><thead><tr><th>الرقم</th><th>طالب الاستشارة</th><th>التصنيف</th><th>المستشار</th><th>الرسوم</th><th>المتبقي</th><th>الحالة</th></tr></thead><tbody>
+        ${rows.map((i) => `<tr class="${C.sel === i.no ? 'sel' : ''}"><td><button class="num" style="border:0;background:none;color:var(--mint);font-weight:600;padding:0" data-a="consSel" data-v="${i.no}">${i.no}</button></td><td><b>${esc(i.requester)}</b><br><small class="muted2">${dTxt(D(2026, 11, i.d), 1)} · ${i.mode}</small></td><td>${i.cat}</td><td style="white-space:nowrap">${i.consultant}</td><td class="num">${money ? fmt(i.fee) : '<span class="muted2">محجوب</span>'}</td><td class="num" style="color:${money && i.fee - i.paid > 0 ? 'var(--mint)' : 'var(--mut2)'}">${money ? (i.fee - i.paid > 0 ? fmt(i.fee - i.paid) : 'مسدّدة') : 'محجوب'}</td><td><span class="${stChip(i.status)}">${i.status}</span></td></tr>`).join('')}
+        </tbody></table></div>
+        <div class="note" style="margin-top:8px">يُعرض ${rows.length} من ${items.length} استشارة</div>
+      </section>
+      <div class="grid g2">
+        <section class="card col rise"><h2 class="t">حصر حسب التصنيف</h2>${bars(CATS.map((c) => [c, items.filter((i) => i.cat === c)]), (k) => k)}</section>
+        <section class="card col rise"><h2 class="t">حصر حسب المستشار</h2>${bars(LAWYERS.map((l) => [l, items.filter((i) => i.consultant === l)]), (k) => k.replace('أ. ', ''))}</section>
+      </div>
+    </div>
+    <aside class="narrow col" style="flex-basis:420px">
+      <div class="row"><h2 class="t sp">نموذج الاستشارة ${s.no}</h2><button class="btn s" data-a="toastMsg" data-v="في النسخة الفعلية يُطبع النموذج أو يُحفظ PDF بترويسة مكتبك مباشرة.">${ic('print', 16)} طباعة / PDF</button><a class="btn s p" href="#cases">تحويل إلى قضية</a></div>
+      <article class="paper pop" aria-label="نموذج استشارة مطبوع">
+        ${paperHead()}
+        <h3>نموذج استشارة قانونية</h3>
+        <p style="text-align:center;font-family:'IBM Plex Sans Arabic';font-size:12px;color:#4B6355">رقم <span dir="ltr">${s.no}</span> · ${dTxt(D(2026, 11, s.d), 1)} 2026</p>
+        <table><tbody>
+          <tr><td class="k" style="width:34%">طالب الاستشارة</td><td>${esc(s.requester)}</td></tr>
+          <tr><td class="k">الجوال</td><td dir="ltr">${esc(s.phone)}</td></tr>
+          <tr><td class="k">التصنيف</td><td>${s.cat}</td></tr>
+          <tr><td class="k">المستشار المسؤول</td><td>${s.consultant}</td></tr>
+          <tr><td class="k">نوع الاستشارة</td><td>${s.mode}</td></tr>
+          <tr><td class="k">الرسوم</td><td>${money ? `${fmt(s.fee)} ر.س · المسدّد ${fmt(s.paid)} · المتبقي ${fmt(s.fee - s.paid)}` : '— (تظهر لصاحب الصلاحية المالية)'}</td></tr>
+        </tbody></table>
+        <p><b>موضوع الاستشارة:</b><br>${esc(s.topic)}</p>
+        <p><b>رأي المستشار وتوصيته:</b></p>
+        <p style="min-height:56px;border-bottom:1px dotted #9DB0A3">${esc(s.opinion) || '&nbsp;'}</p>
+        <p style="font-family:'IBM Plex Sans Arabic';font-size:11px;color:#4B6355;line-height:1.7">هذه الاستشارة مبنية على المعلومات المقدّمة من طالبها، ولا تُعد توكيلاً بالمرافعة ما لم يُبرم عقد أتعاب مستقل.</p>
+        <div class="sig"><div>المستشار: ${s.consultant}<br><span style="color:#4B6355">التوقيع</span></div><div>طالب الاستشارة<br><span style="color:#4B6355">التوقيع</span></div></div>
+      </article>
+    </aside>
+  </div>`;
+};
+ACT.consRole = (v) => { CONS.role = v; render(); };
+ACT.consCat = (v) => { CONS.cat = v; render(); };
+ACT.consSel = (v) => { CONS.sel = v; render(); };
+INPUT.consCon = (v) => { CONS.con = v; render(); };
+ACT.toastMsg = (v) => toast(v);
+const consForm = () => {
+  const f = CONS.form, money = CONS.role === 'partner';
+  return `<form class="dlg pop" role="dialog" aria-modal="true" aria-label="تسجيل استشارة" data-sub="consSave">
+    <div class="row"><h2 class="t sp" style="font-size:20px">تسجيل استشارة جديدة</h2><button type="button" class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+      <div style="grid-column:1/-1"><label class="f" for="f-req">طالب الاستشارة</label><input id="f-req" class="in" data-in="cf_requester" value="${esc(f.requester)}" placeholder="الاسم الكامل أو اسم المنشأة" required></div>
+      <div><label class="f" for="f-ph">الجوال</label><input id="f-ph" class="in" dir="ltr" style="text-align:right" data-in="cf_phone" value="${esc(f.phone)}" placeholder="05X XXX XXXX"></div>
+      <div><label class="f" for="f-cat">التصنيف</label><select id="f-cat" class="in" data-ch="cf_cat">${CATS.map((c) => `<option ${f.cat === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+      <div><label class="f" for="f-con">المستشار المسؤول</label><select id="f-con" class="in" data-ch="cf_consultant">${LAWYERS.map((c) => `<option ${f.consultant === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+      <div><label class="f" for="f-mode">النوع</label><select id="f-mode" class="in" data-ch="cf_mode">${['حضوري', 'مرئي', 'هاتفي', 'مكتوبة'].map((c) => `<option ${f.mode === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+      <div style="grid-column:1/-1"><label class="f" for="f-topic">موضوع الاستشارة</label><textarea id="f-topic" class="in" data-in="cf_topic" placeholder="وصف مختصر للمسألة">${esc(f.topic)}</textarea></div>
+      ${money ? `<div><label class="f" for="f-fee">الرسوم (ر.س)</label><input id="f-fee" class="in" type="number" min="0" step="50" data-in="cf_fee" value="${esc(f.fee)}"></div><div><label class="f" for="f-paid">المسدّد (ر.س)</label><input id="f-paid" class="in" type="number" min="0" step="50" data-in="cf_paid" value="${esc(f.paid)}"></div>` : `<p class="note" style="grid-column:1/-1;background:var(--row);border-radius:12px;padding:10px 12px;margin:0">تُحدَّد الرسوم من المحاسب أو الشريك المدير.</p>`}
+    </div>
+    <button type="submit" class="btn p" style="min-height:48px">حفظ وتعبئة النموذج</button>
+  </form>`;
+};
+ACT.consAdd = () => { S.modal = consForm; render(); };
+['requester', 'phone', 'cat', 'consultant', 'mode', 'topic', 'fee', 'paid'].forEach((k) => { INPUT['cf_' + k] = (v) => { CONS.form[k] = v; }; });
+ACT.consSave = () => {
+  const f = CONS.form, money = CONS.role === 'partner';
+  const no = 'C-1447-0' + (69 + CONS.items.length - 10);
+  const fee = money ? Number(f.fee) || 0 : 0;
+  CONS.items.unshift({ no, d: 5, requester: f.requester.trim() || 'طالب استشارة', phone: f.phone || '—', cat: f.cat, consultant: f.consultant, mode: f.mode, topic: f.topic.trim() || '—', fee, paid: money ? Math.min(fee, Number(f.paid) || 0) : 0, status: 'مجدولة', opinion: '' });
+  CONS.sel = no; CONS.cat = 'all'; CONS.con = 'all';
+  CONS.form = { requester: '', phone: '', cat: 'تجاري', consultant: LAWYERS[0], mode: 'حضوري', topic: '', fee: '500', paid: '0' };
+  S.modal = null; toast('سُجّلت الاستشارة ' + no + ' وتعبّأ نموذجها المطبوع.');
+};
+
+// ===== cases =====
+const DOCS = [
+  ['PDF', 'تقرير الخبير الهندسي النهائي', '4.2 م.ب', 'تقارير', 'أ. فهد العتيبي', '4 نوفمبر', true],
+  ['XLS', 'كشف الدفعات المقدمة', '310 ك.ب', 'مستندات مالية', 'م. ماجد الدوسري', '2 نوفمبر', true],
+  ['DOC', 'مسودة المذكرة الختامية', '86 ك.ب', 'مذكرات', 'أ. لمى الزهراني', '1 نوفمبر', false],
+  ['PDF', 'مذكرة دفاع المدعى عليه (2)', '1.1 م.ب', 'مذكرات الخصم', 'أ. فهد العتيبي', '28 أكتوبر', true],
+  ['PDF', 'عقد المقاولة الأصلي', '2.7 م.ب', 'عقود', 'م. ماجد الدوسري', '12 مارس', true],
+  ['PDF', 'وكالة شرعية', '420 ك.ب', 'وكالات', 'أ. سارة القحطاني', '10 مارس', false]
+];
+VIEWS.cases = () => {
+  const c = caseOf(S.caseRef), cl = clientOf(c.client);
+  const tabs = [['overview', 'نظرة عامة'], ['docs', 'المستندات 24'], ['hearings', 'الجلسات 6'], ['fees', 'الأتعاب']];
+  let body = '';
+  if (S.caseTab === 'overview') body = `
+    <div class="split">
+      <div class="wide col">
+        <section class="card rise"><h2 class="t">ملخص القضية</h2><p style="line-height:1.9;margin:10px 0 0">تطالب الموكلة بفسخ عقد مقاولة مشروع «أبراج الأفق» والتعويض عن التأخير في التسليم بما يتجاوز المدة التعاقدية بـ 14 شهراً، إضافةً إلى استرداد الدفعات المقدمة. قدّم المدعى عليه مذكرة دفاع يحتج فيها بظروف قاهرة، وندبت الدائرة خبيراً هندسياً.</p>
+          <div class="row" style="margin-top:10px"><button class="btn s g" data-a="go" data-v="assistant">${ic('spark', 15)} لخّص المستجدات بالمساعد</button></div></section>
+        <section class="card rise"><h2 class="t">سجل النشاط</h2><div class="col" style="margin-top:12px;gap:0">
+          ${[['أودع الخبير الهندسي تقريره النهائي', 'أمس — عبر بوابة المحكمة', 1], ['شارك أ. فهد ملخص التقرير مع الموكل', 'أمس — قرأه م. ماجد عبر رابط المتابعة', 1], ['رفع الموكل كشف الدفعات المقدمة', '2 نوفمبر — من رابط الموكل', 0], ['قدّم المدعى عليه مذكرة دفاع ثانية', '28 أكتوبر', 0], ['قررت الدائرة ندب خبير هندسي', '14 سبتمبر — جلسة المرافعة الثالثة', 0]].map((a) => `<div class="row" style="flex-wrap:nowrap;align-items:stretch"><span style="display:flex;flex-direction:column;align-items:center;width:14px"><i class="dot" style="margin-top:8px;background:${a[2] ? '#A8D5BA' : '#55876F'}"></i><i style="flex:1;width:2px;background:#2F5E4A;margin-top:4px"></i></span><span style="padding-bottom:16px"><b style="font-size:14px">${a[0]}</b><br><small class="muted2">${a[1]}</small></span></div>`).join('')}
+        </div></section>
+      </div>
+      <div class="narrow col">
+        <section class="card dark col rise"><span style="font-size:13px;color:var(--mint);font-weight:600">الجلسة القادمة</span><b class="hd" style="font-size:22px">اليوم، 9:30 ص</b><span>جلسة مرافعة — مناقشة تقرير الخبير</span><small class="muted2">المحكمة التجارية — القاعة 12</small><div class="row"><a class="btn p s sp" href="#hearings">رول الجلسات</a><a class="btn s sp" href="#cloud">تحقق من ناجز</a></div></section>
+        <section class="card hot col rise"><div class="row"><h2 class="t sp">نواقص من الموكل</h2><span class="chip m">2 ناقصة</span></div><span class="row" style="font-size:14px"><i class="dot"></i>السجل التجاري المحدّث</span><span class="row" style="font-size:14px"><i class="dot"></i>خطاب تفويض موقّع</span><a class="btn p" href="#assistant">${ic('wa', 16)} اطلبها من الموكل عبر واتساب</a></section>
+        <section class="card col rise"><h2 class="t">الأطراف</h2><div><small class="muted2">المدعي (موكلنا)</small><br><a href="#clients" style="font-weight:700">${cl.name}</a><br><small class="muted2">ممثلها: ${cl.rep}</small></div><div style="border-top:1px solid #2F5E4A;padding-top:10px"><small class="muted2">المدعى عليه</small><br><b>مؤسسة البناء المتحد للمقاولات</b><br><small class="muted2">وكيلها: مكتب الراشد للمحاماة</small></div></section>
+      </div>
+    </div>`;
+  if (S.caseTab === 'docs') body = `<section class="card rise scroll"><table class="tb" style="min-width:720px"><thead><tr><th>المستند</th><th>التصنيف</th><th>أضيف بواسطة</th><th>التاريخ</th><th>الظهور</th></tr></thead><tbody>${DOCS.map((d) => `<tr><td><span class="row" style="flex-wrap:nowrap"><span class="av" style="width:36px;height:36px;font-size:10px">${d[0]}</span><span><b>${d[1]}</b><br><small class="muted2">${d[2]}</small></span></span></td><td class="muted">${d[3]}</td><td>${d[4]}</td><td class="muted">${d[5]}</td><td><span class="chip ${d[6] ? 'm' : ''}">${d[6] ? 'مشارَك مع الموكل' : 'داخلي'}</span></td></tr>`).join('')}</tbody></table></section>`;
+  if (S.caseTab === 'hearings') body = `<div class="grid g3">${[['5 نوفمبر 2026', 'مناقشة تقرير الخبير', 'اليوم', 'تحضير الرد على اعتراضات المدعى عليه.', 1], ['14 سبتمبر 2026', 'جلسة المرافعة الثالثة', 'منعقدة', 'قررت الدائرة ندب خبير هندسي.', 0], ['6 يوليو 2026', 'جلسة المرافعة الثانية', 'منعقدة', 'قُدمت مذكرة الرد على الدفع بالظروف القاهرة.', 0], ['18 مايو 2026', 'الجلسة الأولى', 'منعقدة', 'حضر الطرفان وطلب المدعى عليه مهلة للرد.', 0]].map((h) => `<article class="card col rise ${h[4] ? 'hot' : ''}"><div class="row"><b class="num sp">${h[0]}</b><span class="chip ${h[4] ? 'm' : ''}">${h[2]}</span></div><b>${h[1]}</b><span class="muted" style="font-size:14px;line-height:1.8">${h[3]}</span></article>`).join('')}</div>`;
+  if (S.caseTab === 'fees') body = `<div class="split"><section class="card narrow col rise"><h2 class="t">اتفاقية الأتعاب</h2>${[['الإجمالي المتفق عليه', '180,000 ر.س'], ['المحصّل', '120,000 ر.س'], ['المتبقي', '60,000 ر.س']].map((r) => `<div class="row"><span class="muted sp">${r[0]}</span><b class="num">${r[1]}</b></div>`).join('')}<div class="bar"><i class="grow" style="width:66%"></i></div><a class="btn p" href="#clients">فتح عقد الأتعاب</a></section><section class="card wide rise"><h2 class="t">الفواتير</h2><div class="list" style="margin-top:8px">${[['INV-0412', 'الدفعة الأولى — عند التوقيع', 'مدفوعة'], ['INV-0468', 'الدفعة الثانية — عند قيد الدعوى', 'مدفوعة'], ['INV-0531', 'الدفعة الثالثة — بعد تقرير الخبير', 'مستحقة']].map((v) => `<div class="item"><b class="num" style="width:90px">${v[0]}</b><span class="sp">${v[1]}</span><b class="num">60,000 ر.س</b><span class="chip ${v[2] === 'مستحقة' ? 'm' : ''}">${v[2]}</span></div>`).join('')}</div></section></div>`;
+  return `
+  <div class="row rise"><div class="col sp" style="gap:4px"><span class="kicker">القضايا · 48 قضية نشطة</span><h1 class="t">ملف <b>القضية</b></h1></div>
+    <label class="sr" for="casepick">اختر قضية</label><select id="casepick" class="in" style="width:auto" data-ch="casePick">${CASES.map((x) => `<option value="${x.ref}" ${x.ref === c.ref ? 'selected' : ''}>${x.ref} — ${clientOf(x.client).name}</option>`).join('')}</select></div>
+  <section class="card rise">
+    <div class="row"><span class="num muted2">قضية ${c.ref}</span><span class="chip m">${STAGES[c.stage]}</span><span class="chip">${c.type}</span></div>
+    <h2 class="hd" style="margin:8px 0;font-size:24px;font-weight:600;line-height:1.5">${c.title}</h2>
+    <div class="row muted" style="font-size:13px;gap:6px 20px"><span>${c.court}</span><span>تاريخ القيد: ${c.opened}</span>${c.claim ? `<span>قيمة المطالبة: <b class="num" style="color:var(--tx)">${fmt(c.claim)} ر.س</b></span>` : ''}<span>المحامي: ${c.lawyer}</span></div>
+    <ol aria-label="مراحل القضية" style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(70px,1fr));gap:6px">${STAGES.map((s, i) => `<li><i style="display:block;height:6px;border-radius:6px;background:${i < c.stage ? '#55876F' : i === c.stage ? '#A8D5BA' : '#2F5E4A'}"></i><small style="font-weight:${i === c.stage ? 700 : 400};color:${i <= c.stage ? '#E9F0EC' : '#9FBFAD'}">${s}</small></li>`).join('')}</ol>
+  </section>
+  <div class="tabs" role="tablist">${tabs.map(([id, l]) => `<button role="tab" aria-selected="${S.caseTab === id}" class="tab ${S.caseTab === id ? 'on' : ''}" data-a="caseTab" data-v="${id}">${l}</button>`).join('')}</div>
+  ${body}`;
+};
+ACT.caseTab = (v) => { S.caseTab = v; render(); };
+INPUT.casePick = (v) => { S.caseRef = v; render(); };
+
+// ===== hearings =====
+const HR = {
+  day: D(2026, 11, 5), sel: 'h1', phrase: 0, note: '', days: null, deleg: null, sub: 'أ. ريم الشهري', printRoll: false,
+  rem: { teamMail: true, teamWa: true, clientMail: false, clientWa: true }, lead: 1, queue: [], lastNext: null,
+  items: [
+    ['h1', 5, 9.5, 'المحكمة التجارية بالرياض', 'الدائرة التجارية الرابعة — القاعة 12', '1447/0213', 'شركة الأفق للتطوير العقاري', 'مرافعة', LAWYERS[1], '44718203'],
+    ['h2', 5, 10.25, 'المحكمة التجارية بالرياض', 'الدائرة التجارية السابعة', '1447/0187', 'مؤسسة رواسي للمقاولات', 'مرافعة', LAWYERS[3], '44102977'],
+    ['h3', 5, 10, 'المحكمة العامة بالرياض', 'الدائرة الحقوقية الثالثة', '1447/0151', 'عبدالله المطيري', 'مرافعة', LAWYERS[1], '43991720'],
+    ['h4', 5, 8.75, 'المحكمة العمالية بالرياض', 'الدائرة العمالية الثانية', '1447/0242', 'نايف القرني', 'جلسة أولى', LAWYERS[3], '45318842'],
+    ['h5', 5, 11, 'مركز المصالحة', 'جلسة صلح عن بُعد', '1447/0187', 'مؤسسة رواسي للمقاولات', 'صلح', LAWYERS[3], '44102977'],
+    ['h6', 8, 10, 'محكمة الأحوال الشخصية بالرياض', 'الدائرة الثانية', '1447/0198', 'نورة السبيعي', 'النطق بالحكم', LAWYERS[0], '44850031']
+  ].map((a) => ({ id: a[0], date: D(2026, 11, a[1]), t: a[2], court: a[3], circuit: a[4], ref: a[5], client: a[6], type: a[7], lawyer: a[8], poa: a[9], status: 'قادمة', decision: '', auto: false }))
+};
+const PHR = [
+  ['تأجيل لتقديم مذكرة جوابية', 14, 'مرافعة — تقديم مذكرة'], ['تأجيل لإحضار المستندات الأصلية', 7, 'مرافعة'], ['تأجيل لإعادة تبليغ المدعى عليه', 21, 'جلسة أولى'],
+  ['ندب خبير وتأجيل لورود التقرير', 45, 'مناقشة تقرير الخبير'], ['تأجيل لإتاحة الصلح', 10, 'صلح'], ['حجز القضية للنطق بالحكم', 14, 'النطق بالحكم'],
+  ['صدر الحكم', 0, null, 'تسجيل الحكم ومتابعة موعد الطعن'], ['شطب الدعوى', 0, null, 'طلب السير في الدعوى خلال المدة النظامية']
+];
+const workday = (d) => { let x = d; while (x.getDay() === 5 || x.getDay() === 6) x = addD(x, 1); return x; };
+VIEWS.hearings = () => {
+  const day = HR.items.filter((h) => sameDay(h.date, HR.day)).sort((a, b) => a.t - b.t);
+  const courts = []; day.forEach((h) => { if (!courts.includes(h.court)) courts.push(h.court); });
+  const clash = (h) => day.find((o) => o.id !== h.id && o.lawyer === h.lawyer && o.court !== h.court && Math.abs(o.t - h.t) < 1);
+  const conf = day.filter((h) => clash(h) && h.status === 'قادمة').length;
+  const sel = HR.items.find((h) => h.id === HR.sel && h.status === 'قادمة');
+  const ph = PHR[HR.phrase], days = HR.days != null ? HR.days : ph[1];
+  const nd = sel && ph[2] ? workday(addD(sel.date, Number(days) || 1)) : null;
+  const pv = sel || day[0] || HR.items[0];
+  const pvd = nd || pv.date;
+  const preview = `السلام عليكم،\nنذكّركم بموعد جلسة قضيتكم رقم ${pv.ref} يوم ${dTxt(pvd, 1)} الساعة ${clock(pv.t)} في ${pv.court}.\nحضوركم غير مطلوب، ويمثّلكم ${pv.lawyer}.\nمكتب القحطاني للمحاماة`;
+  return `
+  <div class="row rise" style="align-items:flex-end">
+    <div class="col sp" style="gap:4px"><span class="kicker">رول الجلسات اليومي</span><h1 class="t">جلسة بعد جلسة… <b>ولا موعد يفوتك</b></h1></div>
+    <div class="row" style="gap:6px"><button class="btn s g" data-a="hrDay" data-v="-1" aria-label="اليوم السابق">${ic('prev', 16)}</button><span class="card num" style="padding:8px 14px;border-radius:12px;font-weight:600">${dTxt(HR.day, 1)} 2026</span><button class="btn s g" data-a="hrDay" data-v="1" aria-label="اليوم التالي">${ic('next', 16)}</button></div>
+    <button class="btn p" data-a="hrRoll">${ic('print', 16)} رول الجلسات / PDF</button>
+  </div>
+  ${HR.lastNext ? `<div class="banner slidein">${'<span class="ico">' + ic('check', 18, 3) + '</span>'}<span class="sp" style="font-size:14px;line-height:1.7">${esc(HR.lastNext.msg)}</span>${HR.lastNext.date ? `<button class="btn s" data-a="hrGoNext">عرض الجلسة القادمة</button>` : ''}</div>` : ''}
+  <div class="grid g4 rise">
+    <div class="card kpi"><span class="l">جلسات اليوم</span><span class="v">${day.length}</span></div>
+    <div class="card kpi"><span class="l">محاكم</span><span class="v">${courts.length}</span></div>
+    <div class="card kpi"><span class="l">سُجّل قرارها</span><span class="v">${day.filter((h) => h.status !== 'قادمة').length}</span></div>
+    <div class="card kpi ${conf ? 'hot' : ''}"><span class="l">تعارض مواعيد</span><span class="v" style="color:${conf ? 'var(--mint)' : 'inherit'}">${conf}</span></div>
+  </div>
+  <div class="split">
+    <div class="wide col">
+      ${day.length ? '' : '<div class="card" style="text-align:center;border-style:dashed;color:var(--mut)">لا توجد جلسات في هذا اليوم.</div>'}
+      ${courts.map((ct) => `<section class="card rise" aria-label="${ct}"><div class="row" style="margin-bottom:8px"><span class="ico d" style="width:32px;height:32px">${ic('gavel', 16)}</span><h2 class="t sp">${ct}</h2><small class="muted2">${day.filter((h) => h.court === ct).length} جلسات</small></div>
+        <div class="col">${day.filter((h) => h.court === ct).map((h) => { const k = clash(h), done = h.status !== 'قادمة'; return `<article class="item" style="background:var(--row);border:1.5px solid ${HR.sel === h.id && !done ? '#A8D5BA' : k && !done ? '#55876F' : 'transparent'};padding:12px 14px">
+          <span style="width:64px;text-align:center"><b class="num" style="font-size:19px">${clock(h.t).replace(/ [صم]$/, '')}</b><br><small class="muted2">${h.t < 12 ? 'صباحاً' : 'مساءً'}</small></span>
+          <span class="sp" style="min-width:220px"><span class="row" style="gap:6px"><a href="#cases" class="num" style="font-weight:600;font-size:13px">${h.ref}</a><b>${h.client}</b>${h.auto ? '<span class="chip m">أُنشئت تلقائياً</span>' : ''}</span><small class="muted">${h.type} · ${h.circuit} · ${h.lawyer}</small>${k && !done ? `<br><small style="color:var(--mint);font-weight:600">تعارض: ${h.lawyer} لديه جلسة ${clock(k.t)} في ${k.court} — أنشئ سند إنابة</small>` : ''}${h.decision ? `<br><small style="background:var(--card);border-radius:8px;padding:3px 8px;display:inline-block;margin-top:4px">القرار: ${esc(h.decision)}</small>` : ''}</span>
+          <span class="chip ${done ? '' : 'm'}">${h.status}</span>
+          ${done ? '' : `<button class="btn s ${HR.sel === h.id ? 'p' : 'g'}" data-a="hrSel" data-v="${h.id}">تسجيل القرار</button>`}
+          <button class="btn s" data-a="hrDeleg" data-v="${h.id}">سند إنابة</button>
+        </article>`; }).join('')}</div></section>`).join('')}
+    </div>
+    <aside class="narrow col">
+      <section class="card col rise"><h2 class="t">تسجيل قرار الجلسة</h2>
+        ${sel ? `<div style="background:var(--row);border-radius:14px;padding:10px 12px"><b>${sel.ref} — ${sel.client}</b><br><small class="muted">${sel.court} · ${clock(sel.t)}</small></div>
+        <span style="font-size:13px;font-weight:600">اختر عبارة القرار</span>
+        <div class="row" style="gap:6px">${PHR.map((p, i) => `<button class="chip ${i === HR.phrase ? 'm' : 'd'}" style="min-height:34px;border-style:solid;font-weight:500" data-a="hrPhrase" data-v="${i}" aria-pressed="${i === HR.phrase}">${p[0]}</button>`).join('')}</div>
+        <label class="f" for="hrnote" style="margin:0">إضافة على القرار (اختياري)</label><input id="hrnote" class="in" data-in="hrNote" value="${esc(HR.note)}" placeholder="مثال: مع إلزام المدعى عليه بتقديم كشف الحساب">
+        ${ph[2] ? `<div style="border:1.5px dashed var(--mint);border-radius:14px;padding:12px" class="col"><small style="color:var(--mint);font-weight:700">ستُنشأ الجلسة القادمة تلقائياً</small><b>${ph[2]} · ${dTxt(nd, 1)} · ${clock(sel.t)}</b><span class="row" style="font-size:12px"><label for="hrdays">بعد</label><input id="hrdays" class="in" type="number" min="1" max="120" style="width:72px;min-height:36px" data-ch="hrDays" value="${days}"> يوماً <span class="muted2">(تُرحّل عطلة الجمعة والسبت)</span></span></div>` : `<div class="note" style="background:var(--row);border-radius:12px;padding:10px">لا جلسة قادمة لهذا القرار. ستُنشأ مهمة: ${ph[3]}</div>`}
+        <button class="btn p" style="min-height:46px" data-a="hrSave">حفظ القرار وإرسال التذكيرات</button>` : '<span class="muted" style="font-size:13px">اختر «تسجيل القرار» من أي جلسة في الرول.</span>'}
+      </section>
+      <section class="card col rise"><h2 class="t">التذكيرات</h2>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">${[['الفريق', 'teamMail', 'teamWa'], ['الموكل', 'clientMail', 'clientWa']].map((g) => `<fieldset style="border:1px solid #2F5E4A;border-radius:14px;padding:8px 12px;margin:0"><legend style="font-size:13px;font-weight:700;padding:0 4px">${g[0]}</legend><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[1]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[1]}" style="accent-color:#A8D5BA;width:16px;height:16px">البريد</label><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[2]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[2]}" style="accent-color:#A8D5BA;width:16px;height:16px">واتساب</label></fieldset>`).join('')}</div>
+        <label class="f" for="hrlead" style="margin:0">التذكير قبل الجلسة بـ</label><select id="hrlead" class="in" data-ch="hrLead">${[[1, 'يوم واحد + صباح الجلسة'], [3, '3 أيام + يوم قبلها'], [7, 'أسبوع + يوم قبلها']].map((o) => `<option value="${o[0]}" ${HR.lead === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select>
+        <small class="muted2">معاينة رسالة الموكل</small>
+        <div style="border:1px solid #40725C;border-radius:4px 16px 16px 16px;padding:12px;font-size:13px;line-height:1.9;white-space:pre-line">${esc(preview)}</div>
+        ${HR.queue.map((q) => `<div class="row slidein" style="font-size:12px;flex-wrap:nowrap"><i class="dot pulse"></i><span class="sp muted">${esc(q[0])}</span><small class="muted2">${q[1]}</small></div>`).join('')}
+      </section>
+    </aside>
+  </div>`;
+};
+ACT.hrDay = (v) => { HR.day = addD(HR.day, Number(v)); HR.lastNext = null; render(); };
+ACT.hrSel = (v) => { HR.sel = v; HR.phrase = 0; HR.note = ''; HR.days = null; render(); };
+ACT.hrPhrase = (v) => { HR.phrase = Number(v); HR.days = null; render(); };
+INPUT.hrNote = (v) => { HR.note = v; };
+INPUT.hrDays = (v) => { HR.days = Math.max(1, Number(v) || 1); render(); };
+INPUT.hrLead = (v) => { HR.lead = Number(v); render(); };
+INPUT.hrRem = (v, el) => { HR.rem[el.dataset.k] = v; render(); };
+ACT.hrGoNext = () => { if (HR.lastNext && HR.lastNext.date) HR.day = HR.lastNext.date; HR.lastNext = null; render(); };
+ACT.hrSave = () => {
+  const sel = HR.items.find((h) => h.id === HR.sel); if (!sel) return;
+  const ph = PHR[HR.phrase], days = HR.days != null ? HR.days : ph[1];
+  sel.status = 'منعقدة'; sel.decision = ph[0] + (HR.note.trim() ? ' — ' + HR.note.trim() : '');
+  const r = HR.rem, ch = (m, w) => [m ? 'البريد' : '', w ? 'واتساب' : ''].filter(Boolean).join(' و') || 'لا قناة';
+  const lead = { 1: 'قبل يوم وصباح الجلسة', 3: 'قبل 3 أيام ويوم', 7: 'قبل أسبوع ويوم' }[HR.lead];
+  if (ph[2]) {
+    const nd = workday(addD(sel.date, Number(days) || 1));
+    HR.items.push({ ...sel, id: 'n' + HR.items.length, date: nd, type: ph[2], status: 'قادمة', decision: '', auto: true });
+    HR.lastNext = { date: nd, msg: `سُجّل القرار «${ph[0]}» وأُنشئت الجلسة القادمة تلقائياً: ${ph[2]} — ${dTxt(nd, 1)}. جُدولت التذكيرات للفريق والموكل.` };
+    HR.queue.unshift([`تذكير الموكل ${sel.client} (${ch(r.clientMail, r.clientWa)})`, lead], [`تذكير الفريق (${ch(r.teamMail, r.teamWa)}) — ${sel.ref}`, lead]);
+  } else {
+    HR.lastNext = { date: null, msg: `سُجّل القرار «${ph[0]}» وأُنشئت مهمة: ${ph[3]}.` };
+    HR.queue.unshift([`إشعار الموكل ${sel.client} بالقرار`, 'الآن']);
+  }
+  HR.queue = HR.queue.slice(0, 5);
+  const nx = HR.items.find((h) => sameDay(h.date, HR.day) && h.status === 'قادمة');
+  HR.sel = nx ? nx.id : null; HR.phrase = 0; HR.note = ''; HR.days = null;
+  render();
+};
+const delegDlg = () => {
+  const h = HR.items.find((x) => x.id === HR.deleg) || HR.items[0];
+  const subs = ['أ. ريم الشهري', ...LAWYERS].filter((n) => n !== h.lawyer);
+  if (!subs.includes(HR.sub)) HR.sub = subs[0];
+  return `<div class="dlg w pop" role="dialog" aria-modal="true" aria-label="سند إنابة">
+    <div class="row"><h2 class="t sp" style="font-size:20px">سند إنابة يتعبأ تلقائياً</h2><button class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+    <div class="row"><label class="f" for="sub" style="margin:0">المحامي المُناب</label><select id="sub" class="in sp" style="width:auto" data-ch="hrSub">${subs.map((n) => `<option ${n === HR.sub ? 'selected' : ''}>${n}</option>`).join('')}</select><button class="btn p s" data-a="toastMsg" data-v="في النسخة الفعلية يُطبع السند أو يُحفظ PDF بترويسة المكتب.">${ic('print', 15)} طباعة / PDF</button></div>
+    <article class="paper">${paperHead(`<small style="font-size:11px;color:#4B6355">الرقم: ن/${h.ref} · ${dTxt(TODAY)} 2026</small>`)}
+      <h3>سند إنابة لحضور جلسة</h3>
+      <p>فضيلة رئيس <span class="fld">${h.circuit}</span> بـ<span class="fld">${h.court}</span> وفقه الله</p>
+      <p>السلام عليكم ورحمة الله وبركاته، وبعد:</p>
+      <p>بصفتي وكيلاً عن <span class="fld">${h.client}</span> في القضية رقم <span class="fld">${h.ref}</span> بموجب الوكالة رقم <span class="fld">${h.poa}</span>، أُنيب عني الزميل/ <span class="fld"><b>${HR.sub}</b></span> (رخصة رقم <span class="fld">[رقم الرخصة]</span>) لحضور الجلسة المحددة يوم <span class="fld">${dTxt(h.date, 1)} 2026</span> الساعة <span class="fld">${clock(h.t)}</span>، وله ما لي من صلاحيات واردة في الوكالة في حدود هذه الجلسة.</p>
+      <p>وتقبلوا فائق الاحترام والتقدير،،،</p>
+      <div class="sig"><div>المحامي الأصيل: ${h.lawyer}<br><span style="color:#4B6355">التوقيع</span></div><div>ختم المكتب</div></div>
+    </article></div>`;
+};
+ACT.hrDeleg = (v) => { HR.deleg = v; S.modal = delegDlg; render(); };
+INPUT.hrSub = (v) => { HR.sub = v; render(); };
+const rollDlg = () => {
+  const day = HR.items.filter((h) => sameDay(h.date, HR.day)).sort((a, b) => a.t - b.t);
+  const courts = []; day.forEach((h) => { if (!courts.includes(h.court)) courts.push(h.court); });
+  return `<div class="dlg w pop" role="dialog" aria-modal="true" aria-label="رول الجلسات"><div class="row"><h2 class="t sp" style="font-size:20px">رول الجلسات — جاهز للطباعة</h2><button class="btn p s" data-a="toastMsg" data-v="في النسخة الفعلية يُطبع الرول أو يُحفظ PDF مباشرة.">${ic('print', 15)} طباعة / PDF</button><button class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+  <article class="paper" style="font-size:13px">${paperHead(`<small style="font-size:12px;color:#4B6355">${dTxt(HR.day, 1)} 2026</small>`)}<h3>رول الجلسات</h3>
+  ${courts.map((ct) => `<p style="font-family:'IBM Plex Sans Arabic';font-weight:700;color:#1F4535;margin-top:10px">${ct}</p><table><thead><tr><th>الوقت</th><th>القضية</th><th>الموكل</th><th>الدائرة</th><th>النوع</th><th>المحامي</th><th>القرار</th></tr></thead><tbody>${day.filter((h) => h.court === ct).map((h) => `<tr><td>${clock(h.t)}</td><td>${h.ref}</td><td>${h.client}</td><td>${h.circuit}</td><td>${h.type}</td><td>${h.lawyer}</td><td style="min-width:110px">${esc(h.decision)}</td></tr>`).join('')}</tbody></table>`).join('') || '<p>لا جلسات.</p>'}</article></div>`;
+};
+ACT.hrRoll = () => { S.modal = rollDlg; render(); };
+
+// ===== judgments =====
+const JTYPES = ['تجاري', 'عمالي', 'حقوقي', 'أحوال شخصية', 'إداري', 'جزائي'];
+const JG = {
+  periods: Object.fromEntries(JTYPES.map((t) => [t, { a: 30, c: 30 }]).concat([['مستعجل', { a: 10, c: 15 }]])),
+  shift: true, a1: 7, a2: 2, showSet: false, digestOn: true, digestTime: '7:00 ص',
+  form: { ref: '1447/0213', type: 'تجاري', deg: 'first', date: '2026-11-05', result: 'ضدنا', urgent: false },
+  items: [
+    ['j1', '1447/0164', 'مجموعة سنا الطبية', 'المحكمة الإدارية', 'إداري', 'first', D(2026, 10, 8), 'ضدنا', false],
+    ['j5', '1447/0187', 'مؤسسة رواسي للمقاولات', 'المحكمة التجارية', 'تجاري', 'first', D(2026, 11, 2), 'جزئي', true],
+    ['j2', '1447/0119', 'شركة الأفق للتطوير العقاري', 'المحكمة العمالية', 'عمالي', 'first', D(2026, 10, 20), 'لصالحنا', false],
+    ['j3', '1447/0101', 'عبدالله المطيري', 'محكمة الاستئناف — الدائرة الحقوقية', 'حقوقي', 'appeal', D(2026, 10, 27), 'جزئي', false],
+    ['j4', '1447/0090', 'نورة السبيعي', 'محكمة الأحوال الشخصية', 'أحوال شخصية', 'first', D(2026, 9, 30), 'لصالحنا', false]
+  ].map((a) => ({ id: a[0], ref: a[1], client: a[2], court: a[3], type: a[4], deg: a[5], rec: a[6], result: a[7], urgent: a[8], state: 'pending', nextRef: '' }))
+};
+function jCalc(j) {
+  const p = JG.periods[j.urgent ? 'مستعجل' : j.type] || { a: 30, c: 30 };
+  const days = j.deg === 'first' ? p.a : p.c;
+  let dl = addD(j.rec, days), shifted = false;
+  if (JG.shift) while (dl.getDay() === 5 || dl.getDay() === 6) { dl = addD(dl, 1); shifted = true; }
+  return { days, dl, shifted, kind: j.deg === 'first' ? 'الاستئناف' : 'النقض' };
+}
+VIEWS.judgments = () => {
+  const cards = JG.items.map((j) => { const c = jCalc(j); const left = diffD(c.dl, TODAY); const st = j.state === 'pending' && left < 0 ? 'final' : j.state; return { j, c, left, st }; })
+    .sort((a, b) => (a.st === 'pending' ? 0 : 1) - (b.st === 'pending' ? 0 : 1) || a.left - b.left);
+  const open = cards.filter((x) => x.st === 'pending');
+  const alerts = [];
+  open.forEach(({ j, c }) => [[JG.a1, JG.a1 + ' أيام'], [JG.a2, 'يومين']].forEach(([n, l]) => { const d = addD(c.dl, -n), dd = diffD(d, TODAY); alerts.push({ t: j.ref + ' — ' + j.client, m: 'تنبيه قبل ' + l + ' · ' + dTxt(d, 1), s: dd < 0 ? 'أُرسل' : dd === 0 ? 'يُرسل اليوم' : 'مجدول', dd }); }));
+  alerts.sort((a, b) => a.dd - b.dd);
+  const digest = open.filter((x) => x.left <= JG.a1).map((x) => [String(x.left), 'أيام', 'آخر موعد ' + x.c.kind + ' — ' + x.j.client, x.j.ref + ' · ' + dTxt(x.c.dl, 1), 'judgments', 1])
+    .concat([['5', 'جلسات', 'جلسات اليوم في 4 محاكم', 'أولها 8:45 ص — المحكمة العمالية', 'hearings', 0], ['12', 'يوماً', 'وكالة شركة الأفق تنتهي', 'قبل جلسة 26 نوفمبر', 'clients', 0]]);
+  const f = JG.form; const fc = jCalc({ type: f.type, deg: f.deg, rec: (() => { const [y, m, d] = (f.date || '2026-11-05').split('-').map(Number); return D(y, m, d); })(), urgent: f.urgent });
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">الأحكام ومواعيد الطعن</span><h1 class="t">الحكم… <b>وموعد الطعن أمامك</b></h1></div>
+    <button class="btn" data-a="jgSet">${ic('clock', 16)} مدد الطعن</button><button class="btn p" data-a="jgAdd">${ic('plus', 16)} تسجيل حكم</button></div>
+  <section class="card rise" style="background:var(--mint);color:var(--ink);border:0" aria-label="مواعيد يجب الانتباه لها">
+    <div class="row"><span class="sp"><small style="font-weight:600">صباح الخير — الخميس 5 نوفمبر · أُرسل الساعة ${JG.digestTime}</small><br><b class="hd" style="font-size:21px">مواعيد يجب الانتباه لها</b></span>
+      <label class="row" style="font-size:13px;font-weight:600;gap:6px"><input type="checkbox" ${JG.digestOn ? 'checked' : ''} data-ch="jgDigest" style="accent-color:#173A2C;width:16px;height:16px">كل صباح عبر البريد والواتساب</label>
+      <label class="sr" for="dt">وقت الإرسال</label><select id="dt" class="in" style="width:auto;min-height:36px;background:transparent;border-color:#173A2C;color:#173A2C;font-weight:600" data-ch="jgTime">${['6:30 ص', '7:00 ص', '8:00 ص'].map((t) => `<option ${JG.digestTime === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+    <div class="grid g3" style="margin-top:12px">${digest.map((d) => `<a href="#${d[4]}" style="background:${d[5] ? '#173A2C' : '#C4E3D0'};color:${d[5] ? '#E9F0EC' : '#173A2C'};border-radius:16px;padding:12px;text-decoration:none;display:flex;gap:10px"><b class="num" style="font-size:22px;min-width:34px;text-align:center;line-height:1">${d[0]}<small style="display:block;font-size:10px;margin-top:3px">${d[1]}</small></b><span><b style="font-size:13px">${d[2]}</b><br><small style="opacity:.85">${d[3]}</small></span></a>`).join('')}</div>
+  </section>
+  ${JG.showSet ? `<section class="card hot col pop"><div class="row"><h2 class="t sp">مدد الطعن (بالأيام) — الإعدادات</h2><small class="muted2">أي تعديل يُعيد حساب كل المواعيد فوراً</small></div>
+    <div class="scroll"><table class="tb" style="min-width:480px"><thead><tr><th>نوع الدعوى</th><th>الاستئناف</th><th>النقض</th></tr></thead><tbody>${JTYPES.concat(['مستعجل']).map((t, i) => `<tr><td><b>${t === 'مستعجل' ? 'المسائل المستعجلة' : t}</b></td><td><input aria-label="${t} — الاستئناف" class="in" style="width:80px;min-height:36px" type="number" min="1" data-ch="jgPer" data-t="${t}" data-k="a" value="${JG.periods[t].a}"></td><td><input aria-label="${t} — النقض" class="in" style="width:80px;min-height:36px" type="number" min="1" data-ch="jgPer" data-t="${t}" data-k="c" value="${JG.periods[t].c}"></td></tr>`).join('')}</tbody></table></div>
+    <label class="row" style="font-size:13px;gap:8px"><input type="checkbox" ${JG.shift ? 'checked' : ''} data-ch="jgShift" style="accent-color:#A8D5BA;width:16px;height:16px">إذا صادف آخر يوم عطلة (جمعة/سبت) يمتد لأول يوم عمل</label>
+    <p class="note" style="margin:0">القيم الافتراضية من نظام المرافعات الشرعية: 30 يوماً للاستئناف أو التدقيق و10 أيام للمستعجل (م 187)، و30 يوماً للنقض و15 للمستعجل (م 194). تحقّق من المدد الخاصة بكل نظام إجرائي قبل الاعتماد.</p></section>` : ''}
+  <div class="split">
+    <div class="wide col">${cards.map(({ j, c, left, st }) => { const total = Math.max(1, diffD(c.dl, j.rec)); const pos = (d) => Math.min(100, Math.max(0, diffD(d, j.rec) / total * 100)) + '%'; const hot = st === 'pending' && left <= JG.a1; const won = j.result === 'لصالحنا'; const nextL = c.kind;
+      const sugg = st === 'final' ? `انقضت مدة ${c.kind} في ${dTxt(c.dl, 1)} — اكتسب الحكم القطعية.` : won ? `الحكم لصالح الموكل. تابع اعتراض الخصم حتى ${dTxt(c.dl, 1)}.` : `آخر موعد ل${c.kind}: ${dTxt(c.dl, 1)} (${c.days} يوماً من التسلّم${c.shifted ? '، مُدّد لأول يوم عمل' : ''}).`;
+      return `<article class="card rise ${hot ? 'hot' : ''}">
+      <div class="row"><span class="sp"><span class="row" style="gap:6px"><a href="#cases" class="num" style="font-weight:600;font-size:13px">${j.ref}</a><b style="font-size:16px">${j.client}</b><span class="chip ${j.result === 'لصالحنا' ? 'm' : ''}">${j.result}</span>${j.urgent ? '<span class="chip o">مستعجل</span>' : ''}</span><small class="muted">${j.type} · حكم ${j.deg === 'first' ? 'ابتدائي' : 'استئناف'} من ${j.court} · تسلّم الحكم ${dTxt(j.rec)}</small></span>
+        <span style="text-align:center;min-width:80px"><b class="num" style="font-size:32px;color:${hot ? 'var(--mint)' : 'inherit'}">${st === 'final' ? '—' : left}</b><br><small class="muted">${st === 'final' ? 'انتهت المدة' : 'يوماً متبقياً'}</small></span></div>
+      ${st === 'pending' ? `<div style="position:relative;padding:20px 0 30px"><div class="bar"><i class="grow" style="width:${Math.min(100, Math.max(2, diffD(TODAY, j.rec) / total * 100))}%;background:${hot ? '#A8D5BA' : '#55876F'}"></i></div><small style="position:absolute;top:0;right:0" class="muted2">التسلّم ${dTxt(j.rec)}</small><small style="position:absolute;top:0;left:0;font-weight:700">آخر موعد ${dTxt(c.dl)}</small>
+        ${[[addD(c.dl, -JG.a1), 'تنبيه ' + JG.a1 + ' أيام'], [addD(c.dl, -JG.a2), 'تنبيه يومين'], [TODAY, 'اليوم']].map(([d, l], i) => `<span style="position:absolute;top:16px;right:${pos(d)};transform:translateX(50%);text-align:center"><i class="${i === 2 || diffD(d, TODAY) === 0 ? 'pulse' : ''}" style="display:block;margin:0 auto;width:16px;height:16px;border-radius:50%;background:${i === 2 ? '#E9F0EC' : diffD(d, TODAY) <= 0 ? '#A8D5BA' : '#1F4535'};border:2px solid ${i === 2 ? '#E9F0EC' : '#A8D5BA'}"></i><small style="font-size:10px;white-space:nowrap" class="muted">${i < 2 && Math.abs(diffD(d, TODAY)) <= 2 ? '' : l}</small></span>`).join('')}</div>` : ''}
+      <div class="row"><span class="sp" style="font-size:13px">${sugg}</span>
+        ${st === 'pending' ? `<button class="btn p s" data-a="jgOpen" data-v="${j.id}">فتح ملف ${nextL}</button><button class="btn s" data-a="jgAccept" data-v="${j.id}">${won ? 'تم — لا طعن من جهتنا' : 'قبول الحكم وعدم الطعن'}</button>` : ''}
+        ${st === 'opened' ? `<a href="#cases" class="btn s pop" style="border-color:var(--mint);color:var(--mint)">${ic('check', 14, 3)} أُنشئ ملف ${nextL} ${j.nextRef} — فتح</a>` : ''}
+        ${st === 'accepted' ? '<small class="muted2">سُجّل قبول الحكم وأُلغيت التنبيهات</small>' : ''}${st === 'final' ? '<small class="muted2">اكتسب القطعية — يمكن طلب التنفيذ</small>' : ''}</div>
+    </article>`; }).join('')}</div>
+    <aside class="narrow col"><section class="card col rise"><h2 class="t">تنبيهات الطعن</h2><small class="muted2">قبل الموعد بـ ${JG.a1} أيام ثم بيومين، للمحامي المسؤول والشريك المشرف</small>
+      ${alerts.map((a) => `<div class="row" style="flex-wrap:nowrap;background:${a.dd === 0 ? 'var(--row2)' : 'var(--row)'};border-radius:12px;padding:10px 12px"><i class="dot ${a.dd === 0 ? 'pulse' : ''}" style="background:${a.dd <= 0 ? '#A8D5BA' : '#55876F'}"></i><span class="sp"><b style="font-size:13px">${a.t}</b><br><small class="muted2">${a.m}</small></span><small style="font-weight:700;color:${a.dd === 0 ? 'var(--mint)' : 'var(--mut2)'}">${a.s}</small></div>`).join('')}</section></aside>
+  </div>`;
+};
+ACT.jgSet = () => { JG.showSet = !JG.showSet; render(); };
+INPUT.jgPer = (v, el) => { JG.periods[el.dataset.t][el.dataset.k] = Math.max(1, Number(v) || 1); render(); };
+INPUT.jgShift = (v) => { JG.shift = v; render(); };
+INPUT.jgDigest = (v) => { JG.digestOn = v; render(); };
+INPUT.jgTime = (v) => { JG.digestTime = v; render(); };
+ACT.jgOpen = (v) => { const j = JG.items.find((x) => x.id === v); j.state = 'opened'; j.nextRef = '1447/0' + (300 + JG.items.indexOf(j)); toast('أُنشئ ملف ' + jCalc(j).kind + ' ' + j.nextRef + ' مربوطاً بالقضية ' + j.ref + '.'); };
+ACT.jgAccept = (v) => { JG.items.find((x) => x.id === v).state = 'accepted'; render(); };
+const jgDlg = () => {
+  const f = JG.form; const [y, m, d] = (f.date || '2026-11-05').split('-').map(Number);
+  const c = jCalc({ type: f.type, deg: f.deg, rec: D(y, m, d), urgent: f.urgent });
+  return `<form class="dlg pop" role="dialog" aria-modal="true" aria-label="تسجيل حكم" data-sub="jgSave">
+    <div class="row"><h2 class="t sp" style="font-size:20px">تسجيل حكم</h2><button type="button" class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+      <div style="grid-column:1/-1"><label class="f" for="j-ref">القضية</label><select id="j-ref" class="in" data-ch="jgF" data-k="ref">${CASES.map((x) => `<option value="${x.ref}" ${f.ref === x.ref ? 'selected' : ''}>${x.ref} — ${clientOf(x.client).name}</option>`).join('')}</select></div>
+      <div><label class="f" for="j-type">نوع الدعوى</label><select id="j-type" class="in" data-ch="jgF" data-k="type">${JTYPES.map((t) => `<option ${f.type === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+      <div><label class="f" for="j-deg">درجة الحكم</label><select id="j-deg" class="in" data-ch="jgF" data-k="deg"><option value="first" ${f.deg === 'first' ? 'selected' : ''}>ابتدائي — يُطعن بالاستئناف</option><option value="appeal" ${f.deg === 'appeal' ? 'selected' : ''}>استئناف — يُطعن بالنقض</option></select></div>
+      <div><label class="f" for="j-date">تاريخ تسلّم الحكم</label><input id="j-date" class="in" type="date" style="color-scheme:dark" data-ch="jgF" data-k="date" value="${f.date}"></div>
+      <div><label class="f" for="j-res">النتيجة</label><select id="j-res" class="in" data-ch="jgF" data-k="result">${['ضدنا', 'جزئي', 'لصالحنا'].map((t) => `<option ${f.result === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+      <label class="row" style="grid-column:1/-1;font-size:13px;gap:8px"><input type="checkbox" ${f.urgent ? 'checked' : ''} data-ch="jgF" data-k="urgent" style="accent-color:#A8D5BA;width:16px;height:16px">حكم في مسألة مستعجلة</label>
+    </div>
+    <div style="border:1.5px dashed var(--mint);border-radius:16px;padding:14px" class="col"><small style="color:var(--mint);font-weight:700">يقترح النظام</small><b class="hd" style="font-size:18px">آخر موعد ل${c.kind}: ${dTxt(c.dl, 1)} ${c.dl.getFullYear()}</b><small class="muted">${c.days} يوماً من تاريخ التسلّم حسب إعداد «${f.urgent ? 'المسائل المستعجلة' : f.type}»${c.shifted ? '، ومُدّد لأول يوم عمل.' : '.'}</small><small class="muted">التنبيهات: ${dTxt(addD(c.dl, -JG.a1), 1)} ثم ${dTxt(addD(c.dl, -JG.a2), 1)}</small></div>
+    <button type="submit" class="btn p" style="min-height:48px">حفظ الحكم وجدولة التنبيهات</button></form>`;
+};
+ACT.jgAdd = () => { S.modal = jgDlg; render(); };
+INPUT.jgF = (v, el) => { JG.form[el.dataset.k] = v; render(); };
+ACT.jgSave = () => {
+  const f = JG.form, c = caseOf(f.ref), [y, m, d] = f.date.split('-').map(Number);
+  JG.items.unshift({ id: 'n' + JG.items.length, ref: f.ref, client: clientOf(c.client).name, court: c.court, type: f.type, deg: f.deg, rec: D(y, m, d), result: f.result, urgent: f.urgent, state: 'pending', nextRef: '' });
+  S.modal = null; toast('سُجّل الحكم وجُدولت تنبيهات الطعن قبل ' + JG.a1 + ' أيام ثم بيومين.');
+};
+
+// ===== calendar =====
+const ETYPES = { hearing: ['جلسة', '#A8D5BA'], deadline: ['موعد طعن', '#E9C46A'], consult: ['استشارة', '#8FB8DE'], task: ['مهمة', '#C3D6CB'], meet: ['اجتماع', '#D4A5C8'] };
+const CAL = {
+  view: (typeof innerWidth === 'number' && innerWidth < 700) ? 'day' : 'week', cur: D(2026, 11, 5), sel: null, types: Object.fromEntries(Object.keys(ETYPES).map((k) => [k, true])), lawyer: 'all',
+  extra: [
+    ['e1', 'consult', D(2026, 11, 5), 13, 1, 'استشارة — تأسيس شركة ذات مسؤولية محدودة', LAWYERS[2], 'مكتب الرياض'],
+    ['e2', 'meet', D(2026, 11, 5), 16, 1, 'اجتماع الشركاء الأسبوعي', LAWYERS[0], 'غرفة الاجتماعات'],
+    ['e3', 'task', D(2026, 11, 4), 11, 2, 'إعداد مذكرة رد — رواسي', LAWYERS[3], '1447/0187'],
+    ['e4', 'consult', D(2026, 11, 9), 10, 1, 'استشارة عمالية — فصل تعسفي', LAWYERS[2], 'عن بُعد'],
+    ['e5', 'task', D(2026, 11, 10), 9, 2, 'مراجعة عقد توريد — مجموعة سنا', LAWYERS[0], '1447/0164'],
+    ['e6', 'meet', D(2026, 11, 11), 12, 1, 'لقاء موكل — شركة الأفق', LAWYERS[1], 'مقر الموكل'],
+    ['e7', 'consult', D(2026, 11, 3), 14, 1, 'استشارة أحوال شخصية', LAWYERS[0], 'مكتب الرياض'],
+    ['e8', 'task', D(2026, 11, 17), 10, 2, 'تجهيز ملف الاستئناف — سنا', LAWYERS[0], '1447/0164'],
+    ['e9', 'meet', D(2026, 11, 19), 16, 1, 'اجتماع الشركاء الأسبوعي', LAWYERS[0], 'غرفة الاجتماعات']
+  ].map((a) => ({ id: a[0], type: a[1], date: a[2], t: a[3], dur: a[4], title: a[5], lawyer: a[6], where: a[7] })),
+  form: { title: '', type: 'meet', date: '2026-11-05', t: '12', lawyer: LAWYERS[0] }
+};
+function calEvents() {
+  const ev = HR.items.map((h) => ({ id: h.id, type: 'hearing', date: h.date, t: h.t, dur: .75, title: h.type + ' — ' + h.client, lawyer: h.lawyer, where: h.court + ' · ' + h.circuit, ref: h.ref, go: 'hearings' }));
+  JG.items.filter((j) => j.state === 'pending').forEach((j) => { const c = jCalc(j); if (diffD(c.dl, TODAY) >= 0) ev.push({ id: 'd' + j.id, type: 'deadline', date: c.dl, t: 8, dur: .5, title: 'آخر موعد ' + c.kind + ' — ' + j.client, lawyer: (CASES.find((x) => x.ref === j.ref) || {}).lawyer || LAWYERS[0], where: j.ref, go: 'judgments' }); });
+  return ev.concat(CAL.extra).filter((e) => CAL.types[e.type] && (CAL.lawyer === 'all' || e.lawyer === CAL.lawyer)).sort((a, b) => a.date - b.date || a.t - b.t);
+}
+function calLanes(list) {
+  const out = [], ends = [];
+  list.forEach((e) => { let lane = ends.findIndex((x) => x <= e.t); if (lane < 0) { lane = ends.length; ends.push(0); } ends[lane] = e.t + e.dur; out.push({ e, lane }); });
+  const n = Math.max(1, ends.length);
+  return out.map((o) => ({ ...o, n, clash: o.e.type === 'hearing' && list.some((x) => x !== o.e && x.type === 'hearing' && x.lawyer === o.e.lawyer && Math.abs(x.t - o.e.t) < 1) }));
+}
+const evOn = (ev, d) => ev.filter((e) => sameDay(e.date, d));
+const weekStart = (d) => addD(d, -d.getDay()); // الأحد
+function evChip(e, big) {
+  const [l, c] = ETYPES[e.type];
+  return `<button class="evc ${CAL.sel === e.id ? 'sel' : ''}" data-a="calSel" data-v="${e.id}" style="--c:${c}" aria-label="${l}: ${esc(e.title)} ${clock(e.t)}"><b class="num">${clock(e.t)}</b> ${esc(e.title)}${big ? `<small>${esc(e.where)} · ${e.lawyer}</small>` : ''}</button>`;
+}
+VIEWS.calendar = () => {
+  const ev = calEvents(), cur = CAL.cur;
+  let title = '', body = '';
+  if (CAL.view === 'month') {
+    const first = D(cur.getFullYear(), cur.getMonth() + 1, 1), start = weekStart(first);
+    title = MONTHS[cur.getMonth()] + ' ' + cur.getFullYear();
+    body = `<div class="calm">${DAYS.map((d) => `<div class="calh">${d}</div>`).join('')}${Array.from({ length: 42 }, (_, i) => { const d = addD(start, i), es = evOn(ev, d), out = d.getMonth() !== cur.getMonth(), we = d.getDay() === 5 || d.getDay() === 6;
+      return `<div class="calc ${out ? 'out' : ''} ${we ? 'we' : ''} ${sameDay(d, TODAY) ? 'today' : ''}"><button class="cald num" data-a="calDay" data-v="${+d}" aria-label="${dTxt(d, 1)}">${d.getDate()}</button>${es.slice(0, 3).map((e) => evChip(e)).join('')}${es.length > 3 ? `<button class="more" data-a="calDay" data-v="${+d}">+${es.length - 3} أخرى</button>` : ''}</div>`; }).join('')}</div>`;
+  } else {
+    const days = CAL.view === 'week' ? Array.from({ length: 7 }, (_, i) => addD(weekStart(cur), i)) : [cur];
+    title = CAL.view === 'week' ? dTxt(days[0]) + ' — ' + dTxt(days[6]) + ' ' + cur.getFullYear() : dTxt(cur, 1) + ' ' + cur.getFullYear();
+    const hours = Array.from({ length: 11 }, (_, i) => 8 + i), H = 56;
+    const nowTop = (11.4 - 8) * H;
+    body = `<div class="scroll"><div class="calw" style="grid-template-columns:56px repeat(${days.length},minmax(${days.length > 1 ? 92 : 260}px,1fr))">
+      <div></div>${days.map((d) => `<button class="calwh ${sameDay(d, TODAY) ? 'today' : ''}" data-a="calDay" data-v="${+d}"><small>${DAYS[d.getDay()]}</small><b class="num">${d.getDate()}</b></button>`).join('')}
+      <div class="calt">${hours.map((h) => `<small style="height:${H}px">${clock(h)}</small>`).join('')}</div>
+      ${days.map((d) => { const we = d.getDay() === 5 || d.getDay() === 6; return `<div class="calcol ${we ? 'we' : ''}" style="height:${hours.length * H}px">${hours.map(() => `<i style="height:${H}px"></i>`).join('')}
+        ${sameDay(d, TODAY) ? `<span class="nowl" style="top:${nowTop}px"></span>` : ''}
+        ${calLanes(evOn(ev, d)).map(({ e, lane, n, clash }) => { const [l, c] = ETYPES[e.type];
+          return `<button class="calev ${CAL.sel === e.id ? 'sel' : ''} rise" data-a="calSel" data-v="${e.id}" title="${esc(e.title)}" style="--c:${c};top:${(e.t - 8) * H + 2}px;height:${Math.max(26, e.dur * H - 4)}px;right:${lane / n * 100}%;width:calc(${100 / n}% - 4px)"><b class="num">${clock(e.t)}</b> ${n > 2 && days.length > 1 ? '' : esc(e.title)}${e.dur >= .75 && days.length < 7 ? `<small>${esc(e.where)} · ${e.lawyer}</small>` : ''}${clash ? '<em>تعارض</em>' : ''}</button>`; }).join('')}</div>`; }).join('')}
+    </div></div>`;
+  }
+  const s = ev.find((e) => e.id === CAL.sel);
+  const upcoming = ev.filter((e) => diffD(e.date, TODAY) >= 0).slice(0, 6);
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">التقويم</span><h1 class="t">كل مواعيد المكتب <b>في مكان واحد</b></h1></div>
+    <button class="btn" data-a="calSync">${ic('cal', 16)} مزامنة مع Outlook / Google</button><button class="btn p" data-a="calAdd">${ic('plus', 16)} موعد جديد</button></div>
+  <div class="card rise row" style="gap:10px;padding:12px 14px">
+    <button class="btn s" data-a="calNav" data-v="-1" aria-label="السابق">${ic('next', 16)}</button><button class="btn s" data-a="calToday">اليوم</button><button class="btn s" data-a="calNav" data-v="1" aria-label="التالي">${ic('prev', 16)}</button>
+    <b class="hd sp" style="font-size:18px">${title}</b>
+    <div class="tabs" role="tablist">${[['day', 'يوم'], ['week', 'أسبوع'], ['month', 'شهر']].map(([k, l]) => `<button role="tab" aria-selected="${CAL.view === k}" class="tab ${CAL.view === k ? 'on' : ''}" data-a="calView" data-v="${k}">${l}</button>`).join('')}</div>
+  </div>
+  <div class="split">
+    <div class="wide card rise" style="padding:12px">${body}</div>
+    <aside class="narrow col">
+      ${s ? `<section class="card hot col pop"><div class="row"><span class="chip" style="background:${ETYPES[s.type][1]};color:#173A2C;border:0">${ETYPES[s.type][0]}</span><span class="sp"></span><button class="btn s g" data-a="calSel" data-v="" aria-label="إغلاق">${ic('x', 14)}</button></div>
+        <b class="hd" style="font-size:18px">${esc(s.title)}</b><small class="muted">${dTxt(s.date, 1)} · ${clock(s.t)}</small><small class="muted">${esc(s.where)}</small><small class="muted">المسؤول: ${s.lawyer}</small>
+        <div class="row">${s.go ? `<a class="btn p s" href="#${s.go}">فتح في ${s.go === 'hearings' ? 'الجلسات' : 'الأحكام'}</a>` : ''}${s.ref ? `<a class="btn s" href="#cases">ملف القضية</a>` : ''}<button class="btn s" data-a="toastMsg" data-v="أُرسل تذكير للمسؤول عبر الواتساب.">${ic('wa', 14)} تذكير</button>${s.go ? '' : `<button class="btn s" data-a="calDel" data-v="${s.id}">${ic('trash', 14)} حذف</button>`}</div></section>` : ''}
+      <section class="card col rise"><h2 class="t">عرض</h2>
+        <div class="col" style="gap:6px">${Object.entries(ETYPES).map(([k, [l, c]]) => `<label class="row" style="font-size:14px;gap:8px"><input type="checkbox" ${CAL.types[k] ? 'checked' : ''} data-ch="calType" data-k="${k}" style="accent-color:${c};width:16px;height:16px"><i class="dot" style="background:${c}"></i><span class="sp">${l}</span></label>`).join('')}</div>
+        <label class="f" for="cl-law">المحامي</label><select id="cl-law" class="in" data-ch="calLaw"><option value="all">كل الفريق</option>${LAWYERS.map((l) => `<option ${CAL.lawyer === l ? 'selected' : ''}>${l}</option>`).join('')}</select>
+      </section>
+      <section class="card col rise"><h2 class="t">القادم</h2>${upcoming.map((e) => `<button class="item click" data-a="calJump" data-v="${e.id}" style="text-align:right"><i class="dot" style="background:${ETYPES[e.type][1]}"></i><span class="sp"><b style="font-size:13px">${esc(e.title)}</b><br><small class="muted2">${dTxt(e.date, 1)} · ${clock(e.t)}</small></span></button>`).join('')}</section>
+    </aside>
+  </div>`;
+};
+ACT.calView = (v) => { CAL.view = v; render(); };
+ACT.calNav = (v) => { const n = Number(v), c = CAL.cur; CAL.cur = CAL.view === 'month' ? D(c.getFullYear(), c.getMonth() + 1 + n, 1) : addD(c, n * (CAL.view === 'week' ? 7 : 1)); render(); };
+ACT.calToday = () => { CAL.cur = TODAY; render(); };
+ACT.calDay = (v) => { CAL.cur = new Date(Number(v)); CAL.view = 'day'; render(); };
+ACT.calSel = (v) => { CAL.sel = v || null; render(); };
+ACT.calJump = (v) => { const e = calEvents().find((x) => x.id === v); CAL.sel = v; CAL.cur = e.date; if (CAL.view === 'month') CAL.view = 'week'; render(); };
+INPUT.calType = (v, el) => { CAL.types[el.dataset.k] = v; render(); };
+INPUT.calLaw = (v) => { CAL.lawyer = v; render(); };
+ACT.calDel = (v) => { CAL.extra = CAL.extra.filter((e) => e.id !== v); CAL.sel = null; toast('حُذف الموعد.'); };
+ACT.calSync = () => toast('في النسخة الكاملة: مزامنة باتجاهين مع Outlook و Google Calendar لكل محامٍ.');
+const calDlg = () => { const f = CAL.form; return `<form class="dlg pop" role="dialog" aria-modal="true" aria-label="موعد جديد" data-sub="calSave">
+  <div class="row"><h2 class="t sp" style="font-size:20px">موعد جديد</h2><button type="button" class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+  <div><label class="f" for="cf-t">العنوان</label><input id="cf-t" class="in" required data-in="calF" data-k="title" value="${esc(f.title)}" placeholder="مثال: لقاء موكل — مراجعة العقد"></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+    <div><label class="f" for="cf-ty">النوع</label><select id="cf-ty" class="in" data-ch="calF" data-k="type">${['meet', 'consult', 'task'].map((k) => `<option value="${k}" ${f.type === k ? 'selected' : ''}>${ETYPES[k][0]}</option>`).join('')}</select></div>
+    <div><label class="f" for="cf-l">المسؤول</label><select id="cf-l" class="in" data-ch="calF" data-k="lawyer">${LAWYERS.map((l) => `<option ${f.lawyer === l ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+    <div><label class="f" for="cf-d">التاريخ</label><input id="cf-d" type="date" class="in" style="color-scheme:dark" data-ch="calF" data-k="date" value="${f.date}"></div>
+    <div><label class="f" for="cf-h">الوقت</label><select id="cf-h" class="in" data-ch="calF" data-k="t">${Array.from({ length: 10 }, (_, i) => 8 + i).map((h) => `<option value="${h}" ${String(f.t) === String(h) ? 'selected' : ''}>${clock(h)}</option>`).join('')}</select></div>
+  </div><p class="note" style="margin:0">الجلسات ومواعيد الطعن تُضاف تلقائياً من شاشاتها — لا حاجة لإدخالها هنا.</p>
+  <button class="btn p" type="submit" style="min-height:48px">حفظ وإرسال دعوة للمسؤول</button></form>`; };
+ACT.calAdd = () => { S.modal = calDlg; render(); };
+INPUT.calF = (v, el) => { CAL.form[el.dataset.k] = v; };
+ACT.calSave = () => { const f = CAL.form, [y, m, d] = f.date.split('-').map(Number), id = 'x' + Date.now();
+  CAL.extra.push({ id, type: f.type, date: D(y, m, d), t: Number(f.t), dur: 1, title: f.title || 'موعد جديد', lawyer: f.lawyer, where: 'مكتب الرياض' });
+  CAL.cur = D(y, m, d); CAL.sel = id; CAL.form.title = ''; S.modal = null; toast('أُضيف الموعد وأُرسلت دعوة إلى ' + f.lawyer + '.'); };
+
+// ===== clients =====
+const CL = {
+  sel: 'c1', tab: 'file', q: '', dup: null,
+  ids: {
+    c1: [['سجل تجاري', '1010458812', D(2027, 3, 14)], ['وكالة شرعية للمحامي', '4471820', D(2026, 11, 17)], ['هوية الممثل النظامي', '1088•••412', D(2028, 6, 2)]],
+    c2: [['هوية وطنية', '1092•••771', D(2026, 11, 26)], ['وكالة شرعية للمحامي', '4510932', D(2027, 2, 9)]],
+    c3: [['سجل تجاري', '1010773310', D(2026, 12, 1)], ['وكالة شرعية للمحامي', '4390125', D(2027, 1, 20)]],
+    c4: [['سجل تجاري', '1010220871', D(2027, 8, 30)], ['وكالة شرعية للمحامي', '4401186', D(2027, 4, 4)]],
+    c5: [['هوية وطنية', '1075•••903', D(2029, 1, 1)], ['وكالة شرعية للمحامي', '4602210', D(2026, 12, 3)]]
+  },
+  tpl: 'standard', total: 120000, n: 4, sent: {}, signed: { c3: true, c4: true },
+  add: { name: '', id: '', phone: '' }
+};
+const TPLS = {
+  standard: ['صيغة المكتب — مقطوعة على مراحل', ['عند توقيع العقد وقيد الدعوى', 'بعد أول جلسة مرافعة', 'عند صدور الحكم الابتدائي', 'عند اكتساب الحكم القطعية أو التنفيذ']],
+  success: ['أتعاب ثابتة + نسبة نجاح', ['دفعة مقدمة عند التوقيع', 'عند قيد الدعوى', 'نسبة 5% من المحكوم به عند التحصيل']],
+  retainer: ['اشتراك شهري للشركات', ['شهر 1', 'شهر 2', 'شهر 3', 'شهر 4', 'شهر 5', 'شهر 6']]
+};
+const plans = () => { const t = TPLS[CL.tpl][1].slice(0, CL.tpl === 'standard' ? CL.n : 99), each = Math.round(CL.total / t.length / 100) * 100; return t.map((l, i) => ({ l, amt: i === t.length - 1 ? CL.total - each * (t.length - 1) : each })); };
+const expTxt = (d) => { const n = diffD(d, TODAY); return n < 0 ? ['منتهية', 'd'] : n <= 30 ? ['تنتهي خلال ' + n + ' يوماً', 'o'] : ['سارية حتى ' + dTxt(d) + ' ' + d.getFullYear(), 'm']; };
+VIEWS.clients = () => {
+  const c = clientOf(CL.sel), cases = CASES.filter((x) => x.client === c.id), ids = CL.ids[c.id];
+  const list = CLIENTS.filter((x) => !CL.q || x.name.includes(CL.q));
+  const allAlerts = CLIENTS.flatMap((x) => CL.ids[x.id].filter((d) => diffD(d[2], TODAY) <= 30).map((d) => ({ c: x, d })));
+  const pl = plans(), paid = c.id === 'c1' ? 1 : c.id === 'c3' ? 2 : 0;
+  const tabs = [['file', 'الملف'], ['ids', 'الهويات والوكالات'], ['fee', 'عقد الأتعاب'], ['log', 'سجل التواصل']];
+  let body = '';
+  if (CL.tab === 'file') body = `<div class="grid g3">${[['القضايا', cases.length], ['الاستشارات', c.id === 'c1' ? 4 : 2], ['المستندات', c.id === 'c1' ? 23 : 9]].map(([l, v]) => `<div class="kpi"><small>${l}</small><b class="num">${v}</b></div>`).join('')}</div>
+    <div class="col">${cases.map((x) => `<a href="#cases" class="item click" data-a="caseOpen" data-v="${x.ref}" style="text-decoration:none;color:inherit"><span class="ico">${ic('cases', 16)}</span><span class="sp"><b>${x.title}</b><br><small class="muted2">${x.ref} · ${x.court} · ${STAGES[x.stage]}</small></span><span class="chip">${x.lawyer}</span></a>`).join('') || '<p class="muted">لا قضايا بعد.</p>'}</div>
+    <div class="grid g2"><div class="card dark col" style="gap:4px"><small class="muted2">جهة التواصل</small><b>${c.rep}</b><small class="num muted">+966 5• ••• ${c.id.slice(1)}412</small></div><div class="card dark col" style="gap:4px"><small class="muted2">المحامي المسؤول</small><b>${c.lawyer}</b><small class="muted">موكل منذ ${c.since}</small></div></div>`;
+  if (CL.tab === 'ids') body = `<div class="col">${ids.map(([l, no, d]) => { const [t, k] = expTxt(d); return `<div class="item"><span class="ico">${ic(l.includes('وكالة') ? 'doc' : 'shield', 16)}</span><span class="sp"><b>${l}</b><br><small class="muted2 num">${no}</small></span><span class="chip ${k}">${t}</span>${k !== 'm' ? `<button class="btn s" data-a="clRenew" data-v="${l}">${ic('wa', 14)} اطلب التجديد</button>` : ''}</div>`; }).join('')}</div>
+    <p class="note" style="margin:0">تنبيه تلقائي للمحامي قبل الانتهاء بـ 30 يوماً ثم 7 أيام، ويُربط بالجلسات القادمة: لا تُعقد جلسة بوكالة منتهية.</p>`;
+  if (CL.tab === 'fee') body = `<div class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:16px">
+    <div class="col"><label class="f" for="fe-t">الصيغة</label><select id="fe-t" class="in" data-ch="clTpl">${Object.entries(TPLS).map(([k, [l]]) => `<option value="${k}" ${CL.tpl === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
+      <label class="f" for="fe-a">إجمالي الأتعاب (ر.س)</label><input id="fe-a" class="in num" type="number" step="1000" min="0" data-ch="clTotal" value="${CL.total}">
+      ${CL.tpl === 'standard' ? `<label class="f" for="fe-n">عدد الدفعات</label><select id="fe-n" class="in" data-ch="clN">${[2, 3, 4].map((n) => `<option ${CL.n === n ? 'selected' : ''}>${n}</option>`).join('')}</select>` : ''}
+      <div class="col" style="gap:6px;margin-top:6px">${pl.map((p, i) => `<div class="item" style="padding:8px 12px"><i class="dot" style="background:${i < paid ? '#A8D5BA' : '#55876F'}"></i><span class="sp" style="font-size:13px">${p.l}</span><b class="num" style="font-size:13px">${fmt(p.amt)}</b><span class="chip ${i < paid ? 'm' : ''}" style="font-size:11px">${i < paid ? 'مسددة' : i === paid ? 'تستحق بالمرحلة التالية' : 'لاحقاً'}</span></div>`).join('')}</div>
+      <p class="note" style="margin:0">كل دفعة مربوطة بمرحلة في القضية: عند تسجيل المرحلة تُصدر فاتورة ويُذكّر الموكل تلقائياً.</p>
+      <div class="row">${CL.signed[c.id] ? `<span class="chip m">${ic('check', 12, 3)} موقّع إلكترونياً</span>` : CL.sent[c.id] ? `<span class="chip o pulse">بانتظار توقيع الموكل</span><button class="btn s" data-a="clSign">محاكاة التوقيع</button>` : `<button class="btn p" data-a="clSend">${ic('wa', 16)} إرسال للتوقيع</button>`}<button class="btn s" data-a="toastMsg" data-v="يُحفظ العقد PDF بترويسة مكتبك.">${ic('print', 14)} PDF</button></div></div>
+    <div class="paper rise">${paperHead()}<h3>عقد تقديم خدمات محاماة</h3>
+      <p>إنه في يوم ${dTxt(TODAY, 1)} 2026م، تم الاتفاق بين <b>مكتب القحطاني للمحاماة والاستشارات القانونية</b> (الطرف الأول) و<b>${c.name}</b>${c.rep !== '—' ? ' ويمثله ' + c.rep : ''} (الطرف الثاني) على أن يتولى الطرف الأول ${cases[0] ? '«' + cases[0].title + '»' : 'ما يُسند إليه من أعمال'} مقابل أتعاب إجمالية قدرها <b class="num">${fmt(CL.total)}</b> ريال سعودي غير شاملة لضريبة القيمة المضافة، تُسدّد على النحو التالي:</p>
+      <table><thead><tr><th>#</th><th>الاستحقاق</th><th>المبلغ</th></tr></thead><tbody>${pl.map((p, i) => `<tr><td>${i + 1}</td><td>${p.l}</td><td class="num">${fmt(p.amt)}</td></tr>`).join('')}</tbody></table>
+      <p style="font-size:12px">لا تشمل الأتعاب الرسوم القضائية ومصاريف الخبرة والترجمة. يخضع العقد لنظام المحاماة ولائحته التنفيذية.</p>
+      <div class="sig"><span>الطرف الأول<br>${c.lawyer}</span><span>الطرف الثاني<br>${CL.signed[c.id] ? '<b style="font-family:Amiri,serif;font-size:18px;color:#1F4535">موقّع عبر نفاذ ✓</b>' : '..............'}</span></div></div></div>`;
+  if (CL.tab === 'log') body = `<div class="col">${[['wa', 'واتساب', 'تذكير بجلسة 9 نوفمبر — قُرئت', 'أمس 6:10 م'], ['link', 'رابط الموكل', 'رفع «صورة عقد المقاولة الأصلي»', '3 نوفمبر'], ['doc', 'بريد', 'إرسال مذكرة الرد للاطلاع', '28 أكتوبر'], ['users', 'اجتماع', 'لقاء في مقر الموكل — محضر مرفق', '20 أكتوبر']].map(([i, k, t, w]) => `<div class="item"><span class="ico">${ic(i, 16)}</span><span class="sp"><b style="font-size:14px">${t}</b><br><small class="muted2">${k}</small></span><small class="muted2">${w}</small></div>`).join('')}</div>`;
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">الموكلون</span><h1 class="t">ملف واحد <b>لكل موكل</b></h1></div><button class="btn p" data-a="clAdd">${ic('plus', 16)} موكل جديد</button></div>
+  ${allAlerts.length ? `<div class="banner rise">${ic('bell', 18)}<span class="sp"><b>${allAlerts.length} مستندات تنتهي خلال 30 يوماً:</b> ${allAlerts.map((a) => a.d[0] + ' — ' + a.c.name + ' (' + diffD(a.d[2], TODAY) + ' يوماً)').join(' · ')}</span></div>` : ''}
+  <div class="split" style="grid-template-columns:minmax(240px,.38fr) minmax(0,1fr)">
+    <aside class="col"><div class="card col rise" style="padding:12px"><label class="sr" for="cl-q">بحث</label><input id="cl-q" class="in" placeholder="ابحث بالاسم أو رقم الهوية/السجل" data-in="clQ" value="${esc(CL.q)}">
+      <div class="list">${list.map((x) => { const warn = CL.ids[x.id].some((d) => diffD(d[2], TODAY) <= 30); return `<button class="item click ${CL.sel === x.id ? 'sel' : ''}" data-a="clSel" data-v="${x.id}" style="text-align:right"><span class="av ${CL.sel === x.id ? 'm' : ''}">${x.name.replace(/^(شركة|مؤسسة|مجموعة) /, '').slice(0, 1)}</span><span class="sp"><b style="font-size:14px">${x.name}</b><br><small class="muted2">${x.kind} · ${CASES.filter((k) => k.client === x.id).length} قضايا</small></span>${warn ? '<i class="dot pulse" style="background:#E9C46A" title="مستند ينتهي قريباً"></i>' : ''}</button>`; }).join('')}</div></div></aside>
+    <section class="card col rise" style="min-width:0"><div class="row"><span class="av m" style="width:52px;height:52px;font-size:20px">${c.name.replace(/^(شركة|مؤسسة|مجموعة) /, '').slice(0, 1)}</span><span class="sp"><b class="hd" style="font-size:22px">${c.name}</b><br><small class="muted">${c.kind} · ${c.rep !== '—' ? 'الممثل: ' + c.rep + ' · ' : ''}المسؤول ${c.lawyer}</small></span><a class="btn s" href="#clientlink">${ic('link', 14)} رابط مؤقت للموكل</a></div>
+      <div class="tabs" role="tablist">${tabs.map(([k, l]) => `<button role="tab" aria-selected="${CL.tab === k}" class="tab ${CL.tab === k ? 'on' : ''}" data-a="clTab" data-v="${k}">${l}</button>`).join('')}</div>${body}</section>
+  </div>`;
+};
+ACT.clSel = (v) => { CL.sel = v; render(); };
+ACT.clTab = (v) => { CL.tab = v; render(); };
+ACT.caseOpen = (v) => { S.caseRef = v; go('cases'); };
+INPUT.clQ = (v) => { CL.q = v; render(); };
+INPUT.clTpl = (v) => { CL.tpl = v; render(); };
+INPUT.clTotal = (v) => { CL.total = Math.max(0, Number(v) || 0); render(); };
+INPUT.clN = (v) => { CL.n = Number(v); render(); };
+ACT.clSend = () => { CL.sent[CL.sel] = true; toast('أُرسل العقد للموكل عبر واتساب برابط توقيع مؤقت (نفاذ).'); };
+ACT.clSign = () => { CL.signed[CL.sel] = true; toast('وقّع الموكل العقد — أُرفق في ملفه وجُدولت الدفعات.'); };
+ACT.clRenew = (v) => toast('أُرسل للموكل طلب تجديد «' + v + '» مع رابط رفع آمن.');
+const clDlg = () => { const a = CL.add, dup = CL.dup;
+  return `<form class="dlg pop" role="dialog" aria-modal="true" aria-label="موكل جديد" data-sub="clSave">
+  <div class="row"><h2 class="t sp" style="font-size:20px">موكل جديد</h2><button type="button" class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
+  <div><label class="f" for="na-n">الاسم الكامل أو اسم المنشأة</label><input id="na-n" class="in" required data-in="clAddF" data-k="name" value="${esc(a.name)}" placeholder="جرّب: شركة الأفق"></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px"><div><label class="f" for="na-i">رقم الهوية / السجل</label><input id="na-i" class="in num" data-in="clAddF" data-k="id" value="${esc(a.id)}" placeholder="جرّب: 1010458812"></div><div><label class="f" for="na-p">الجوال</label><input id="na-p" class="in num" data-in="clAddF" data-k="phone" value="${esc(a.phone)}" placeholder="05xxxxxxxx" dir="ltr"></div></div>
+  <div id="dupbox">${dup ? `<div class="banner pop" style="margin:0">${ic('users', 18)}<span class="sp"><b>يوجد موكل مشابه:</b> ${dup.name} — ${CASES.filter((k) => k.client === dup.id).length} قضايا، المسؤول ${dup.lawyer}.</span><button type="button" class="btn s p" data-a="clOpenDup" data-v="${dup.id}">فتح ملفه</button></div>` : ''}</div>
+  <button class="btn p" type="submit" style="min-height:48px">${dup ? 'إنشاء ملف جديد رغم التشابه' : 'إنشاء الملف'}</button></form>`; };
+ACT.clAdd = () => { CL.add = { name: '', id: '', phone: '' }; CL.dup = null; S.modal = clDlg; render(); };
+INPUT.clAddF = (v, el) => {
+  CL.add[el.dataset.k] = v; const n = CL.add.name.trim(), i = CL.add.id.trim();
+  const d = CLIENTS.find((x) => (n.length >= 4 && (x.name.includes(n) || n.includes(x.name.replace(/^(شركة|مؤسسة|مجموعة) /, '')))) || (i.length >= 6 && CL.ids[x.id].some((r) => r[1].replace(/•/g, '').startsWith(i.slice(0, 6)))));
+  if ((d && d.id) !== (CL.dup && CL.dup.id)) { CL.dup = d || null; render(); }
+};
+ACT.clOpenDup = (v) => { CL.sel = v; CL.tab = 'file'; S.modal = null; render(); };
+ACT.clSave = () => { const id = 'c' + (CLIENTS.length + 1); CLIENTS.push({ id, name: CL.add.name || 'موكل جديد', kind: /شركة|مؤسسة|مجموعة/.test(CL.add.name) ? 'منشأة' : 'فرد', rep: '—', since: 2026, lawyer: LAWYERS[0] }); CL.ids[id] = []; CL.sel = id; S.modal = null; toast('أُنشئ ملف الموكل.'); };
+
+// ===== assistant =====
+const AS = {
+  msgs: [{ ai: 1, t: 'صباح الخير أ. سارة. لديك 5 جلسات اليوم وموعد استئناف ينتهي بعد 3 أيام (مجموعة سنا). كيف أساعدك؟' }],
+  busy: false, sc: null, step: 0, approved: false, sent: false, q: '', timer: null
+};
+const SCN = {
+  najiz: { ask: 'افتح ناجز وتأكد من موعد الجلسة القادمة لقضية الأفق 1447/0213', steps: ['فهم الطلب وتحديد القضية', 'تجهيز متصفح سحابي مؤقت ومعزول', 'طلب موافقتك قبل الدخول', 'الدخول عبر نفاذ بموافقتك', 'البحث في «قضاياي» واستخراج الموعد', 'مطابقة الموعد مع تقويم المكتب'],
+    done: 'الجلسة القادمة لقضية 1447/0213: <b>الأحد 9 نوفمبر 9:30 ص</b> — الدائرة التجارية الرابعة. الموعد مطابق لتقويم المكتب ✓. أُنهيت الجلسة السحابية وحُذفت بياناتها.', need: 'cloud' },
+  wa: { ask: 'أرسل لشركة الأفق على الواتساب وش ناقصهم من مستندات', steps: ['قراءة ملف القضية 1447/0213', 'حصر المستندات الناقصة (3)', 'إنشاء رابط مؤقت آمن للموكل (72 ساعة)', 'صياغة الرسالة بأسلوب المكتب', 'بانتظار موافقتك على الإرسال'],
+    done: 'أُرسلت الرسالة إلى م. ماجد الدوسري عبر واتساب المكتب. سأنبهك عند رفع أي مستند.', need: 'approve' },
+  sum: { ask: 'لخّص لي ملف قضية رواسي قبل جلسة الصلح', steps: ['قراءة 14 مستنداً و 6 محاضر', 'استخراج الوقائع والطلبات', 'مقارنة دفوع الخصم'],
+    done: '<b>ملخص 1447/0187 — مؤسسة رواسي:</b><br>• المطالبة 640,000 ر.س مستحقات مقاول باطن عن 3 مستخلصات.<br>• الخصم يدفع بعدم الاستلام النهائي؛ لدينا محضر استلام موقّع (مستند 9).<br>• هامش التسوية المقترح: 520–560 ألف مع جدولة 3 أشهر.<br><small style="opacity:.75">يعمل محلياً — لم يغادر أي مستند مكتبك.</small>', need: null }
+};
+const WAMSG = 'السلام عليكم م. ماجد،\nمعكم مكتب القحطاني للمحاماة بخصوص قضية «أبراج الأفق» 1447/0213.\nنحتاج المستندات التالية قبل جلسة الأحد 9 نوفمبر:\n1) صورة عقد المقاولة الأصلي\n2) محاضر استلام الأعمال\n3) خطاب الإنذار المرسل للمقاول\nيمكنكم رفعها مباشرة عبر الرابط الآمن (صالح 72 ساعة):\nwasl.sa/c/7Hq2-k9';
+function asRun(k) {
+  if (AS.busy) return; clearInterval(AS.timer);
+  AS.sc = k; AS.step = 0; AS.approved = false; AS.sent = false; AS.busy = true;
+  AS.msgs.push({ t: SCN[k].ask }, { ai: 1, run: k });
+  render();
+  AS.timer = setInterval(() => {
+    const s = SCN[k];
+    if (s.need === 'cloud' && AS.step === 2) { clearInterval(AS.timer); render(); return; }
+    if (s.need === 'approve' && AS.step === s.steps.length - 1) { clearInterval(AS.timer); render(); return; }
+    AS.step++;
+    if (AS.step >= s.steps.length) { clearInterval(AS.timer); AS.busy = false; AS.msgs.push({ ai: 1, t: s.done }); }
+    if (S.route === 'assistant') render();
+  }, 900);
+}
+VIEWS.assistant = () => {
+  const bubble = (m) => {
+    if (!m.run) return `<div class="bub ${m.ai ? 'ai' : 'me'} rise">${m.t}</div>`;
+    const s = SCN[m.run], live = AS.sc === m.run && m === AS.msgs.filter((x) => x.run === m.run).slice(-1)[0];
+    const st = live ? AS.step : s.steps.length;
+    return `<div class="bub ai rise" style="max-width:92%;width:440px"><small style="color:var(--mint);font-weight:700">${ic('spark', 13)} خطة التنفيذ</small>
+      ${s.steps.map((x, i) => `<div class="step ${i < st ? 'done' : i === st ? 'now' : 'todo'}"><i>${i < st ? '✓' : i + 1}</i><span>${x}</span></div>`).join('')}
+      ${live && s.need === 'cloud' && st === 2 ? `<div class="row" style="margin-top:6px"><a href="#cloud" class="btn p s" data-a="asCloud">${ic('cloud', 14)} افتح المتصفح السحابي وشاهد</a><small class="muted2">لن يبدأ شيء دون موافقتك</small></div>` : ''}
+      ${live && s.need === 'approve' && st === s.steps.length - 1 && !AS.sent ? `<div class="paper" style="margin-top:8px;padding:12px;font-size:13px;white-space:pre-line;border-radius:12px;background:#E7F5EC">${esc(WAMSG)}</div><div class="row" style="margin-top:8px"><button class="btn p s" data-a="asSend">${ic('check', 14, 3)} موافقة وإرسال</button><button class="btn s" data-a="asEdit">تعديل الصياغة</button><button class="btn s g" data-a="asCancel">إلغاء</button></div>` : ''}</div>`;
+  };
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">المساعد الذكي</span><h1 class="t">مساعد يعمل <b>داخل مكتبك</b></h1></div>
+    <span class="chip m">${ic('lock', 12)} النموذج يعمل محلياً على «صندوق وصل»</span></div>
+  <div class="split">
+    <section class="wide card col rise" style="min-height:560px">
+      <div class="col sp" id="chat" style="gap:10px;overflow:auto;max-height:520px;padding:4px">${AS.msgs.map(bubble).join('')}${AS.busy && !SCN[AS.sc].need ? '<div class="bub ai" style="width:60px"><span class="blink">●●●</span></div>' : ''}</div>
+      <div class="row" style="gap:6px">${Object.entries(SCN).map(([k, s]) => `<button class="chip o" style="cursor:pointer" data-a="asRun" data-v="${k}" ${AS.busy ? 'disabled' : ''}>${s.ask.slice(0, 34)}…</button>`).join('')}</div>
+      <form class="row" data-sub="asAsk" style="flex-wrap:nowrap"><label class="sr" for="as-q">اكتب طلبك</label><input id="as-q" class="in sp" placeholder="اكتب طلبك… مثال: أرسل لشركة الأفق وش ناقصهم" data-in="asQ" value="${esc(AS.q)}"><button class="btn p" type="submit" aria-label="إرسال">${ic('arrow', 16)}</button></form>
+    </section>
+    <aside class="narrow col">
+      <section class="card col rise"><h2 class="t">ما يستطيع فعله</h2>${[['cloud', 'يفتح ناجز في متصفح سحابي معزول أمامك'], ['wa', 'يراسل الموكل على واتساب بعد موافقتك'], ['doc', 'يلخص الملفات ويصيغ المذكرات'], ['cal', 'يطابق المواعيد مع التقويم']].map(([i, t]) => `<div class="item"><span class="ico">${ic(i, 16)}</span><span class="sp" style="font-size:14px">${t}</span></div>`).join('')}</section>
+      <section class="card dark col rise"><h2 class="t">قواعد الأمان</h2>${['لا يرسل ولا يقدّم شيئاً دون موافقة صريحة', 'كل إجراء مسجّل في سجل التدقيق', 'المستندات لا تغادر جهاز المكتب', 'صلاحياته = صلاحيات المستخدم فقط'].map((t) => `<div class="row" style="font-size:13px;flex-wrap:nowrap">${ic('shield', 14)}<span>${t}</span></div>`).join('')}</section>
+    </aside>
+  </div>`;
+};
+VIEWS.assistant.after = () => { const c = document.getElementById('chat'); if (c) c.scrollTop = c.scrollHeight; };
+ACT.asRun = (v) => asRun(v);
+INPUT.asQ = (v) => { AS.q = v; };
+ACT.asAsk = () => { const q = AS.q.trim(); if (!q) return; AS.q = ''; const k = /ناجز|موعد|جلس/.test(q) ? 'najiz' : /واتس|ناقص|أرسل|ارسل/.test(q) ? 'wa' : 'sum'; SCN[k] = Object.assign({}, SCN[k], { ask: q }); asRun(k); };
+ACT.asCloud = () => { CB.from = 'assistant'; if (CB.ended) { CB.i = -1; CB.ended = false; } go('cloud'); };
+ACT.asSend = () => { AS.sent = true; AS.step = SCN.wa.steps.length; AS.busy = false; AS.msgs.push({ ai: 1, t: SCN.wa.done }); toast('أُرسلت رسالة الواتساب بعد موافقتك.'); };
+ACT.asEdit = () => toast('في النسخة الكاملة: تعدّل الصياغة مباشرة أو تطلب «أقصر» أو «أكثر رسمية».');
+ACT.asCancel = () => { AS.busy = false; AS.sc = null; AS.msgs.push({ ai: 1, t: 'أُلغي الإرسال. لم يُرسل شيء.' }); render(); };
+
+// ===== cloud browser =====
+const CBST = [
+  ['prov', 'تجهيز متصفح معزول جديد في مركز بيانات داخل المملكة'],
+  ['approve', 'بانتظار موافقتك على الدخول'],
+  ['nafath', 'الدخول عبر نفاذ — اختر الرقم في تطبيقك'],
+  ['home', 'الدخول تم — فتح «قضاياي»'],
+  ['search', 'البحث عن القضية 1447/0213'],
+  ['detail', 'قراءة تفاصيل الجلسة القادمة'],
+  ['done', 'اكتمل — جاهز للإنهاء']
+];
+const CB = { i: -1, paused: false, manual: false, timer: null, log: [], typed: '', from: null, ended: false, sec: 0 };
+function cbLog(t) { CB.log.unshift([new Date(2026, 10, 5, 9, 12, CB.sec).toTimeString().slice(0, 8), t]); }
+function cbTick() {
+  if (CB.paused || CB.manual || CB.i < 0) return;
+  CB.sec += 3;
+  const k = CBST[CB.i][0];
+  if (k === 'approve') { if (!S.modal && S.route === 'cloud') { S.modal = cbApprove; render(); } return; }
+  if (k === 'search' && CB.typed.length < 9) { if (!CB.typing) { CB.typing = setInterval(() => { CB.typed = '1447/0213'.slice(0, CB.typed.length + 1); const el = document.getElementById('cbq'); if (el) el.textContent = CB.typed; if (CB.typed.length >= 9) { clearInterval(CB.typing); CB.typing = null; if (S.route === 'cloud') render(); } }, 140); } return; }
+  if (k === 'done') { clearInterval(CB.timer); return; }
+  CB.i++; cbLog(CBST[CB.i][1]);
+  if (CBST[CB.i][0] === 'done' && AS.sc === 'najiz' && AS.busy) { AS.step = SCN.najiz.steps.length - 1; }
+  if (S.route === 'cloud') render();
+}
+function cbStart() { clearInterval(CB.timer); Object.assign(CB, { i: 0, paused: false, manual: false, log: [], typed: '', ended: false, sec: 0 }); cbLog(CBST[0][1]); CB.timer = setInterval(cbTick, 1600); render(); }
+const cbApprove = () => `<div class="dlg pop" role="dialog" aria-modal="true" aria-label="طلب موافقة">
+  <span class="ico" style="width:56px;height:56px;margin:0 auto">${ic('hand', 26)}</span>
+  <h2 class="t" style="text-align:center;font-size:20px">المساعد يطلب الدخول إلى ناجز</h2>
+  <div class="card dark col" style="gap:6px;font-size:14px"><div class="row"><span class="sp muted2">الحساب</span><b>أ. سارة القحطاني (نفاذ)</b></div><div class="row"><span class="sp muted2">المهمة</span><b>قراءة موعد جلسة 1447/0213</b></div><div class="row"><span class="sp muted2">الصلاحية</span><b>قراءة فقط — لا تقديم طلبات</b></div><div class="row"><span class="sp muted2">المدة القصوى</span><b>10 دقائق</b></div></div>
+  <p class="note" style="margin:0">لا تُحفظ كلمة مرور. الدخول يتم بموافقتك في تطبيق نفاذ، وتُحذف الجلسة وملفات تعريف الارتباط عند الإنهاء.</p>
+  <div class="row"><button class="btn p sp" data-a="cbOk">${ic('check', 16, 3)} أوافق — ابدأ أمامي</button><button class="btn" data-a="cbNo">رفض</button></div></div>`;
+function cbScreen() {
+  const k = CB.i < 0 ? 'idle' : CBST[CB.i][0];
+  const url = { idle: 'about:blank', prov: 'about:blank', approve: 'najiz.sa', nafath: 'iam.gov.sa/nafath', home: 'najiz.sa/cases', search: 'najiz.sa/cases?q=', detail: 'najiz.sa/cases/1447-0213', done: 'najiz.sa/cases/1447-0213' }[k];
+  const portal = (inner) => `<div style="padding:14px 18px;background:#F4F7F5;border-bottom:1px solid #DCE5DF" class="row"><b style="color:#1F4535">بوابة الخدمات العدلية</b><small style="color:#6B8174">(واجهة محاكاة)</small><span class="sp"></span><small style="color:#3B5246">أ. سارة القحطاني</small></div><div style="padding:18px;position:relative">${inner}</div>`;
+  let inner = '';
+  if (k === 'idle') inner = `<div style="display:grid;place-items:center;height:330px;color:#6B8174;text-align:center">${ic('cloud', 40)}<p>لا توجد جلسة. اضغط «بدء جلسة» ليُجهَّز متصفح جديد معزول.</p></div>`;
+  if (k === 'prov') inner = `<div style="display:grid;place-items:center;height:330px;text-align:center;color:#3B5246"><span class="spin" style="width:40px;height:40px;border:4px solid #C4E3D0;border-top-color:#1F4535;border-radius:50%;display:block"></span><p>جارٍ تجهيز متصفح نظيف — بلا سجل، بلا ملفات سابقة<br><small>الرياض · مركز بيانات داخل المملكة</small></p></div>`;
+  if (k === 'approve') inner = portal(`<div style="height:290px;display:grid;place-items:center;color:#6B8174">${ic('lock', 36)}<p>متوقف — بانتظار موافقة المحامي</p></div>`);
+  if (k === 'nafath') inner = `<div style="height:330px;display:grid;place-items:center;text-align:center;color:#1E2A23"><div><b style="font-size:16px">التحقق عبر نفاذ</b><p style="color:#3B5246;margin:6px 0 14px">افتح تطبيق نفاذ واختر الرقم</p><b class="num pulse" style="display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#1F4535;color:#fff;font-size:34px">47</b><p style="color:#6B8174;font-size:12px;margin-top:12px">ينتهي الطلب خلال 60 ثانية</p></div></div>`;
+  const rows = [['1447/0213', 'دعوى فسخ عقد مقاولة', 'المحكمة التجارية', 'منظورة'], ['1447/0164', 'تظلم من قرار إداري', 'المحكمة الإدارية', 'صدر حكم'], ['1447/0151', 'مطالبة مالية', 'المحكمة العامة', 'منظورة']];
+  if (k === 'home' || k === 'search') inner = portal(`<b style="color:#1F4535">قضاياي</b><div class="row" style="margin:10px 0;gap:8px"><div class="${k === 'search' ? 'hl' : ''}" style="flex:1;border:1px solid #C9D6CE;border-radius:8px;padding:8px 10px;min-height:20px;font-size:14px" ><span id="cbq" class="num">${CB.typed}</span><span class="blink">|</span></div><span style="background:#1F4535;color:#fff;border-radius:8px;padding:8px 14px;font-size:13px">بحث</span></div>
+    <table style="width:100%;font-size:13px;border-collapse:collapse">${rows.filter((r) => k === 'home' || CB.typed.length < 9 || r[0] === '1447/0213').map((r) => `<tr style="border-top:1px solid #E2E9E4"><td style="padding:8px 4px" class="num">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span style="background:#E7F5EC;border-radius:6px;padding:2px 8px;font-size:12px">${r[3]}</span></td></tr>`).join('')}</table>`);
+  if (k === 'detail' || k === 'done') inner = portal(`<small style="color:#6B8174">قضاياي ‹ 1447/0213</small><b style="display:block;color:#1F4535;font-size:16px;margin:4px 0 12px">دعوى فسخ عقد مقاولة</b>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;font-size:13px">${[['المحكمة', 'المحكمة التجارية بالرياض'], ['الدائرة', 'الرابعة'], ['الحالة', 'منظورة']].map(([a, b]) => `<div style="background:#F4F7F5;border-radius:8px;padding:8px"><small style="color:#6B8174">${a}</small><br><b>${b}</b></div>`).join('')}<div class="hl" style="background:#E7F5EC;border-radius:8px;padding:8px"><small style="color:#6B8174">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر 2026 — 9:30 ص</b></div></div>
+    ${k === 'done' ? '<div style="margin-top:14px;background:#1F4535;color:#fff;border-radius:10px;padding:10px 12px;font-size:13px">✓ استُخرج الموعد وطوبق مع تقويم المكتب — لا فرق.</div>' : ''}`);
+  return { url, inner };
+}
+VIEWS.cloud = () => {
+  const { url, inner } = cbScreen(), on = CB.i >= 0 && !CB.ended;
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">المتصفح السحابي المؤقت</span><h1 class="t">المساعد يعمل <b>أمام عينك</b></h1></div>
+    ${on ? '' : `<button class="btn p" data-a="cbStart">${ic('play', 16)} بدء جلسة</button>`}</div>
+  <div class="banner rise">${ic('shield', 18)}<span class="sp">عرض توضيحي: الشاشة محاكاة ولا تتصل بناجز. في النسخة الفعلية يعمل متصفح حقيقي معزول يُنشأ لكل مهمة ويُحذف بعدها.</span></div>
+  <div class="split">
+    <section class="wide col rise">
+      <div class="bw" style="position:relative"><div class="bar2"><span style="display:flex;gap:5px"><i class="dot" style="background:#E07A5F"></i><i class="dot" style="background:#E9C46A"></i><i class="dot" style="background:#81B29A"></i></span><span class="url">${ic('lock', 11)} ${url}</span>${on ? `<span class="chip" style="background:${CB.manual ? '#E9C46A' : CB.paused ? '#C9D6CE' : '#A8D5BA'};color:#173A2C;border:0;font-size:11px">${CB.manual ? 'التحكم بيدك' : CB.paused ? 'متوقف مؤقتاً' : '<i class="dot pulse" style="background:#173A2C"></i> المساعد يعمل'}</span>` : ''}</div>
+        <div style="min-height:340px">${inner}</div></div>
+      ${on ? `<div class="card row" style="padding:12px"><button class="btn" data-a="cbPause">${ic(CB.paused ? 'play' : 'pause', 16)} ${CB.paused ? 'استئناف' : 'إيقاف مؤقت'}</button><button class="btn" data-a="cbTake">${ic('hand', 16)} ${CB.manual ? 'إعادة التحكم للمساعد' : 'تولَّ التحكم'}</button><span class="sp"></span><button class="btn p" data-a="cbEnd">${ic('trash', 16)} إنهاء وحذف الجلسة</button></div>` : ''}
+      ${CB.ended ? `<div class="card hot row pop">${ic('check', 20, 3)}<span class="sp"><b>أُنهيت الجلسة وحُذف المتصفح</b><br><small class="muted">حُذفت ملفات تعريف الارتباط والذاكرة المؤقتة وتسجيل الشاشة متاح في سجل التدقيق 30 يوماً.</small></span>${CB.from === 'assistant' ? '<a href="#assistant" class="btn p s">العودة للمساعد</a>' : ''}</div>` : ''}
+    </section>
+    <aside class="narrow col">
+      <section class="card col rise"><h2 class="t">الخطوات</h2>${CBST.map(([k, t], i) => `<div class="step ${i < CB.i || (CB.ended && i <= CB.i) ? 'done' : i === CB.i && !CB.ended ? 'now' : 'todo'}"><i>${i < CB.i || CB.ended ? '✓' : i + 1}</i><span>${t}</span></div>`).join('')}</section>
+      <section class="card dark col rise"><h2 class="t">سجل الجلسة</h2>${CB.log.length ? CB.log.slice(0, 7).map(([t, m]) => `<div class="row" style="font-size:12px;flex-wrap:nowrap"><span class="num muted2">${t}</span><span>${m}</span></div>`).join('') : '<small class="muted2">يظهر هنا كل إجراء بوقته.</small>'}</section>
+      <section class="card col rise"><h2 class="t">الحماية</h2>${['متصفح جديد لكل مهمة، يُحذف بعدها', 'داخل المملكة — بلا تخزين لكلمات المرور', 'الدخول بموافقتك عبر نفاذ فقط', 'قراءة فقط ما لم توافق على غير ذلك', 'إيقاف أو تولّي التحكم في أي لحظة'].map((t) => `<div class="row" style="font-size:13px;flex-wrap:nowrap">${ic('check', 14, 3)}<span>${t}</span></div>`).join('')}</section>
+    </aside>
+  </div>`;
+};
+VIEWS.cloud.after = () => { if (CB.from === 'assistant' && CB.i < 0 && !CB.ended) cbStart(); };
+ACT.cbStart = () => cbStart();
+ACT.cbOk = () => { S.modal = null; CB.i++; cbLog('وافق المحامي على الدخول'); cbLog(CBST[CB.i][1]); if (AS.sc === 'najiz') AS.step = 3; render(); };
+ACT.cbNo = () => { S.modal = null; clearInterval(CB.timer); CB.ended = true; cbLog('رفض المحامي — لم يتم الدخول'); if (AS.sc === 'najiz') { AS.busy = false; AS.msgs.push({ ai: 1, t: 'لم أدخل إلى ناجز لأنك رفضت. لم يُنفّذ أي إجراء.' }); } render(); };
+ACT.cbPause = () => { CB.paused = !CB.paused; cbLog(CB.paused ? 'إيقاف مؤقت من المحامي' : 'استئناف'); render(); };
+ACT.cbTake = () => { CB.manual = !CB.manual; cbLog(CB.manual ? 'تولّى المحامي التحكم' : 'أُعيد التحكم للمساعد'); render(); };
+ACT.cbEnd = () => {
+  clearInterval(CB.timer); const finished = CB.i >= CBST.length - 1; CB.ended = true; cbLog('أُنهيت الجلسة وحُذف المتصفح');
+  if (AS.sc === 'najiz' && AS.busy) { AS.busy = false; AS.step = SCN.najiz.steps.length; AS.msgs.push({ ai: 1, t: finished ? SCN.najiz.done : 'أُنهيت الجلسة قبل اكتمال المهمة. لم يُنفّذ أي إجراء آخر.' }); }
+  render();
+};
+
+// ===== client link =====
+const CK = { hours: 72, show: { status: true, next: true, docs: true, fees: false }, stage: 'otp', otp: '', up: {}, timer: null, made: true };
+const MISS = [['m1', 'صورة عقد المقاولة الأصلي', 'PDF أو صورة واضحة'], ['m2', 'محاضر استلام الأعمال', 'كل المحاضر الموقعة'], ['m3', 'خطاب الإنذار المرسل للمقاول', 'مع ما يثبت التسليم']];
+VIEWS.clientlink = () => {
+  const c = caseOf('1447/0213'), done = MISS.filter((m) => CK.up[m[0]] === 100).length;
+  let scr = '';
+  if (CK.stage === 'otp') scr = `<div class="col" style="padding:28px 22px;gap:14px;text-align:center;flex:1;justify-content:center">${logo(52, '#1F4535', '#A8D5BA')}<b style="font-size:18px">مكتب القحطاني للمحاماة</b><small style="color:#4B6355">للتحقق أرسلنا رمزاً إلى جوالك المنتهي بـ 412</small>
+    <form data-sub="ckOtp" class="col" style="gap:10px"><label class="sr" for="otp">رمز التحقق</label><input id="otp" class="in num" style="background:#fff;color:#1E2A23;border-color:#C9D6CE;text-align:center;font-size:22px;letter-spacing:8px" inputmode="numeric" maxlength="4" placeholder="••••" data-in="ckOtpIn" value="${esc(CK.otp)}"><button class="btn p" type="submit" style="background:#1F4535;color:#fff">دخول</button><small style="color:#6B8174">للعرض: أي 4 أرقام</small></form></div>`;
+  else scr = `<div style="background:#1F4535;color:#E9F0EC;padding:16px 18px"><small style="opacity:.8">مرحباً م. ماجد</small><br><b style="font-size:16px">${c.title}</b><br><small class="num" style="opacity:.8">${c.ref}</small></div>
+    <div class="col" style="padding:14px 16px;gap:12px;overflow:auto">
+      ${CK.show.status ? `<div><small style="color:#4B6355;font-weight:600">مرحلة القضية</small><div class="row" style="gap:4px;margin-top:6px;flex-wrap:nowrap">${STAGES.map((s, i) => `<i style="flex:1;height:6px;border-radius:3px;background:${i <= c.stage ? '#1F4535' : '#D5E0D9'}"></i>`).join('')}</div><b style="font-size:14px">${STAGES[c.stage]}</b></div>` : ''}
+      ${CK.show.next ? `<div style="background:#E7F5EC;border-radius:12px;padding:10px 12px"><small style="color:#4B6355">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر — 9:30 ص</b><br><small style="color:#4B6355">يحضرها ${c.lawyer} نيابة عنكم</small></div>` : ''}
+      ${CK.show.docs ? `<div><div class="row"><small class="sp" style="color:#4B6355;font-weight:600">مستندات مطلوبة منكم</small><small style="font-weight:700;color:#1F4535">${done}/${MISS.length}</small></div>
+        ${MISS.map(([id, t, h]) => { const p = CK.up[id]; return `<div style="border:1px solid #D5E0D9;border-radius:12px;padding:10px;margin-top:8px;background:#fff"><div class="row" style="flex-wrap:nowrap"><span class="sp"><b style="font-size:13px">${t}</b><br><small style="color:#6B8174">${h}</small></span>${p === 100 ? '<span style="color:#1F4535;font-weight:700;font-size:13px">✓ تم</span>' : p >= 0 ? `<small class="num">${p}%</small>` : `<button class="btn s" style="background:#1F4535;color:#fff;border:0" data-a="ckUp" data-v="${id}">${ic('up', 14)} رفع</button>`}</div>${p >= 0 && p < 100 ? `<div style="height:4px;background:#D5E0D9;border-radius:2px;margin-top:8px"><i style="display:block;height:100%;width:${p}%;background:#1F4535;border-radius:2px;transition:width .2s"></i></div>` : ''}</div>`; }).join('')}</div>` : ''}
+      ${CK.show.fees ? `<div style="background:#F4F7F5;border-radius:12px;padding:10px 12px"><small style="color:#4B6355">الأتعاب</small><br><b>المسدد 30,000 · المتبقي 90,000 ر.س</b></div>` : ''}
+      ${done === MISS.length ? '<div class="pop" style="background:#1F4535;color:#fff;border-radius:12px;padding:12px;text-align:center;font-size:14px">شكراً لكم — وصلت جميع المستندات للمكتب ✓</div>' : ''}
+      <small style="color:#6B8174;text-align:center">${ic('lock', 11)} رابط خاص بكم · ينتهي خلال ${CK.hours} ساعة · لا يعرض إلا هذه القضية</small></div>`;
+  return `
+  <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">رابط الموكل</span><h1 class="t">الموكل لا يحتاج حساباً — <b>رابط مؤقت فقط</b></h1></div></div>
+  <div class="grid" style="grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start">
+    <section class="card col rise"><h2 class="t">إعداد الرابط — شركة الأفق · 1447/0213</h2>
+      <label class="f" for="ck-h">مدة الصلاحية</label><select id="ck-h" class="in" data-ch="ckH">${[24, 72, 168].map((h) => `<option value="${h}" ${CK.hours === h ? 'selected' : ''}>${h === 168 ? '7 أيام' : h + ' ساعة'}</option>`).join('')}</select>
+      <small class="f">ما يراه الموكل</small>${[['status', 'مرحلة القضية'], ['next', 'الجلسة القادمة'], ['docs', 'المستندات المطلوبة ورفعها'], ['fees', 'الأتعاب والمتبقي']].map(([k, l]) => `<label class="row" style="font-size:14px;gap:8px"><input type="checkbox" ${CK.show[k] ? 'checked' : ''} data-ch="ckShow" data-k="${k}" style="accent-color:#A8D5BA;width:16px;height:16px">${l}</label>`).join('')}
+      <div class="item" style="direction:ltr"><span class="num sp" style="font-size:13px">wasl.sa/c/7Hq2-k9</span><button class="btn s" data-a="toastMsg" data-v="نُسخ الرابط.">${ic('copy', 14)}</button></div>
+      <div class="row"><button class="btn p" data-a="ckSend">${ic('wa', 16)} إرسال عبر واتساب</button><button class="btn" data-a="ckReset">${ic('x', 14)} إلغاء الرابط</button></div>
+      <p class="note" style="margin:0">رمز تحقق لمرة واحدة على جوال الموكل المسجّل، والرابط موقّع ومحدود بقضية واحدة. الملفات المرفوعة تُفحص وتدخل ملف القضية مباشرة مع تنبيه للمحامي.</p></section>
+    <div class="phone rise"><div class="scr">${scr}</div></div>
+  </div>`;
+};
+INPUT.ckH = (v) => { CK.hours = Number(v); render(); };
+INPUT.ckShow = (v, el) => { CK.show[el.dataset.k] = v; render(); };
+INPUT.ckOtpIn = (v) => { CK.otp = v.replace(/\D/g, '').slice(0, 4); };
+ACT.ckOtp = () => { if (CK.otp.length < 4) { toast('أدخل 4 أرقام.'); return; } CK.stage = 'in'; render(); };
+ACT.ckUp = (v) => { CK.up[v] = 0; render(); const t = setInterval(() => { CK.up[v] = Math.min(100, CK.up[v] + 20); if (CK.up[v] === 100) { clearInterval(t); toast('وصل «' + MISS.find((m) => m[0] === v)[1] + '» إلى ملف القضية — نُبّه ' + caseOf('1447/0213').lawyer + '.'); } else if (S.route === 'clientlink') render(); }, 260); };
+ACT.ckSend = () => toast('أُرسل الرابط إلى م. ماجد الدوسري عبر واتساب المكتب.');
+ACT.ckReset = () => { CK.stage = 'otp'; CK.otp = ''; CK.up = {}; toast('أُلغي الرابط القديم — لم يعد يعمل. يمكنك إنشاء رابط جديد.'); };
+
+// ===== pricing & pre-order =====
+const PLANS = [
+  { id: 'start', name: 'البداية', who: 'محامٍ مستقل أو مكتب صغير', users: 'حتى 3 مستخدمين', price: 399, pre: 239,
+    f: ['الاستشارات والقضايا والجلسات والأحكام', 'التقويم وتنبيهات مواعيد الطعن', 'ملف الموكل وعقد الأتعاب بالدفعات', 'رابط الموكل المؤقت ورفع المستندات', 'تذكير بالبريد والواتساب (حساب مكتبك)'], ai: '300 مهمة ذكية شهرياً' },
+  { id: 'office', name: 'المكتب', who: 'مكتب من 4 إلى 15 محامياً', users: 'حتى 15 مستخدماً', price: 899, pre: 539, hot: true,
+    f: ['كل ما في «البداية»', 'المساعد الذكي على خوادم داخل المملكة', 'المتصفح السحابي المؤقت لناجز', 'الصلاحيات حسب الدور والفرع', 'سجل تدقيق كامل وتقارير الأداء'], ai: '1,500 مهمة ذكية شهرياً ≈ 10 قضايا يومياً' },
+  { id: 'box', name: 'صندوق وصل', who: 'مكاتب تشترط بقاء البيانات داخلها', users: 'مستخدمون بلا حد', price: 1690, pre: 1190,
+    f: ['كل ما في «المكتب»', 'جهاز ذكاء خاص يُركّب في مكتبك', 'المستندات لا تغادر المكتب أبداً', 'مهام ذكية بلا عدّاد (حسب قدرة الجهاز)', 'دعم أولوية ومدير حساب'], ai: 'بلا عدّاد — الجهاز ملك المكتب بعد 24 شهراً' }
+];
+const PR = { yearly: false, plan: 'office', f: { office: '', name: '', phone: '', city: 'الرياض', size: '4–15', note: '' }, done: null };
+const yp = (p) => PR.yearly ? Math.round(p * 10 / 12) : p; // السنوي = 10 أشهر
+VIEWS.pricing = () => {
+  const p = PLANS.find((x) => x.id === PR.plan);
+  return `
+  <div class="col rise" style="gap:4px;text-align:center;align-items:center"><span class="kicker">الاشتراك</span><h1 class="t">سعر واضح. <b>وعرض خاص لأول المكاتب</b></h1><p class="muted" style="max-width:620px;margin:6px 0 0">الطلب المسبق يثبّت لك سعر الإطلاق بخصم 40% طوال أول سنتين، مع إعداد ونقل بياناتك مجاناً. لا دفع الآن — ندفع عند التشغيل فقط.</p></div>
+  <div class="row rise" style="justify-content:center"><div class="tabs">${[[false, 'شهري'], [true, 'سنوي — شهران مجاناً']].map(([v, l]) => `<button class="tab ${PR.yearly === v ? 'on' : ''}" data-a="prYear" data-v="${v ? 1 : 0}">${l}</button>`).join('')}</div></div>
+  <div class="grid g3">${PLANS.map((x) => `<article class="card col rise ${x.hot ? 'hot' : ''}" style="gap:12px;position:relative">${x.hot ? '<span class="chip m" style="position:absolute;top:-12px;right:18px">الأكثر طلباً</span>' : ''}
+    <div><b class="hd" style="font-size:22px">${x.name}</b><br><small class="muted">${x.who} · ${x.users}</small></div>
+    <div><small class="muted2" style="text-decoration:line-through">${fmt(yp(x.price))} ر.س</small><div class="row" style="gap:6px;align-items:baseline"><b class="num" style="font-size:40px;color:var(--mint)">${fmt(yp(x.pre))}</b><span class="muted">ر.س / شهرياً</span></div><small class="muted2">سعر الطلب المسبق${PR.yearly ? ' · يُدفع سنوياً' : ''} · غير شامل الضريبة</small></div>
+    <div class="item" style="padding:10px 12px">${ic('spark', 16)}<b class="sp" style="font-size:13px">${x.ai}</b></div>
+    <div class="col" style="gap:8px">${x.f.map((t) => `<div class="row" style="flex-wrap:nowrap;font-size:14px;gap:8px">${ic('check', 14, 3)}<span>${t}</span></div>`).join('')}</div>
+    <span class="sp"></span><button class="btn ${x.hot ? 'p' : ''}" style="min-height:46px" data-a="prPick" data-v="${x.id}">اطلب «${x.name}» مسبقاً</button></article>`).join('')}</div>
+  <div class="grid g2">
+    <section class="card col rise"><h2 class="t">إذا تجاوزتم الحد؟</h2>
+      <p class="muted" style="margin:0">المهمة الذكية = عملية واحدة ينفذها المساعد (تلخيص ملف، فتح ناجز، صياغة رسالة). لا يتوقف شيء عند التجاوز:</p>
+      <table class="tb"><tbody><tr><td>كل 100 مهمة إضافية</td><td class="num"><b>9 ر.س</b></td></tr><tr><td>سقف شهري تختاره أنت</td><td>لا فاتورة مفاجئة</td></tr><tr><td>تنبيه عند 80% و 100%</td><td>للشريك المدير</td></tr><tr><td>رسائل الواتساب</td><td>على حساب Meta الخاص بمكتبك (≈ 4 هللات للتذكير)</td></tr></tbody></table></section>
+    <section class="card col rise"><h2 class="t">ما يحصل عليه المكتب المبكر</h2>${[['tag', 'خصم 40% مثبت لمدة 24 شهراً'], ['users', 'إعداد ونقل بيانات المكتب مجاناً (Excel أو نظامكم الحالي)'], ['shield', 'بيئة مستقلة لكل مكتب ودخول بمفتاح مرور أو رمز ثنائي'], ['spark', 'صوت مباشر في تطوير المزايا القادمة'], ['x', 'إلغاء الطلب في أي وقت قبل التشغيل دون أي التزام']].map(([i, t]) => `<div class="item"><span class="ico">${ic(i, 16)}</span><span class="sp" style="font-size:14px">${t}</span></div>`).join('')}</section>
+  </div>
+  <section class="card hot rise" id="preorder" style="scroll-margin-top:80px">${PR.done ? `<div class="col pop" style="align-items:center;text-align:center;gap:10px;padding:20px 0"><span class="ico" style="width:60px;height:60px">${ic('check', 28, 3)}</span><b class="hd" style="font-size:22px">وصلنا طلبكم — شكراً ${esc(PR.done.name)}</b><p class="muted" style="margin:0">رقم الطلب <b class="num">${PR.done.no}</b> · باقة «${PR.done.plan}» بسعر ${fmt(PR.done.price)} ر.س شهرياً مثبت 24 شهراً.<br>أرسلوا الملخص عبر الواتساب لإتمام التسجيل، وسنتواصل خلال يوم عمل.</p>
+      <div class="row" style="justify-content:center"><a class="btn p" href="${PR.done.wa}" target="_blank" rel="noopener">${ic('wa', 16)} إرسال الملخص عبر واتساب</a><button class="btn" data-a="prCopy">${ic('copy', 16)} نسخ الملخص</button><button class="btn g" data-a="prAgain">طلب آخر</button></div></div>`
+    : `<form class="grid" style="grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px" data-sub="prSend"><div class="col"><span class="kicker">الطلب المسبق</span><b class="hd" style="font-size:24px">احجز سعر الإطلاق لمكتبك</b><p class="muted" style="margin:0">باقة «${p.name}» — <b class="num" style="color:var(--mint)">${fmt(yp(p.pre))}</b> ر.س شهرياً بدلاً من ${fmt(yp(p.price))}.</p><div class="tabs">${PLANS.map((x) => `<button type="button" class="tab ${PR.plan === x.id ? 'on' : ''}" data-a="prPlan" data-v="${x.id}">${x.name}</button>`).join('')}</div><small class="muted2">لا نطلب بيانات دفع. نتواصل معكم لتحديد موعد التشغيل.</small></div>
+      <div class="grid" style="grid-template-columns:1fr 1fr;gap:12px">
+        <div style="grid-column:1/-1"><label class="f" for="po-o">اسم المكتب</label><input id="po-o" class="in" required data-in="prF" data-k="office" value="${esc(PR.f.office)}"></div>
+        <div><label class="f" for="po-n">اسم المسؤول</label><input id="po-n" class="in" required data-in="prF" data-k="name" value="${esc(PR.f.name)}"></div>
+        <div><label class="f" for="po-p">الجوال</label><input id="po-p" class="in num" required dir="ltr" inputmode="tel" pattern="^(05|\\+9665|9665)[0-9]{8}$" title="رقم جوال سعودي مثل 05xxxxxxxx" placeholder="05xxxxxxxx" data-in="prF" data-k="phone" value="${esc(PR.f.phone)}"></div>
+        <div><label class="f" for="po-c">المدينة</label><select id="po-c" class="in" data-ch="prF" data-k="city">${['الرياض', 'جدة', 'الدمام والخبر', 'مكة المكرمة', 'المدينة المنورة', 'أخرى'].map((c) => `<option ${PR.f.city === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+        <div><label class="f" for="po-s">عدد المحامين</label><select id="po-s" class="in" data-ch="prF" data-k="size">${['1–3', '4–15', '16–40', 'أكثر من 40'].map((c) => `<option ${PR.f.size === c ? 'selected' : ''}>${c}</option>`).join('')}</select></div>
+        <div style="grid-column:1/-1"><label class="f" for="po-x">أكثر ما يهمكم (اختياري)</label><input id="po-x" class="in" data-in="prF" data-k="note" value="${esc(PR.f.note)}" placeholder="مثال: مواعيد الطعن، المساعد مع ناجز…"></div>
+        <button class="btn p" type="submit" style="grid-column:1/-1;min-height:50px">تأكيد الطلب المسبق</button></div></form>`}</section>`;
+};
+ACT.prYear = (v) => { PR.yearly = v === '1'; render(); };
+ACT.prPlan = (v) => { PR.plan = v; render(); };
+ACT.prPick = (v) => { PR.plan = v; render(); const el = document.getElementById('preorder'); if (el) el.scrollIntoView({ behavior: 'smooth' }); };
+INPUT.prF = (v, el) => { PR.f[el.dataset.k] = v; };
+const WA_OWNER = ''; // رقم واتساب صاحب المنصة بصيغة 9665xxxxxxxx
+ACT.prSend = () => {
+  const p = PLANS.find((x) => x.id === PR.plan), f = PR.f, price = yp(p.pre), no = 'WSL-' + String(Date.now()).slice(-6);
+  const txt = `طلب مسبق — منصة وصل\nرقم الطلب: ${no}\nالمكتب: ${f.office}\nالمسؤول: ${f.name}\nالجوال: ${f.phone}\nالمدينة: ${f.city} · المحامون: ${f.size}\nالباقة: ${p.name} (${PR.yearly ? 'سنوي' : 'شهري'}) — ${price} ر.س شهرياً\n${f.note ? 'ملاحظات: ' + f.note : ''}`;
+  PR.done = { no, name: f.name, plan: p.name, price, txt, wa: 'https://wa.me/' + WA_OWNER + '?text=' + encodeURIComponent(txt) };
+  render();
+};
+ACT.prCopy = () => { try { navigator.clipboard.writeText(PR.done.txt).then(() => toast('نُسخ الملخص.'), () => toast('تعذّر النسخ — استخدم زر الواتساب.')); } catch (e) { toast('تعذّر النسخ — استخدم زر الواتساب.'); } };
+ACT.prAgain = () => { PR.done = null; render(); };
+
+window.addEventListener('hashchange', onRoute);
+onRoute();
+</script></body></html>
