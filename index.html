@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="theme-color" content="#24170E"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>وصل — العرض التجريبي</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Readex+Pro:wght@500;600;700&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-<style>:root{--bg:#12291F;--bg2:#0E2219;--card:#1F4535;--line:#2F5E4A;--row:#25503F;--row2:#285542;--mint:#A8D5BA;--mint2:#C2E3CF;--ink:#173A2C;--tx:#E9F0EC;--mut:#C3D6CB;--mut2:#B5CCBF;--paper:#FBFAF5;--ptx:#1E2A23}
+<style>:root{--bg:#24170E;--bg2:#1C120B;--card:#3B2618;--line:#5A3D28;--row:#46301F;--row2:#4C3422;--mint:#D9A441;--mint2:#E6BC66;--ink:#2A1A0F;--tx:#F2E4CB;--mut:#D8C4A4;--mut2:#C9B08C;--paper:#FFFBF3;--ptx:#3B2618}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--tx);font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
 body{min-height:100vh}
@@ -17,19 +17,19 @@ button{cursor:pointer}
 
 /* shell */
 .shell{display:flex;min-height:100vh}
-.side{width:248px;flex:none;background:var(--bg2);border-inline-start:1px solid #1C3A2D;padding:18px 12px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto}
+.side{width:248px;flex:none;background:var(--bg2);border-inline-start:1px solid #3A2617;padding:18px 12px;display:flex;flex-direction:column;gap:6px;position:sticky;top:0;height:100vh;overflow-y:auto}
 .brand{display:flex;align-items:center;gap:10px;padding:4px 8px 16px}
 .brand b{font-family:'Readex Pro';font-size:22px}
 .brand small{display:block;font-size:11px;color:var(--mut2)}
 .nav{display:flex;align-items:center;gap:10px;min-height:42px;padding:0 12px;border-radius:12px;color:var(--mut);text-decoration:none;font-size:14px;border:0;background:transparent;width:100%;text-align:right;transition:background .2s}
-.nav:hover{background:#1A3A2C;color:var(--tx)}
+.nav:hover{background:#352315;color:var(--tx)}
 .nav.on{background:var(--mint);color:var(--ink);font-weight:700}
-.nav .cnt{margin-inline-start:auto;font-size:11px;background:#2F5E4A;color:var(--tx);border-radius:99px;padding:1px 8px}
+.nav .cnt{margin-inline-start:auto;font-size:11px;background:#5A3D28;color:var(--tx);border-radius:99px;padding:1px 8px}
 .nav.on .cnt{background:var(--ink);color:var(--mint)}
-.navsec{font-size:11px;color:#7FA08D;padding:12px 12px 4px}
+.navsec{font-size:11px;color:#A88B6A;padding:12px 12px 4px}
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
-.top{display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #1C3A2D;background:rgba(18,41,31,.92);position:sticky;top:0;z-index:5;backdrop-filter:blur(6px);flex-wrap:wrap}
-.demo-pill{font-size:12px;background:#2A4A2F;border:1px solid var(--mint);color:var(--mint);border-radius:99px;padding:4px 10px;font-weight:600}
+.top{display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid #3A2617;background:rgba(36,23,14,.92);position:sticky;top:0;z-index:5;backdrop-filter:blur(6px);flex-wrap:wrap}
+.demo-pill{font-size:12px;background:#4A2E1C;border:1px solid var(--mint);color:var(--mint);border-radius:99px;padding:4px 10px;font-weight:600}
 .page{padding:24px;display:flex;flex-direction:column;gap:16px;max-width:1440px;width:100%;margin:0 auto}
 @media (max-width:900px){.shell{flex-direction:column}.side{width:100%;height:auto;position:static;flex-direction:row;overflow-x:auto;padding:10px}.side .navsec,.brand small,.side .sidefoot{display:none}.nav{width:auto;white-space:nowrap}.brand{padding:0 8px}.page{padding:14px}}
 
@@ -51,63 +51,63 @@ h1.t{margin:0;font-family:'Readex Pro';font-weight:300;font-size:32px;line-heigh
 h1.t b{font-weight:600;color:var(--mint)}
 h2.t{margin:0;font-family:'Readex Pro';font-weight:600;font-size:17px}
 .kicker{font-size:13px;color:var(--mut2)}
-.btn{min-height:42px;padding:0 16px;border-radius:12px;border:1px solid #40725C;background:transparent;color:var(--tx);font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:filter .2s,transform .15s}
+.btn{min-height:42px;padding:0 16px;border-radius:12px;border:1px solid #7A5638;background:transparent;color:var(--tx);font-size:14px;font-weight:600;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:filter .2s,transform .15s}
 .btn:hover{filter:brightness(1.12)}
 .btn:active{transform:scale(.98)}
 .btn.p{background:var(--mint);color:var(--ink);border-color:var(--mint);font-weight:700}
 .btn.s{min-height:34px;padding:0 12px;font-size:13px;border-radius:10px}
-.btn.g{border-color:transparent;background:#25503F}
-.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:#2F5E4A;color:var(--tx);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
+.btn.g{border-color:transparent;background:#46301F}
+.chip{font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px;background:#5A3D28;color:var(--tx);white-space:nowrap;display:inline-flex;align-items:center;gap:4px}
 .chip.m{background:var(--mint);color:var(--ink)}
 .chip.o{background:transparent;border:1px solid var(--mint);color:var(--mint)}
 .chip.d{background:transparent;border:1px dashed var(--mut2);color:var(--tx)}
 .kpi{display:flex;flex-direction:column;gap:4px}
 .kpi .v{font-family:'Readex Pro';font-size:30px;font-weight:600}
 .kpi .l{font-size:13px;color:var(--mut)}
-.bar{height:8px;border-radius:8px;background:#2F5E4A;overflow:hidden}
+.bar{height:8px;border-radius:8px;background:#5A3D28;overflow:hidden}
 .bar>i{display:block;height:100%;border-radius:8px;background:var(--mint)}
 .tabs{display:flex;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:4px;overflow-x:auto}
 .tab{flex:1;min-height:40px;padding:0 14px;border:0;border-radius:10px;background:transparent;color:var(--mut);font-size:14px;white-space:nowrap}
 .tab.on{background:var(--mint);color:var(--ink);font-weight:700}
-.list>*+*{border-top:1px solid #285542}
+.list>*+*{border-top:1px solid #4C3422}
 .item{display:flex;gap:12px;align-items:center;flex-wrap:wrap;padding:12px 6px;border-radius:12px}
 .item.click{cursor:pointer;transition:background .2s}
 button.item,a.item{width:100%;background:none;border:0;color:inherit;font:inherit;text-align:right}
 .card>.item:not(.click),.col>.item:not(.click){background:var(--row);padding:10px 12px}
 .item.click:hover,.item.sel{background:var(--row2)}
-.av{width:38px;height:38px;border-radius:12px;background:#2F5E4A;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
+.av{width:38px;height:38px;border-radius:12px;background:#5A3D28;display:flex;align-items:center;justify-content:center;font-weight:700;flex:none}
 .av.m{background:var(--mint);color:var(--ink)}
 table.tb{width:100%;border-collapse:collapse;font-size:13px}
 table.tb th{text-align:start;font-weight:500;color:var(--mut2);padding:8px 10px;border-bottom:1px solid var(--line)}
-table.tb td{padding:11px 10px;border-bottom:1px solid #285542;vertical-align:middle}
+table.tb td{padding:11px 10px;border-bottom:1px solid #4C3422;vertical-align:middle}
 table.tb tr.sel td{background:var(--row2)}
 .scroll{overflow-x:auto}
 label.f{font-size:13px;font-weight:600;display:block;margin-bottom:6px}
-.in{width:100%;min-height:44px;border-radius:12px;border:1px solid #40725C;background:var(--row);color:var(--tx);font-size:14px;padding:0 12px}
+.in{width:100%;min-height:44px;border-radius:12px;border:1px solid #7A5638;background:var(--row);color:var(--tx);font-size:14px;padding:0 12px}
 textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
 .in:focus{outline:2px solid var(--mint);outline-offset:1px}
 .note{font-size:12px;color:var(--mut2);line-height:1.8}
-.banner{border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#2A4A2F;border:1.5px solid var(--mint)}
+.banner{border-radius:18px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap;background:#4A2E1C;border:1.5px solid var(--mint)}
 .ico{width:40px;height:40px;border-radius:12px;background:var(--mint);color:var(--ink);display:flex;align-items:center;justify-content:center;flex:none}
-.ico.d{background:#2F5E4A;color:var(--mint)}
+.ico.d{background:#5A3D28;color:var(--mint)}
 
 /* paper docs */
 .paper{background:var(--paper);color:var(--ptx);border-radius:16px;padding:30px 34px;box-shadow:0 18px 40px rgba(0,0,0,.28);font-family:'Amiri','IBM Plex Sans Arabic',serif;font-size:15.5px;line-height:2}
-.paper .ph{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px solid #1F4535;padding-bottom:10px;margin-bottom:14px;font-family:'IBM Plex Sans Arabic';line-height:1.6}
-.paper .ph b{color:#1F4535;font-size:15px}
-.paper .ph small{display:block;font-size:11px;color:#4B6355}
-.paper h3{margin:0 0 10px;text-align:center;color:#1F4535;font-size:22px}
+.paper .ph{display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:2px solid #3B2618;padding-bottom:10px;margin-bottom:14px;font-family:'IBM Plex Sans Arabic';line-height:1.6}
+.paper .ph b{color:#3B2618;font-size:15px}
+.paper .ph small{display:block;font-size:11px;color:#6B5443}
+.paper h3{margin:0 0 10px;text-align:center;color:#3B2618;font-size:22px}
 .paper p{margin:0 0 8px}
 .paper table{width:100%;border-collapse:collapse;font-family:'IBM Plex Sans Arabic';font-size:13px;line-height:1.6;margin:6px 0 12px}
-.paper td,.paper th{border:1px solid #CBD6CE;padding:7px 10px;text-align:start}
-.paper th,.paper td.k{background:#EEF2EE;font-weight:600}
-.fld{background:#DCEBE1;padding:0 6px;border-radius:4px}
+.paper td,.paper th{border:1px solid #DCCBB0;padding:7px 10px;text-align:start}
+.paper th,.paper td.k{background:#F3EADA;font-weight:600}
+.fld{background:#EADBC0;padding:0 6px;border-radius:4px}
 .sig{display:grid;grid-template-columns:1fr 1fr;gap:18px;font-family:'IBM Plex Sans Arabic';font-size:12px;margin-top:18px}
 .sig div{border-top:1px solid var(--ptx);padding-top:6px}
 
 /* modal */
-.ov{position:fixed;inset:0;background:rgba(10,26,19,.75);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
-.dlg{width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:var(--card);border:1px solid #40725C;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
+.ov{position:fixed;inset:0;background:rgba(20,13,8,.75);display:flex;align-items:center;justify-content:center;padding:16px;z-index:50}
+.dlg{width:100%;max-width:560px;max-height:92vh;overflow-y:auto;background:var(--card);border:1px solid #7A5638;border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px}
 .dlg.w{max-width:760px}
 
 /* toast */
@@ -116,7 +116,7 @@ textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
 /* anim */
 @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 @keyframes grow{from{transform:scaleX(0)}}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(168,213,186,.6)}100%{box-shadow:0 0 0 11px rgba(168,213,186,0)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(217,164,65,.6)}100%{box-shadow:0 0 0 11px rgba(217,164,65,0)}}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes blink{50%{opacity:0}}
 @keyframes pop{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:none}}
@@ -133,7 +133,7 @@ textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
 .slidein{animation:slidein .45s cubic-bezier(.2,.8,.2,1) both}
 .ripple{animation:ripple 1.1s ease-out infinite}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--mint);display:inline-block;flex:none}
-.spinner{width:20px;height:20px;border-radius:50%;border:3px solid #2F5E4A;border-top-color:var(--mint);flex:none}
+.spinner{width:20px;height:20px;border-radius:50%;border:3px solid #5A3D28;border-top-color:var(--mint);flex:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* calendar */
 .evc{display:block;width:100%;text-align:right;border:0;border-right:3px solid var(--c);background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--tx);border-radius:6px;padding:3px 6px;font-size:11px;font-weight:500;line-height:1.4;font-family:inherit;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
@@ -157,18 +157,18 @@ textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
 .calcol>i{display:block;border-top:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
 .calev{position:absolute;border:0;border-right:3px solid var(--c);background:color-mix(in srgb,var(--c) 22%,var(--card));color:var(--tx);border-radius:8px;padding:4px 6px;font-size:11px;font-weight:500;line-height:1.35;font-family:inherit;text-align:right;overflow:hidden;cursor:pointer;margin:0 2px}
 .calev small{display:block;color:var(--mut2);margin-top:2px}
-.calev em{position:absolute;bottom:3px;left:4px;font-style:normal;font-size:10px;background:#E9C46A;color:#173A2C;border-radius:6px;padding:0 5px;font-weight:700}
+.calev em{position:absolute;bottom:3px;left:4px;font-style:normal;font-size:10px;background:#E9C46A;color:#2A1A0F;border-radius:6px;padding:0 5px;font-weight:700}
 .nowl{position:absolute;right:0;left:0;height:2px;background:var(--mint);z-index:2}
 .nowl::before{content:"";position:absolute;right:-4px;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--mint)}
 @media(max-width:1100px){[style*="grid-column:span"]{grid-column:1/-1!important}}
 /* phone + browser */
-.phone{width:320px;max-width:100%;margin:0 auto;border-radius:38px;padding:12px;background:#0B1A13;box-shadow:0 0 0 2px #2F5E4A,0 30px 60px -30px #000}
+.phone{width:320px;max-width:100%;margin:0 auto;border-radius:38px;padding:12px;background:#140D08;box-shadow:0 0 0 2px #5A3D28,0 30px 60px -30px #000}
 .phone .scr{border-radius:28px;background:var(--paper);color:var(--ptx);min-height:560px;overflow:hidden;display:flex;flex-direction:column}
-.bw{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;color:#1E2A23}
-.bw .bar2{display:flex;gap:8px;align-items:center;background:#E8EEEA;padding:8px 12px;font-size:12px;color:#3B5246}
+.bw{border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;color:#3B2618}
+.bw .bar2{display:flex;gap:8px;align-items:center;background:#EFE4D0;padding:8px 12px;font-size:12px;color:#5C4430}
 .bw .url{flex:1;background:#fff;border-radius:8px;padding:4px 10px;direction:ltr;text-align:left;font-family:ui-monospace,monospace;font-size:12px}
-.cursor{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(23,58,44,.25);border:2px solid #173A2C;transition:all .7s cubic-bezier(.5,0,.2,1);pointer-events:none;z-index:3}
-.hl{outline:3px solid #A8D5BA;outline-offset:2px;border-radius:8px;transition:outline-color .3s}
+.cursor{position:absolute;width:18px;height:18px;border-radius:50%;background:rgba(42,26,15,.25);border:2px solid #2A1A0F;transition:all .7s cubic-bezier(.5,0,.2,1);pointer-events:none;z-index:3}
+.hl{outline:3px solid #D9A441;outline-offset:2px;border-radius:8px;transition:outline-color .3s}
 .bub{max-width:82%;padding:10px 14px;border-radius:16px;font-size:14px;line-height:1.7}
 .bub.me{align-self:flex-start;background:var(--mint);color:var(--ink);border-bottom-left-radius:4px}
 .bub.ai{align-self:flex-end;background:var(--row);border-bottom-right-radius:4px}
@@ -176,6 +176,16 @@ textarea.in{padding:10px 12px;min-height:80px;resize:vertical}
 .step i{width:22px;height:22px;border-radius:50%;flex:none;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700;background:var(--row);color:var(--mut2)}
 .step.done i{background:var(--mint);color:var(--ink)}.step.now i{background:var(--tx);color:var(--ink);animation:pulse 1.4s infinite}
 .step.todo{opacity:.55}
+
+/* Najdi identity: Sadu band */
+.sadu{display:block;height:12px;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='18' viewBox='0 0 28 18'><rect width='28' height='18' fill='%239C2F25'/><rect y='3' width='28' height='12' fill='%23F2E4CB'/><path fill='%233B2618' d='M0 15L14 8L28 15ZM0 -4L14 3L28 -4Z'/><path fill='%239C2F25' d='M0 9L14 5.2L28 9L14 12.8Z'/></svg>") repeat-x center/auto 100%}
+.top{border-bottom:0!important}
+.topwrap{position:sticky;top:0;z-index:5}
+.topwrap .top{position:static}
+.paper{position:relative;overflow:hidden;padding-top:44px!important}
+.paper::before{content:'';position:absolute;inset:0 0 auto 0;height:14px;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='18' viewBox='0 0 28 18'><rect width='28' height='18' fill='%239C2F25'/><rect y='3' width='28' height='12' fill='%23F2E4CB'/><path fill='%233B2618' d='M0 15L14 8L28 15ZM0 -4L14 3L28 -4Z'/><path fill='%239C2F25' d='M0 9L14 5.2L28 9L14 12.8Z'/></svg>") repeat-x center/auto 100%}
+.side{background-image:linear-gradient(var(--bg2),var(--bg2))}
+.brand small{color:#C8996A}
 </style></head><body><div id="app"></div><script>// ===== helpers =====
 const $ = (s, r = document) => r.querySelector(s);
 const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -222,8 +232,15 @@ const P = {
   trash: 'M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13'
 };
 const ic = (n, s = 18, w = 1.9) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${P[n]}"/></svg>`;
-const logo = (s = 38, bg = '#A8D5BA', fg = '#1F4535') => `<svg width="${s}" height="${s}" viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="12" fill="${bg}"/><path d="M11.5 25c0-9.5 17-9.5 17 0" stroke="${fg}" stroke-width="3.2" fill="none" stroke-linecap="round"/><circle cx="11.5" cy="25.5" r="3.6" fill="${fg}"/><circle cx="28.5" cy="25.5" r="3.6" fill="${fg}"/></svg>`;
-const paperHead = (right) => `<div class="ph"><span><b>مكتب القحطاني للمحاماة والاستشارات القانونية</b><small>الرياض · ترخيص رقم [رقم الترخيص] · [هاتف المكتب]</small></span>${right || logo(38, '#1F4535', '#A8D5BA')}</div>`;
+let _lg = 0;
+const _tri = (y) => Array.from({ length: 8 }, (_, i) => `M${52 + i * 12} ${y}L${58 + i * 12} ${y - 12}L${64 + i * 12} ${y}Z`).join('');
+const _dia = (y, h) => Array.from({ length: 6 }, (_, i) => `M${52 + i * 16} ${y}L${60 + i * 16} ${y - h}L${68 + i * 16} ${y}L${60 + i * 16} ${y + h}Z`).join('');
+const doorMark = (id) => { const tri = _tri, dia = _dia; return `<defs><clipPath id="${id}"><path d="M52 250 V140 A48 48 0 0 1 148 140 V250 Z"/></clipPath></defs><path fill="#C8996A" d="M8 252 V40 L18.22 22 L28.44 40 L38.67 22 L48.89 40 L59.11 22 L69.33 40 L79.56 22 L89.78 40 L100 22 L110.22 40 L120.44 22 L130.67 40 L140.89 22 L151.11 40 L161.33 22 L171.56 40 L181.78 22 L192 40 V252 Z"/><path fill="#3B2618" d="M19 68 L26 56 L33 68Z M55 68 L62 56 L69 68Z M131 68 L138 56 L145 68Z M167 68 L174 56 L181 68Z"/><path fill="#F2E4CB" d="M44 252 V140 A56 56 0 0 1 156 140 V252 Z"/><g clip-path="url(#${id})"><rect x="52" y="88" width="96" height="162" fill="#1F4535"/><rect x="52" y="118" width="96" height="18" fill="#F2E4CB"/><rect x="52" y="182" width="96" height="18" fill="#F2E4CB"/><path fill="#9C2F25" d="${tri(136)} ${tri(200)}"/><path fill="#D9A441" d="${dia(152,6)} ${dia(224,6.5)}"/><rect x="98.5" y="88" width="3" height="162" fill="#3B2618"/></g><circle cx="92" cy="168" r="5" fill="none" stroke="#D9A441" stroke-width="2.5"/><circle cx="108" cy="168" r="5" fill="none" stroke="#D9A441" stroke-width="2.5"/><rect x="4" y="250" width="192" height="8" rx="2" fill="#3B2618"/>`; };
+// Najdi door logo (app icon). bg/fg args kept for compatibility; the mark has fixed brand colours.
+const logo = (s = 38) => { const id = 'wd' + (++_lg); return `<svg width="${s}" height="${s}" viewBox="0 0 200 200" role="img" aria-label="شعار وصل: باب نجدي"><defs><clipPath id="${id}c"><rect width="200" height="200" rx="44"/></clipPath></defs><g clip-path="url(#${id}c)"><rect width="200" height="200" fill="#C8996A"/><g transform="translate(14 -22) scale(.86)">${doorMark(id)}</g></g></svg>`; };
+// Arabic wordmark «وصل»
+const wordmark = (h = 30, c = '#F2E4CB') => `<svg height="${h}" width="${Math.round(h * 250 / 144)}" viewBox="8 8 250 144" role="img" aria-label="وصل"><g fill="none" stroke="${c}" stroke-width="17" stroke-linecap="round" stroke-linejoin="round"><path d="M20 96 V112 A30 30 0 0 0 80 112 V18 M80 100 H160 A19 19 0 0 0 160 62 H141 A19 19 0 0 0 122 81 V100"/><path d="M102 100 V85"/><path d="M243 84 V114 Q243 142 213 142 H200"/></g><path fill="${c}" fill-rule="evenodd" d="M200 81 a25 25 0 1 0 50 0 a25 25 0 1 0 -50 0 Z M225 70 L234.5 88 H215.5 Z"/></svg>`;
+const paperHead = (right) => `<div class="ph"><span><b>مكتب القحطاني للمحاماة والاستشارات القانونية</b><small>الرياض · ترخيص رقم [رقم الترخيص] · [هاتف المكتب]</small></span>${right || logo(38, '#3B2618', '#D9A441')}</div>`;
 
 // ===== demo data =====
 const LAWYERS = ['أ. سارة القحطاني', 'أ. فهد العتيبي', 'أ. لمى الزهراني', 'أ. خالد الحربي'];
@@ -286,20 +303,20 @@ function shell(inner) {
   }).join('');
   return `<div class="shell">
   <nav class="side" aria-label="القائمة الرئيسية">
-    <div class="brand">${logo(40)}<span><b>وصل</b><small>مكتب القحطاني للمحاماة</small></span></div>
+    <div class="brand">${logo(42)}<span>${wordmark(30)}<small>مكتب القحطاني للمحاماة</small></span></div>
     ${nav}
     <div class="sidefoot" style="margin-top:auto;padding:12px 8px 0">
-      <div class="card" style="padding:14px;border-radius:16px;background:#1A3A2C"><div style="font-size:13px;font-weight:700">عرض تجريبي</div><div class="note">كل البيانات وهمية لأغراض العرض. جرّب الأزرار بحرية.</div><a href="#pricing" class="btn p s" style="margin-top:8px;width:100%">احجز مسبقاً</a></div>
+      <div class="card" style="padding:14px;border-radius:16px;background:#352315"><div style="font-size:13px;font-weight:700">عرض تجريبي</div><div class="note">كل البيانات وهمية لأغراض العرض. جرّب الأزرار بحرية.</div><a href="#pricing" class="btn p s" style="margin-top:8px;width:100%">احجز مسبقاً</a></div>
     </div>
   </nav>
   <div class="main">
-    <header class="top">
+    <div class="topwrap"><header class="top">
       <span class="demo-pill">نسخة العرض · بيانات يوم الخميس 5 نوفمبر 2026</span>
       <span class="sp"></span>
       <button class="btn s g" data-a="go" data-v="assistant">${ic('spark', 16)} اسأل المساعد</button>
       <a href="#pricing" class="btn p s">احجز مسبقاً بسعر الإطلاق</a>
       <span class="av m" title="أ. سارة القحطاني — الشريك المدير">س</span>
-    </header>
+    </header><i class="sadu" aria-hidden="true"></i></div>
     <main id="page" class="page ${S.route !== S.prevRoute ? 'anim' : ''}">${inner}</main>
   </div>
 </div>
@@ -364,10 +381,10 @@ VIEWS.home = () => {
   const start = 8, span = 10, pos = (h) => ((h - start) / span * 100).toFixed(2) + '%';
   const hours = []; for (let h = 8; h <= 18; h++) hours.push(h);
   const blocks = [
-    [9.5, 10.75, 'مرافعة — الأفق', '9:30', 'background:#A8D5BA;color:#173A2C', 8],
-    [11, 12, 'صلح عن بُعد — رواسي', '11:00', 'border:1.5px solid #A8D5BA;color:#A8D5BA', 62],
-    [13.25, 14.25, 'اجتماع موكلة', '1:15', 'background:#2F5E4A', 8],
-    [15, 16, 'مهلة مذكرة — سنا', 'قبل 4:00', 'border:1.5px dashed #C3D6CB', 62]
+    [9.5, 10.75, 'مرافعة — الأفق', '9:30', 'background:#D9A441;color:#2A1A0F', 8],
+    [11, 12, 'صلح عن بُعد — رواسي', '11:00', 'border:1.5px solid #D9A441;color:#D9A441', 62],
+    [13.25, 14.25, 'اجتماع موكلة', '1:15', 'background:#5A3D28', 8],
+    [15, 16, 'مهلة مذكرة — سنا', 'قبل 4:00', 'border:1.5px dashed #D8C4A4', 62]
   ];
   const pipe = [['قيد الدعوى', 6], ['التبليغ', 5], ['المرافعة', 21], ['الحكم', 8], ['الاستئناف', 5], ['التنفيذ', 3]];
   const c = cd();
@@ -384,31 +401,31 @@ VIEWS.home = () => {
         <a href="#calendar" class="chip" style="text-decoration:none;padding:7px 12px"><span class="dot pulse"></span> الآن 10:05 ص · التقويم</a>
       </div>
       <div style="position:relative;height:150px;margin-top:22px">
-        ${hours.map((h) => `<span style="position:absolute;top:0;bottom:24px;right:${pos(h)};width:1px;background:#2F5E4A"></span><span class="num" style="position:absolute;bottom:0;right:${pos(h)};transform:translateX(50%);font-size:11px;color:#9FBFAD">${h > 12 ? h - 12 : h}</span>`).join('')}
-        ${blocks.map((b, i) => `<a href="#hearings" class="grow" style="position:absolute;top:${b[5]}px;right:${pos(b[0])};width:${((b[1] - b[0]) / span * 100).toFixed(2)}%;height:50px;border-radius:12px;padding:6px 9px;text-decoration:none;color:#E9F0EC;overflow:hidden;animation-delay:${0.3 + i * 0.1}s;${b[4]}"><div style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b[2]}</div><div class="num" style="font-size:11px;opacity:.85">${b[3]}</div></a>`).join('')}
-        <span style="position:absolute;top:-6px;bottom:20px;right:20.8%;width:2px;background:#E9F0EC"></span>
-        <span class="pulse" style="position:absolute;top:-10px;right:20.8%;transform:translateX(50%);width:10px;height:10px;border-radius:50%;background:#E9F0EC"></span>
+        ${hours.map((h) => `<span style="position:absolute;top:0;bottom:24px;right:${pos(h)};width:1px;background:#5A3D28"></span><span class="num" style="position:absolute;bottom:0;right:${pos(h)};transform:translateX(50%);font-size:11px;color:#C4A97F">${h > 12 ? h - 12 : h}</span>`).join('')}
+        ${blocks.map((b, i) => `<a href="#hearings" class="grow" style="position:absolute;top:${b[5]}px;right:${pos(b[0])};width:${((b[1] - b[0]) / span * 100).toFixed(2)}%;height:50px;border-radius:12px;padding:6px 9px;text-decoration:none;color:#F2E4CB;overflow:hidden;animation-delay:${0.3 + i * 0.1}s;${b[4]}"><div style="font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b[2]}</div><div class="num" style="font-size:11px;opacity:.85">${b[3]}</div></a>`).join('')}
+        <span style="position:absolute;top:-6px;bottom:20px;right:20.8%;width:2px;background:#F2E4CB"></span>
+        <span class="pulse" style="position:absolute;top:-10px;right:20.8%;transform:translateX(50%);width:10px;height:10px;border-radius:50%;background:#F2E4CB"></span>
       </div>
     </section>
     <section class="card rise" style="grid-column:span 4;min-width:0;background:var(--mint);color:var(--ink);border:0;display:flex;flex-direction:column;gap:14px;animation-delay:.1s" aria-label="مساعد وصل">
       <div class="row"><span class="ico" style="background:var(--ink);color:var(--mint)">${ic('spark', 22)}</span><span><b class="hd" style="font-size:19px">مساعد وصل</b><br><small style="font-weight:600">نموذج ذكي داخل المملكة · بإذنك فقط</small></span></div>
-      <div style="background:var(--ink);color:#E9F0EC;border-radius:16px;padding:14px;min-height:86px;font-size:15px;line-height:1.8"><small style="color:#9FBFAD;display:block">جرّب أن تقول:</small><span id="typed">${esc(typed())}</span><span class="caret" style="display:inline-block;width:2px;height:17px;background:var(--mint);vertical-align:middle"></span></div>
+      <div style="background:var(--ink);color:#F2E4CB;border-radius:16px;padding:14px;min-height:86px;font-size:15px;line-height:1.8"><small style="color:#C4A97F;display:block">جرّب أن تقول:</small><span id="typed">${esc(typed())}</span><span class="caret" style="display:inline-block;width:2px;height:17px;background:var(--mint);vertical-align:middle"></span></div>
       <a href="#assistant" class="btn" style="background:var(--ink);color:var(--mint);border:0;margin-top:auto">افتح المساعد ${ic('arrow', 16)}</a>
     </section>
     <section class="card hot rise" style="grid-column:span 4;min-width:0;animation-delay:.15s" aria-label="أقرب مهلة">
       <div class="row" style="justify-content:space-between"><span style="font-size:13px;color:var(--mint);font-weight:600">أقرب مهلة نظامية</span><span class="chip m">حرجة</span></div>
-      <div dir="ltr" class="num" id="cd" style="font-size:42px;font-weight:500;text-align:right;margin:10px 0 6px">${c[0]}<span style="color:#55876F">:</span>${c[1]}<span style="color:#55876F">:</span><span style="color:var(--mint)">${c[2]}</span></div>
+      <div dir="ltr" class="num" id="cd" style="font-size:42px;font-weight:500;text-align:right;margin:10px 0 6px">${c[0]}<span style="color:#9A7350">:</span>${c[1]}<span style="color:#9A7350">:</span><span style="color:var(--mint)">${c[2]}</span></div>
       <div class="bar"><i class="grow" style="width:34%"></i></div>
       <p style="margin:10px 0 0;font-size:14px">رفع مذكرة الاستئناف — <a href="#judgments" style="font-weight:600">مجموعة سنا الطبية</a></p>
     </section>
     <section class="card rise" style="grid-column:span 5;min-width:0;animation-delay:.2s" aria-label="مسار القضايا">
       <div class="row" style="justify-content:space-between"><h2 class="t">مسار القضايا</h2><span class="num" style="font-size:26px;font-weight:600">48 <small class="muted" style="font-size:13px">نشطة</small></span></div>
-      <div class="col" style="margin-top:10px">${pipe.map((p, i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:74px;font-size:13px;color:var(--mut)">${p[0]}</span><span style="flex:1;height:20px;border-radius:7px;background:#173A2C;overflow:hidden"><i class="grow" style="display:block;height:20px;border-radius:7px;width:${p[1] / 21 * 100}%;background:${p[1] === 21 ? '#A8D5BA' : '#55876F'};animation-delay:${0.4 + i * 0.07}s"></i></span><b class="num" style="width:22px">${p[1]}</b></div>`).join('')}</div>
+      <div class="col" style="margin-top:10px">${pipe.map((p, i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:74px;font-size:13px;color:var(--mut)">${p[0]}</span><span style="flex:1;height:20px;border-radius:7px;background:#2A1A0F;overflow:hidden"><i class="grow" style="display:block;height:20px;border-radius:7px;width:${p[1] / 21 * 100}%;background:${p[1] === 21 ? '#D9A441' : '#9A7350'};animation-delay:${0.4 + i * 0.07}s"></i></span><b class="num" style="width:22px">${p[1]}</b></div>`).join('')}</div>
     </section>
     <section class="card rise" style="grid-column:span 3;min-width:0;text-align:center;animation-delay:.25s" aria-label="الأتعاب">
       <h2 class="t" style="text-align:right">تحصيل الأتعاب</h2>
       <div style="position:relative;width:128px;height:128px;margin:10px auto">
-        <svg width="128" height="128" viewBox="0 0 120 120" style="transform:rotate(-90deg)" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#2F5E4A" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#A8D5BA" stroke-width="12" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="103"/></svg>
+        <svg width="128" height="128" viewBox="0 0 120 120" style="transform:rotate(-90deg)" aria-hidden="true"><circle cx="60" cy="60" r="48" fill="none" stroke="#5A3D28" stroke-width="12"/><circle cx="60" cy="60" r="48" fill="none" stroke="#D9A441" stroke-width="12" stroke-linecap="round" stroke-dasharray="302" stroke-dashoffset="103"/></svg>
         <span style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center"><b class="num" style="font-size:28px">66%</b><small class="muted">هذا الربع</small></span>
       </div>
       <div class="muted" style="font-size:13px"><b class="num" style="color:var(--tx)">86,400 ر.س</b> مستحقة في 7 فواتير</div>
@@ -420,7 +437,7 @@ VIEWS.home = () => {
     </section>
     <section class="card rise" style="grid-column:span 7;min-width:0;animation-delay:.35s" aria-label="تتطلب انتباهك">
       <div class="row" style="justify-content:space-between"><h2 class="t">تتطلب انتباهك</h2><a href="#cases" style="font-size:13px;font-weight:600">كل القضايا</a></div>
-      <div class="col" style="margin-top:10px;gap:8px">${att.map((a) => `<a href="#${a[6]}" class="item click" style="background:#173A2C;border:1px solid #25503F;text-decoration:none;color:inherit;padding:12px 14px"><span class="num muted2" style="font-size:13px;width:74px">${a[0]}</span><span class="sp" style="min-width:160px"><b>${a[1]}</b><br><small class="muted">${a[2]}</small></span><span class="row" style="gap:3px" aria-label="المرحلة ${a[4]} من 6">${[0, 1, 2, 3, 4, 5].map((i) => `<i style="width:13px;height:6px;border-radius:3px;background:${i < a[4] ? '#A8D5BA' : '#2F5E4A'}"></i>`).join('')}</span><span class="chip ${a[5] ? 'm' : ''}">${a[3]}</span></a>`).join('')}</div>
+      <div class="col" style="margin-top:10px;gap:8px">${att.map((a) => `<a href="#${a[6]}" class="item click" style="background:#2A1A0F;border:1px solid #46301F;text-decoration:none;color:inherit;padding:12px 14px"><span class="num muted2" style="font-size:13px;width:74px">${a[0]}</span><span class="sp" style="min-width:160px"><b>${a[1]}</b><br><small class="muted">${a[2]}</small></span><span class="row" style="gap:3px" aria-label="المرحلة ${a[4]} من 6">${[0, 1, 2, 3, 4, 5].map((i) => `<i style="width:13px;height:6px;border-radius:3px;background:${i < a[4] ? '#D9A441' : '#5A3D28'}"></i>`).join('')}</span><span class="chip ${a[5] ? 'm' : ''}">${a[3]}</span></a>`).join('')}</div>
     </section>
   </div>`;
 };
@@ -433,7 +450,7 @@ VIEWS.home.after = () => {
     if (HOME.tt % 18 === 0) {
       HOME.sec++;
       const c = cd(); const el = $('#cd');
-      if (el) el.innerHTML = `${c[0]}<span style="color:#55876F">:</span>${c[1]}<span style="color:#55876F">:</span><span style="color:var(--mint)">${c[2]}</span>`;
+      if (el) el.innerHTML = `${c[0]}<span style="color:#9A7350">:</span>${c[1]}<span style="color:#9A7350">:</span><span style="color:var(--mint)">${c[2]}</span>`;
     }
     if (HOME.tt % 70 === 0) {
       HOME.fi++;
@@ -469,7 +486,7 @@ VIEWS.consult = () => {
   const fee = items.reduce((a, i) => a + i.fee, 0), paid = items.reduce((a, i) => a + i.paid, 0);
   const conv = items.filter((i) => i.status === 'تحولت لقضية').length;
   const s = items.find((i) => i.no === C.sel) || items[0];
-  const bars = (list, labelFn) => { const mx = Math.max(1, ...list.map((x) => x[1].length)); return list.map(([k, arr], i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:104px;font-size:13px">${labelFn(k)}</span><span style="flex:1;height:18px;border-radius:6px;background:var(--row);overflow:hidden"><i class="grow" style="display:block;height:18px;border-radius:6px;width:${arr.length / mx * 100}%;background:${arr.length === mx ? '#A8D5BA' : '#55876F'};animation-delay:${0.2 + i * .06}s"></i></span><b class="num" style="width:74px;text-align:left;font-size:13px">${arr.length}${money ? `<span class="muted2" style="font-weight:400"> · ${fmt(arr.reduce((a, x) => a + x.fee, 0) / 1000)}k</span>` : ''}</b></div>`).join(''); };
+  const bars = (list, labelFn) => { const mx = Math.max(1, ...list.map((x) => x[1].length)); return list.map(([k, arr], i) => `<div class="row" style="flex-wrap:nowrap"><span style="width:104px;font-size:13px">${labelFn(k)}</span><span style="flex:1;height:18px;border-radius:6px;background:var(--row);overflow:hidden"><i class="grow" style="display:block;height:18px;border-radius:6px;width:${arr.length / mx * 100}%;background:${arr.length === mx ? '#D9A441' : '#9A7350'};animation-delay:${0.2 + i * .06}s"></i></span><b class="num" style="width:74px;text-align:left;font-size:13px">${arr.length}${money ? `<span class="muted2" style="font-weight:400"> · ${fmt(arr.reduce((a, x) => a + x.fee, 0) / 1000)}k</span>` : ''}</b></div>`).join(''); };
   return `
   <div class="row rise" style="align-items:flex-end">
     <div class="col sp" style="gap:4px"><span class="kicker">الاستشارات · نوفمبر 2026</span><h1 class="t">تبدأ الحكاية <b>باستشارة</b></h1></div>
@@ -508,7 +525,7 @@ VIEWS.consult = () => {
       <article class="paper pop" aria-label="نموذج استشارة مطبوع">
         ${paperHead()}
         <h3>نموذج استشارة قانونية</h3>
-        <p style="text-align:center;font-family:'IBM Plex Sans Arabic';font-size:12px;color:#4B6355">رقم <span dir="ltr">${s.no}</span> · ${dTxt(D(2026, 11, s.d), 1)} 2026</p>
+        <p style="text-align:center;font-family:'IBM Plex Sans Arabic';font-size:12px;color:#6B5443">رقم <span dir="ltr">${s.no}</span> · ${dTxt(D(2026, 11, s.d), 1)} 2026</p>
         <table><tbody>
           <tr><td class="k" style="width:34%">طالب الاستشارة</td><td>${esc(s.requester)}</td></tr>
           <tr><td class="k">الجوال</td><td dir="ltr">${esc(s.phone)}</td></tr>
@@ -519,9 +536,9 @@ VIEWS.consult = () => {
         </tbody></table>
         <p><b>موضوع الاستشارة:</b><br>${esc(s.topic)}</p>
         <p><b>رأي المستشار وتوصيته:</b></p>
-        <p style="min-height:56px;border-bottom:1px dotted #9DB0A3">${esc(s.opinion) || '&nbsp;'}</p>
-        <p style="font-family:'IBM Plex Sans Arabic';font-size:11px;color:#4B6355;line-height:1.7">هذه الاستشارة مبنية على المعلومات المقدّمة من طالبها، ولا تُعد توكيلاً بالمرافعة ما لم يُبرم عقد أتعاب مستقل.</p>
-        <div class="sig"><div>المستشار: ${s.consultant}<br><span style="color:#4B6355">التوقيع</span></div><div>طالب الاستشارة<br><span style="color:#4B6355">التوقيع</span></div></div>
+        <p style="min-height:56px;border-bottom:1px dotted #B9A285">${esc(s.opinion) || '&nbsp;'}</p>
+        <p style="font-family:'IBM Plex Sans Arabic';font-size:11px;color:#6B5443;line-height:1.7">هذه الاستشارة مبنية على المعلومات المقدّمة من طالبها، ولا تُعد توكيلاً بالمرافعة ما لم يُبرم عقد أتعاب مستقل.</p>
+        <div class="sig"><div>المستشار: ${s.consultant}<br><span style="color:#6B5443">التوقيع</span></div><div>طالب الاستشارة<br><span style="color:#6B5443">التوقيع</span></div></div>
       </article>
     </aside>
   </div>`;
@@ -578,13 +595,13 @@ VIEWS.cases = () => {
         <section class="card rise"><h2 class="t">ملخص القضية</h2><p style="line-height:1.9;margin:10px 0 0">تطالب الموكلة بفسخ عقد مقاولة مشروع «أبراج الأفق» والتعويض عن التأخير في التسليم بما يتجاوز المدة التعاقدية بـ 14 شهراً، إضافةً إلى استرداد الدفعات المقدمة. قدّم المدعى عليه مذكرة دفاع يحتج فيها بظروف قاهرة، وندبت الدائرة خبيراً هندسياً.</p>
           <div class="row" style="margin-top:10px"><button class="btn s g" data-a="go" data-v="assistant">${ic('spark', 15)} لخّص المستجدات بالمساعد</button></div></section>
         <section class="card rise"><h2 class="t">سجل النشاط</h2><div class="col" style="margin-top:12px;gap:0">
-          ${[['أودع الخبير الهندسي تقريره النهائي', 'أمس — عبر بوابة المحكمة', 1], ['شارك أ. فهد ملخص التقرير مع الموكل', 'أمس — قرأه م. ماجد عبر رابط المتابعة', 1], ['رفع الموكل كشف الدفعات المقدمة', '2 نوفمبر — من رابط الموكل', 0], ['قدّم المدعى عليه مذكرة دفاع ثانية', '28 أكتوبر', 0], ['قررت الدائرة ندب خبير هندسي', '14 سبتمبر — جلسة المرافعة الثالثة', 0]].map((a) => `<div class="row" style="flex-wrap:nowrap;align-items:stretch"><span style="display:flex;flex-direction:column;align-items:center;width:14px"><i class="dot" style="margin-top:8px;background:${a[2] ? '#A8D5BA' : '#55876F'}"></i><i style="flex:1;width:2px;background:#2F5E4A;margin-top:4px"></i></span><span style="padding-bottom:16px"><b style="font-size:14px">${a[0]}</b><br><small class="muted2">${a[1]}</small></span></div>`).join('')}
+          ${[['أودع الخبير الهندسي تقريره النهائي', 'أمس — عبر بوابة المحكمة', 1], ['شارك أ. فهد ملخص التقرير مع الموكل', 'أمس — قرأه م. ماجد عبر رابط المتابعة', 1], ['رفع الموكل كشف الدفعات المقدمة', '2 نوفمبر — من رابط الموكل', 0], ['قدّم المدعى عليه مذكرة دفاع ثانية', '28 أكتوبر', 0], ['قررت الدائرة ندب خبير هندسي', '14 سبتمبر — جلسة المرافعة الثالثة', 0]].map((a) => `<div class="row" style="flex-wrap:nowrap;align-items:stretch"><span style="display:flex;flex-direction:column;align-items:center;width:14px"><i class="dot" style="margin-top:8px;background:${a[2] ? '#D9A441' : '#9A7350'}"></i><i style="flex:1;width:2px;background:#5A3D28;margin-top:4px"></i></span><span style="padding-bottom:16px"><b style="font-size:14px">${a[0]}</b><br><small class="muted2">${a[1]}</small></span></div>`).join('')}
         </div></section>
       </div>
       <div class="narrow col">
         <section class="card dark col rise"><span style="font-size:13px;color:var(--mint);font-weight:600">الجلسة القادمة</span><b class="hd" style="font-size:22px">اليوم، 9:30 ص</b><span>جلسة مرافعة — مناقشة تقرير الخبير</span><small class="muted2">المحكمة التجارية — القاعة 12</small><div class="row"><a class="btn p s sp" href="#hearings">رول الجلسات</a><a class="btn s sp" href="#cloud">تحقق من ناجز</a></div></section>
         <section class="card hot col rise"><div class="row"><h2 class="t sp">نواقص من الموكل</h2><span class="chip m">2 ناقصة</span></div><span class="row" style="font-size:14px"><i class="dot"></i>السجل التجاري المحدّث</span><span class="row" style="font-size:14px"><i class="dot"></i>خطاب تفويض موقّع</span><a class="btn p" href="#assistant">${ic('wa', 16)} اطلبها من الموكل عبر واتساب</a></section>
-        <section class="card col rise"><h2 class="t">الأطراف</h2><div><small class="muted2">المدعي (موكلنا)</small><br><a href="#clients" style="font-weight:700">${cl.name}</a><br><small class="muted2">ممثلها: ${cl.rep}</small></div><div style="border-top:1px solid #2F5E4A;padding-top:10px"><small class="muted2">المدعى عليه</small><br><b>مؤسسة البناء المتحد للمقاولات</b><br><small class="muted2">وكيلها: مكتب الراشد للمحاماة</small></div></section>
+        <section class="card col rise"><h2 class="t">الأطراف</h2><div><small class="muted2">المدعي (موكلنا)</small><br><a href="#clients" style="font-weight:700">${cl.name}</a><br><small class="muted2">ممثلها: ${cl.rep}</small></div><div style="border-top:1px solid #5A3D28;padding-top:10px"><small class="muted2">المدعى عليه</small><br><b>مؤسسة البناء المتحد للمقاولات</b><br><small class="muted2">وكيلها: مكتب الراشد للمحاماة</small></div></section>
       </div>
     </div>`;
   if (S.caseTab === 'docs') body = `<section class="card rise scroll"><table class="tb" style="min-width:720px"><thead><tr><th>المستند</th><th>التصنيف</th><th>أضيف بواسطة</th><th>التاريخ</th><th>الظهور</th></tr></thead><tbody>${DOCS.map((d) => `<tr><td><span class="row" style="flex-wrap:nowrap"><span class="av" style="width:36px;height:36px;font-size:10px">${d[0]}</span><span><b>${d[1]}</b><br><small class="muted2">${d[2]}</small></span></span></td><td class="muted">${d[3]}</td><td>${d[4]}</td><td class="muted">${d[5]}</td><td><span class="chip ${d[6] ? 'm' : ''}">${d[6] ? 'مشارَك مع الموكل' : 'داخلي'}</span></td></tr>`).join('')}</tbody></table></section>`;
@@ -597,7 +614,7 @@ VIEWS.cases = () => {
     <div class="row"><span class="num muted2">قضية ${c.ref}</span><span class="chip m">${STAGES[c.stage]}</span><span class="chip">${c.type}</span></div>
     <h2 class="hd" style="margin:8px 0;font-size:24px;font-weight:600;line-height:1.5">${c.title}</h2>
     <div class="row muted" style="font-size:13px;gap:6px 20px"><span>${c.court}</span><span>تاريخ القيد: ${c.opened}</span>${c.claim ? `<span>قيمة المطالبة: <b class="num" style="color:var(--tx)">${fmt(c.claim)} ر.س</b></span>` : ''}<span>المحامي: ${c.lawyer}</span></div>
-    <ol aria-label="مراحل القضية" style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(70px,1fr));gap:6px">${STAGES.map((s, i) => `<li><i style="display:block;height:6px;border-radius:6px;background:${i < c.stage ? '#55876F' : i === c.stage ? '#A8D5BA' : '#2F5E4A'}"></i><small style="font-weight:${i === c.stage ? 700 : 400};color:${i <= c.stage ? '#E9F0EC' : '#9FBFAD'}">${s}</small></li>`).join('')}</ol>
+    <ol aria-label="مراحل القضية" style="list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(70px,1fr));gap:6px">${STAGES.map((s, i) => `<li><i style="display:block;height:6px;border-radius:6px;background:${i < c.stage ? '#9A7350' : i === c.stage ? '#D9A441' : '#5A3D28'}"></i><small style="font-weight:${i === c.stage ? 700 : 400};color:${i <= c.stage ? '#F2E4CB' : '#C4A97F'}">${s}</small></li>`).join('')}</ol>
   </section>
   <div class="tabs" role="tablist">${tabs.map(([id, l]) => `<button role="tab" aria-selected="${S.caseTab === id}" class="tab ${S.caseTab === id ? 'on' : ''}" data-a="caseTab" data-v="${id}">${l}</button>`).join('')}</div>
   ${body}`;
@@ -652,7 +669,7 @@ VIEWS.hearings = () => {
     <div class="wide col">
       ${day.length ? '' : '<div class="card" style="text-align:center;border-style:dashed;color:var(--mut)">لا توجد جلسات في هذا اليوم.</div>'}
       ${courts.map((ct) => `<section class="card rise" aria-label="${ct}"><div class="row" style="margin-bottom:8px"><span class="ico d" style="width:32px;height:32px">${ic('gavel', 16)}</span><h2 class="t sp">${ct}</h2><small class="muted2">${day.filter((h) => h.court === ct).length} جلسات</small></div>
-        <div class="col">${day.filter((h) => h.court === ct).map((h) => { const k = clash(h), done = h.status !== 'قادمة'; return `<article class="item" style="background:var(--row);border:1.5px solid ${HR.sel === h.id && !done ? '#A8D5BA' : k && !done ? '#55876F' : 'transparent'};padding:12px 14px">
+        <div class="col">${day.filter((h) => h.court === ct).map((h) => { const k = clash(h), done = h.status !== 'قادمة'; return `<article class="item" style="background:var(--row);border:1.5px solid ${HR.sel === h.id && !done ? '#D9A441' : k && !done ? '#9A7350' : 'transparent'};padding:12px 14px">
           <span style="width:64px;text-align:center"><b class="num" style="font-size:19px">${clock(h.t).replace(/ [صم]$/, '')}</b><br><small class="muted2">${h.t < 12 ? 'صباحاً' : 'مساءً'}</small></span>
           <span class="sp" style="min-width:220px"><span class="row" style="gap:6px"><a href="#cases" class="num" style="font-weight:600;font-size:13px">${h.ref}</a><b>${h.client}</b>${h.auto ? '<span class="chip m">أُنشئت تلقائياً</span>' : ''}</span><small class="muted">${h.type} · ${h.circuit} · ${h.lawyer}</small>${k && !done ? `<br><small style="color:var(--mint);font-weight:600">تعارض: ${h.lawyer} لديه جلسة ${clock(k.t)} في ${k.court} — أنشئ سند إنابة</small>` : ''}${h.decision ? `<br><small style="background:var(--card);border-radius:8px;padding:3px 8px;display:inline-block;margin-top:4px">القرار: ${esc(h.decision)}</small>` : ''}</span>
           <span class="chip ${done ? '' : 'm'}">${h.status}</span>
@@ -670,10 +687,10 @@ VIEWS.hearings = () => {
         <button class="btn p" style="min-height:46px" data-a="hrSave">حفظ القرار وإرسال التذكيرات</button>` : '<span class="muted" style="font-size:13px">اختر «تسجيل القرار» من أي جلسة في الرول.</span>'}
       </section>
       <section class="card col rise"><h2 class="t">التذكيرات</h2>
-        <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">${[['الفريق', 'teamMail', 'teamWa'], ['الموكل', 'clientMail', 'clientWa']].map((g) => `<fieldset style="border:1px solid #2F5E4A;border-radius:14px;padding:8px 12px;margin:0"><legend style="font-size:13px;font-weight:700;padding:0 4px">${g[0]}</legend><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[1]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[1]}" style="accent-color:#A8D5BA;width:16px;height:16px">البريد</label><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[2]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[2]}" style="accent-color:#A8D5BA;width:16px;height:16px">واتساب</label></fieldset>`).join('')}</div>
+        <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px">${[['الفريق', 'teamMail', 'teamWa'], ['الموكل', 'clientMail', 'clientWa']].map((g) => `<fieldset style="border:1px solid #5A3D28;border-radius:14px;padding:8px 12px;margin:0"><legend style="font-size:13px;font-weight:700;padding:0 4px">${g[0]}</legend><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[1]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[1]}" style="accent-color:#D9A441;width:16px;height:16px">البريد</label><label class="row" style="font-size:13px;gap:8px;min-height:32px"><input type="checkbox" ${HR.rem[g[2]] ? 'checked' : ''} data-ch="hrRem" data-k="${g[2]}" style="accent-color:#D9A441;width:16px;height:16px">واتساب</label></fieldset>`).join('')}</div>
         <label class="f" for="hrlead" style="margin:0">التذكير قبل الجلسة بـ</label><select id="hrlead" class="in" data-ch="hrLead">${[[1, 'يوم واحد + صباح الجلسة'], [3, '3 أيام + يوم قبلها'], [7, 'أسبوع + يوم قبلها']].map((o) => `<option value="${o[0]}" ${HR.lead === o[0] ? 'selected' : ''}>${o[1]}</option>`).join('')}</select>
         <small class="muted2">معاينة رسالة الموكل</small>
-        <div style="border:1px solid #40725C;border-radius:4px 16px 16px 16px;padding:12px;font-size:13px;line-height:1.9;white-space:pre-line">${esc(preview)}</div>
+        <div style="border:1px solid #7A5638;border-radius:4px 16px 16px 16px;padding:12px;font-size:13px;line-height:1.9;white-space:pre-line">${esc(preview)}</div>
         ${HR.queue.map((q) => `<div class="row slidein" style="font-size:12px;flex-wrap:nowrap"><i class="dot pulse"></i><span class="sp muted">${esc(q[0])}</span><small class="muted2">${q[1]}</small></div>`).join('')}
       </section>
     </aside>
@@ -714,13 +731,13 @@ const delegDlg = () => {
   return `<div class="dlg w pop" role="dialog" aria-modal="true" aria-label="سند إنابة">
     <div class="row"><h2 class="t sp" style="font-size:20px">سند إنابة يتعبأ تلقائياً</h2><button class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
     <div class="row"><label class="f" for="sub" style="margin:0">المحامي المُناب</label><select id="sub" class="in sp" style="width:auto" data-ch="hrSub">${subs.map((n) => `<option ${n === HR.sub ? 'selected' : ''}>${n}</option>`).join('')}</select><button class="btn p s" data-a="toastMsg" data-v="في النسخة الفعلية يُطبع السند أو يُحفظ PDF بترويسة المكتب.">${ic('print', 15)} طباعة / PDF</button></div>
-    <article class="paper">${paperHead(`<small style="font-size:11px;color:#4B6355">الرقم: ن/${h.ref} · ${dTxt(TODAY)} 2026</small>`)}
+    <article class="paper">${paperHead(`<small style="font-size:11px;color:#6B5443">الرقم: ن/${h.ref} · ${dTxt(TODAY)} 2026</small>`)}
       <h3>سند إنابة لحضور جلسة</h3>
       <p>فضيلة رئيس <span class="fld">${h.circuit}</span> بـ<span class="fld">${h.court}</span> وفقه الله</p>
       <p>السلام عليكم ورحمة الله وبركاته، وبعد:</p>
       <p>بصفتي وكيلاً عن <span class="fld">${h.client}</span> في القضية رقم <span class="fld">${h.ref}</span> بموجب الوكالة رقم <span class="fld">${h.poa}</span>، أُنيب عني الزميل/ <span class="fld"><b>${HR.sub}</b></span> (رخصة رقم <span class="fld">[رقم الرخصة]</span>) لحضور الجلسة المحددة يوم <span class="fld">${dTxt(h.date, 1)} 2026</span> الساعة <span class="fld">${clock(h.t)}</span>، وله ما لي من صلاحيات واردة في الوكالة في حدود هذه الجلسة.</p>
       <p>وتقبلوا فائق الاحترام والتقدير،،،</p>
-      <div class="sig"><div>المحامي الأصيل: ${h.lawyer}<br><span style="color:#4B6355">التوقيع</span></div><div>ختم المكتب</div></div>
+      <div class="sig"><div>المحامي الأصيل: ${h.lawyer}<br><span style="color:#6B5443">التوقيع</span></div><div>ختم المكتب</div></div>
     </article></div>`;
 };
 ACT.hrDeleg = (v) => { HR.deleg = v; S.modal = delegDlg; render(); };
@@ -729,8 +746,8 @@ const rollDlg = () => {
   const day = HR.items.filter((h) => sameDay(h.date, HR.day)).sort((a, b) => a.t - b.t);
   const courts = []; day.forEach((h) => { if (!courts.includes(h.court)) courts.push(h.court); });
   return `<div class="dlg w pop" role="dialog" aria-modal="true" aria-label="رول الجلسات"><div class="row"><h2 class="t sp" style="font-size:20px">رول الجلسات — جاهز للطباعة</h2><button class="btn p s" data-a="toastMsg" data-v="في النسخة الفعلية يُطبع الرول أو يُحفظ PDF مباشرة.">${ic('print', 15)} طباعة / PDF</button><button class="btn s g" data-a="closeModal" aria-label="إغلاق">${ic('x', 16)}</button></div>
-  <article class="paper" style="font-size:13px">${paperHead(`<small style="font-size:12px;color:#4B6355">${dTxt(HR.day, 1)} 2026</small>`)}<h3>رول الجلسات</h3>
-  ${courts.map((ct) => `<p style="font-family:'IBM Plex Sans Arabic';font-weight:700;color:#1F4535;margin-top:10px">${ct}</p><table><thead><tr><th>الوقت</th><th>القضية</th><th>الموكل</th><th>الدائرة</th><th>النوع</th><th>المحامي</th><th>القرار</th></tr></thead><tbody>${day.filter((h) => h.court === ct).map((h) => `<tr><td>${clock(h.t)}</td><td>${h.ref}</td><td>${h.client}</td><td>${h.circuit}</td><td>${h.type}</td><td>${h.lawyer}</td><td style="min-width:110px">${esc(h.decision)}</td></tr>`).join('')}</tbody></table>`).join('') || '<p>لا جلسات.</p>'}</article></div>`;
+  <article class="paper" style="font-size:13px">${paperHead(`<small style="font-size:12px;color:#6B5443">${dTxt(HR.day, 1)} 2026</small>`)}<h3>رول الجلسات</h3>
+  ${courts.map((ct) => `<p style="font-family:'IBM Plex Sans Arabic';font-weight:700;color:#3B2618;margin-top:10px">${ct}</p><table><thead><tr><th>الوقت</th><th>القضية</th><th>الموكل</th><th>الدائرة</th><th>النوع</th><th>المحامي</th><th>القرار</th></tr></thead><tbody>${day.filter((h) => h.court === ct).map((h) => `<tr><td>${clock(h.t)}</td><td>${h.ref}</td><td>${h.client}</td><td>${h.circuit}</td><td>${h.type}</td><td>${h.lawyer}</td><td style="min-width:110px">${esc(h.decision)}</td></tr>`).join('')}</tbody></table>`).join('') || '<p>لا جلسات.</p>'}</article></div>`;
 };
 ACT.hrRoll = () => { S.modal = rollDlg; render(); };
 
@@ -770,13 +787,13 @@ VIEWS.judgments = () => {
     <button class="btn" data-a="jgSet">${ic('clock', 16)} مدد الطعن</button><button class="btn p" data-a="jgAdd">${ic('plus', 16)} تسجيل حكم</button></div>
   <section class="card rise" style="background:var(--mint);color:var(--ink);border:0" aria-label="مواعيد يجب الانتباه لها">
     <div class="row"><span class="sp"><small style="font-weight:600">صباح الخير — الخميس 5 نوفمبر · أُرسل الساعة ${JG.digestTime}</small><br><b class="hd" style="font-size:21px">مواعيد يجب الانتباه لها</b></span>
-      <label class="row" style="font-size:13px;font-weight:600;gap:6px"><input type="checkbox" ${JG.digestOn ? 'checked' : ''} data-ch="jgDigest" style="accent-color:#173A2C;width:16px;height:16px">كل صباح عبر البريد والواتساب</label>
-      <label class="sr" for="dt">وقت الإرسال</label><select id="dt" class="in" style="width:auto;min-height:36px;background:transparent;border-color:#173A2C;color:#173A2C;font-weight:600" data-ch="jgTime">${['6:30 ص', '7:00 ص', '8:00 ص'].map((t) => `<option ${JG.digestTime === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
-    <div class="grid g3" style="margin-top:12px">${digest.map((d) => `<a href="#${d[4]}" style="background:${d[5] ? '#173A2C' : '#C4E3D0'};color:${d[5] ? '#E9F0EC' : '#173A2C'};border-radius:16px;padding:12px;text-decoration:none;display:flex;gap:10px"><b class="num" style="font-size:22px;min-width:34px;text-align:center;line-height:1">${d[0]}<small style="display:block;font-size:10px;margin-top:3px">${d[1]}</small></b><span><b style="font-size:13px">${d[2]}</b><br><small style="opacity:.85">${d[3]}</small></span></a>`).join('')}</div>
+      <label class="row" style="font-size:13px;font-weight:600;gap:6px"><input type="checkbox" ${JG.digestOn ? 'checked' : ''} data-ch="jgDigest" style="accent-color:#2A1A0F;width:16px;height:16px">كل صباح عبر البريد والواتساب</label>
+      <label class="sr" for="dt">وقت الإرسال</label><select id="dt" class="in" style="width:auto;min-height:36px;background:transparent;border-color:#2A1A0F;color:#2A1A0F;font-weight:600" data-ch="jgTime">${['6:30 ص', '7:00 ص', '8:00 ص'].map((t) => `<option ${JG.digestTime === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
+    <div class="grid g3" style="margin-top:12px">${digest.map((d) => `<a href="#${d[4]}" style="background:${d[5] ? '#2A1A0F' : '#E9C98A'};color:${d[5] ? '#F2E4CB' : '#2A1A0F'};border-radius:16px;padding:12px;text-decoration:none;display:flex;gap:10px"><b class="num" style="font-size:22px;min-width:34px;text-align:center;line-height:1">${d[0]}<small style="display:block;font-size:10px;margin-top:3px">${d[1]}</small></b><span><b style="font-size:13px">${d[2]}</b><br><small style="opacity:.85">${d[3]}</small></span></a>`).join('')}</div>
   </section>
   ${JG.showSet ? `<section class="card hot col pop"><div class="row"><h2 class="t sp">مدد الطعن (بالأيام) — الإعدادات</h2><small class="muted2">أي تعديل يُعيد حساب كل المواعيد فوراً</small></div>
     <div class="scroll"><table class="tb" style="min-width:480px"><thead><tr><th>نوع الدعوى</th><th>الاستئناف</th><th>النقض</th></tr></thead><tbody>${JTYPES.concat(['مستعجل']).map((t, i) => `<tr><td><b>${t === 'مستعجل' ? 'المسائل المستعجلة' : t}</b></td><td><input aria-label="${t} — الاستئناف" class="in" style="width:80px;min-height:36px" type="number" min="1" data-ch="jgPer" data-t="${t}" data-k="a" value="${JG.periods[t].a}"></td><td><input aria-label="${t} — النقض" class="in" style="width:80px;min-height:36px" type="number" min="1" data-ch="jgPer" data-t="${t}" data-k="c" value="${JG.periods[t].c}"></td></tr>`).join('')}</tbody></table></div>
-    <label class="row" style="font-size:13px;gap:8px"><input type="checkbox" ${JG.shift ? 'checked' : ''} data-ch="jgShift" style="accent-color:#A8D5BA;width:16px;height:16px">إذا صادف آخر يوم عطلة (جمعة/سبت) يمتد لأول يوم عمل</label>
+    <label class="row" style="font-size:13px;gap:8px"><input type="checkbox" ${JG.shift ? 'checked' : ''} data-ch="jgShift" style="accent-color:#D9A441;width:16px;height:16px">إذا صادف آخر يوم عطلة (جمعة/سبت) يمتد لأول يوم عمل</label>
     <p class="note" style="margin:0">القيم الافتراضية من نظام المرافعات الشرعية: 30 يوماً للاستئناف أو التدقيق و10 أيام للمستعجل (م 187)، و30 يوماً للنقض و15 للمستعجل (م 194). تحقّق من المدد الخاصة بكل نظام إجرائي قبل الاعتماد.</p></section>` : ''}
   <div class="split">
     <div class="wide col">${cards.map(({ j, c, left, st }) => { const total = Math.max(1, diffD(c.dl, j.rec)); const pos = (d) => Math.min(100, Math.max(0, diffD(d, j.rec) / total * 100)) + '%'; const hot = st === 'pending' && left <= JG.a1; const won = j.result === 'لصالحنا'; const nextL = c.kind;
@@ -784,15 +801,15 @@ VIEWS.judgments = () => {
       return `<article class="card rise ${hot ? 'hot' : ''}">
       <div class="row"><span class="sp"><span class="row" style="gap:6px"><a href="#cases" class="num" style="font-weight:600;font-size:13px">${j.ref}</a><b style="font-size:16px">${j.client}</b><span class="chip ${j.result === 'لصالحنا' ? 'm' : ''}">${j.result}</span>${j.urgent ? '<span class="chip o">مستعجل</span>' : ''}</span><small class="muted">${j.type} · حكم ${j.deg === 'first' ? 'ابتدائي' : 'استئناف'} من ${j.court} · تسلّم الحكم ${dTxt(j.rec)}</small></span>
         <span style="text-align:center;min-width:80px"><b class="num" style="font-size:32px;color:${hot ? 'var(--mint)' : 'inherit'}">${st === 'final' ? '—' : left}</b><br><small class="muted">${st === 'final' ? 'انتهت المدة' : 'يوماً متبقياً'}</small></span></div>
-      ${st === 'pending' ? `<div style="position:relative;padding:20px 0 30px"><div class="bar"><i class="grow" style="width:${Math.min(100, Math.max(2, diffD(TODAY, j.rec) / total * 100))}%;background:${hot ? '#A8D5BA' : '#55876F'}"></i></div><small style="position:absolute;top:0;right:0" class="muted2">التسلّم ${dTxt(j.rec)}</small><small style="position:absolute;top:0;left:0;font-weight:700">آخر موعد ${dTxt(c.dl)}</small>
-        ${[[addD(c.dl, -JG.a1), 'تنبيه ' + JG.a1 + ' أيام'], [addD(c.dl, -JG.a2), 'تنبيه يومين'], [TODAY, 'اليوم']].map(([d, l], i) => `<span style="position:absolute;top:16px;right:${pos(d)};transform:translateX(50%);text-align:center"><i class="${i === 2 || diffD(d, TODAY) === 0 ? 'pulse' : ''}" style="display:block;margin:0 auto;width:16px;height:16px;border-radius:50%;background:${i === 2 ? '#E9F0EC' : diffD(d, TODAY) <= 0 ? '#A8D5BA' : '#1F4535'};border:2px solid ${i === 2 ? '#E9F0EC' : '#A8D5BA'}"></i><small style="font-size:10px;white-space:nowrap" class="muted">${i < 2 && Math.abs(diffD(d, TODAY)) <= 2 ? '' : l}</small></span>`).join('')}</div>` : ''}
+      ${st === 'pending' ? `<div style="position:relative;padding:20px 0 30px"><div class="bar"><i class="grow" style="width:${Math.min(100, Math.max(2, diffD(TODAY, j.rec) / total * 100))}%;background:${hot ? '#D9A441' : '#9A7350'}"></i></div><small style="position:absolute;top:0;right:0" class="muted2">التسلّم ${dTxt(j.rec)}</small><small style="position:absolute;top:0;left:0;font-weight:700">آخر موعد ${dTxt(c.dl)}</small>
+        ${[[addD(c.dl, -JG.a1), 'تنبيه ' + JG.a1 + ' أيام'], [addD(c.dl, -JG.a2), 'تنبيه يومين'], [TODAY, 'اليوم']].map(([d, l], i) => `<span style="position:absolute;top:16px;right:${pos(d)};transform:translateX(50%);text-align:center"><i class="${i === 2 || diffD(d, TODAY) === 0 ? 'pulse' : ''}" style="display:block;margin:0 auto;width:16px;height:16px;border-radius:50%;background:${i === 2 ? '#F2E4CB' : diffD(d, TODAY) <= 0 ? '#D9A441' : '#3B2618'};border:2px solid ${i === 2 ? '#F2E4CB' : '#D9A441'}"></i><small style="font-size:10px;white-space:nowrap" class="muted">${i < 2 && Math.abs(diffD(d, TODAY)) <= 2 ? '' : l}</small></span>`).join('')}</div>` : ''}
       <div class="row"><span class="sp" style="font-size:13px">${sugg}</span>
         ${st === 'pending' ? `<button class="btn p s" data-a="jgOpen" data-v="${j.id}">فتح ملف ${nextL}</button><button class="btn s" data-a="jgAccept" data-v="${j.id}">${won ? 'تم — لا طعن من جهتنا' : 'قبول الحكم وعدم الطعن'}</button>` : ''}
         ${st === 'opened' ? `<a href="#cases" class="btn s pop" style="border-color:var(--mint);color:var(--mint)">${ic('check', 14, 3)} أُنشئ ملف ${nextL} ${j.nextRef} — فتح</a>` : ''}
         ${st === 'accepted' ? '<small class="muted2">سُجّل قبول الحكم وأُلغيت التنبيهات</small>' : ''}${st === 'final' ? '<small class="muted2">اكتسب القطعية — يمكن طلب التنفيذ</small>' : ''}</div>
     </article>`; }).join('')}</div>
     <aside class="narrow col"><section class="card col rise"><h2 class="t">تنبيهات الطعن</h2><small class="muted2">قبل الموعد بـ ${JG.a1} أيام ثم بيومين، للمحامي المسؤول والشريك المشرف</small>
-      ${alerts.map((a) => `<div class="row" style="flex-wrap:nowrap;background:${a.dd === 0 ? 'var(--row2)' : 'var(--row)'};border-radius:12px;padding:10px 12px"><i class="dot ${a.dd === 0 ? 'pulse' : ''}" style="background:${a.dd <= 0 ? '#A8D5BA' : '#55876F'}"></i><span class="sp"><b style="font-size:13px">${a.t}</b><br><small class="muted2">${a.m}</small></span><small style="font-weight:700;color:${a.dd === 0 ? 'var(--mint)' : 'var(--mut2)'}">${a.s}</small></div>`).join('')}</section></aside>
+      ${alerts.map((a) => `<div class="row" style="flex-wrap:nowrap;background:${a.dd === 0 ? 'var(--row2)' : 'var(--row)'};border-radius:12px;padding:10px 12px"><i class="dot ${a.dd === 0 ? 'pulse' : ''}" style="background:${a.dd <= 0 ? '#D9A441' : '#9A7350'}"></i><span class="sp"><b style="font-size:13px">${a.t}</b><br><small class="muted2">${a.m}</small></span><small style="font-weight:700;color:${a.dd === 0 ? 'var(--mint)' : 'var(--mut2)'}">${a.s}</small></div>`).join('')}</section></aside>
   </div>`;
 };
 ACT.jgSet = () => { JG.showSet = !JG.showSet; render(); };
@@ -813,7 +830,7 @@ const jgDlg = () => {
       <div><label class="f" for="j-deg">درجة الحكم</label><select id="j-deg" class="in" data-ch="jgF" data-k="deg"><option value="first" ${f.deg === 'first' ? 'selected' : ''}>ابتدائي — يُطعن بالاستئناف</option><option value="appeal" ${f.deg === 'appeal' ? 'selected' : ''}>استئناف — يُطعن بالنقض</option></select></div>
       <div><label class="f" for="j-date">تاريخ تسلّم الحكم</label><input id="j-date" class="in" type="date" style="color-scheme:dark" data-ch="jgF" data-k="date" value="${f.date}"></div>
       <div><label class="f" for="j-res">النتيجة</label><select id="j-res" class="in" data-ch="jgF" data-k="result">${['ضدنا', 'جزئي', 'لصالحنا'].map((t) => `<option ${f.result === t ? 'selected' : ''}>${t}</option>`).join('')}</select></div>
-      <label class="row" style="grid-column:1/-1;font-size:13px;gap:8px"><input type="checkbox" ${f.urgent ? 'checked' : ''} data-ch="jgF" data-k="urgent" style="accent-color:#A8D5BA;width:16px;height:16px">حكم في مسألة مستعجلة</label>
+      <label class="row" style="grid-column:1/-1;font-size:13px;gap:8px"><input type="checkbox" ${f.urgent ? 'checked' : ''} data-ch="jgF" data-k="urgent" style="accent-color:#D9A441;width:16px;height:16px">حكم في مسألة مستعجلة</label>
     </div>
     <div style="border:1.5px dashed var(--mint);border-radius:16px;padding:14px" class="col"><small style="color:var(--mint);font-weight:700">يقترح النظام</small><b class="hd" style="font-size:18px">آخر موعد ل${c.kind}: ${dTxt(c.dl, 1)} ${c.dl.getFullYear()}</b><small class="muted">${c.days} يوماً من تاريخ التسلّم حسب إعداد «${f.urgent ? 'المسائل المستعجلة' : f.type}»${c.shifted ? '، ومُدّد لأول يوم عمل.' : '.'}</small><small class="muted">التنبيهات: ${dTxt(addD(c.dl, -JG.a1), 1)} ثم ${dTxt(addD(c.dl, -JG.a2), 1)}</small></div>
     <button type="submit" class="btn p" style="min-height:48px">حفظ الحكم وجدولة التنبيهات</button></form>`;
@@ -827,7 +844,7 @@ ACT.jgSave = () => {
 };
 
 // ===== calendar =====
-const ETYPES = { hearing: ['جلسة', '#A8D5BA'], deadline: ['موعد طعن', '#E9C46A'], consult: ['استشارة', '#8FB8DE'], task: ['مهمة', '#C3D6CB'], meet: ['اجتماع', '#D4A5C8'] };
+const ETYPES = { hearing: ['جلسة', '#D9A441'], deadline: ['موعد طعن', '#E07A5F'], consult: ['استشارة', '#8FB8DE'], task: ['مهمة', '#D8C4A4'], meet: ['اجتماع', '#D4A5C8'] };
 const CAL = {
   view: (typeof innerWidth === 'number' && innerWidth < 700) ? 'day' : 'week', cur: D(2026, 11, 5), sel: null, types: Object.fromEntries(Object.keys(ETYPES).map((k) => [k, true])), lawyer: 'all',
   extra: [
@@ -895,7 +912,7 @@ VIEWS.calendar = () => {
   <div class="split">
     <div class="wide card rise" style="padding:12px">${body}</div>
     <aside class="narrow col">
-      ${s ? `<section class="card hot col pop"><div class="row"><span class="chip" style="background:${ETYPES[s.type][1]};color:#173A2C;border:0">${ETYPES[s.type][0]}</span><span class="sp"></span><button class="btn s g" data-a="calSel" data-v="" aria-label="إغلاق">${ic('x', 14)}</button></div>
+      ${s ? `<section class="card hot col pop"><div class="row"><span class="chip" style="background:${ETYPES[s.type][1]};color:#2A1A0F;border:0">${ETYPES[s.type][0]}</span><span class="sp"></span><button class="btn s g" data-a="calSel" data-v="" aria-label="إغلاق">${ic('x', 14)}</button></div>
         <b class="hd" style="font-size:18px">${esc(s.title)}</b><small class="muted">${dTxt(s.date, 1)} · ${clock(s.t)}</small><small class="muted">${esc(s.where)}</small><small class="muted">المسؤول: ${s.lawyer}</small>
         <div class="row">${s.go ? `<a class="btn p s" href="#${s.go}">فتح في ${s.go === 'hearings' ? 'الجلسات' : 'الأحكام'}</a>` : ''}${s.ref ? `<a class="btn s" href="#cases">ملف القضية</a>` : ''}<button class="btn s" data-a="toastMsg" data-v="أُرسل تذكير للمسؤول عبر الواتساب.">${ic('wa', 14)} تذكير</button>${s.go ? '' : `<button class="btn s" data-a="calDel" data-v="${s.id}">${ic('trash', 14)} حذف</button>`}</div></section>` : ''}
       <section class="card col rise"><h2 class="t">عرض</h2>
@@ -968,14 +985,14 @@ VIEWS.clients = () => {
     <div class="col"><label class="f" for="fe-t">الصيغة</label><select id="fe-t" class="in" data-ch="clTpl">${Object.entries(TPLS).map(([k, [l]]) => `<option value="${k}" ${CL.tpl === k ? 'selected' : ''}>${l}</option>`).join('')}</select>
       <label class="f" for="fe-a">إجمالي الأتعاب (ر.س)</label><input id="fe-a" class="in num" type="number" step="1000" min="0" data-ch="clTotal" value="${CL.total}">
       ${CL.tpl === 'standard' ? `<label class="f" for="fe-n">عدد الدفعات</label><select id="fe-n" class="in" data-ch="clN">${[2, 3, 4].map((n) => `<option ${CL.n === n ? 'selected' : ''}>${n}</option>`).join('')}</select>` : ''}
-      <div class="col" style="gap:6px;margin-top:6px">${pl.map((p, i) => `<div class="item" style="padding:8px 12px"><i class="dot" style="background:${i < paid ? '#A8D5BA' : '#55876F'}"></i><span class="sp" style="font-size:13px">${p.l}</span><b class="num" style="font-size:13px">${fmt(p.amt)}</b><span class="chip ${i < paid ? 'm' : ''}" style="font-size:11px">${i < paid ? 'مسددة' : i === paid ? 'تستحق بالمرحلة التالية' : 'لاحقاً'}</span></div>`).join('')}</div>
+      <div class="col" style="gap:6px;margin-top:6px">${pl.map((p, i) => `<div class="item" style="padding:8px 12px"><i class="dot" style="background:${i < paid ? '#D9A441' : '#9A7350'}"></i><span class="sp" style="font-size:13px">${p.l}</span><b class="num" style="font-size:13px">${fmt(p.amt)}</b><span class="chip ${i < paid ? 'm' : ''}" style="font-size:11px">${i < paid ? 'مسددة' : i === paid ? 'تستحق بالمرحلة التالية' : 'لاحقاً'}</span></div>`).join('')}</div>
       <p class="note" style="margin:0">كل دفعة مربوطة بمرحلة في القضية: عند تسجيل المرحلة تُصدر فاتورة ويُذكّر الموكل تلقائياً.</p>
       <div class="row">${CL.signed[c.id] ? `<span class="chip m">${ic('check', 12, 3)} موقّع إلكترونياً</span>` : CL.sent[c.id] ? `<span class="chip o pulse">بانتظار توقيع الموكل</span><button class="btn s" data-a="clSign">محاكاة التوقيع</button>` : `<button class="btn p" data-a="clSend">${ic('wa', 16)} إرسال للتوقيع</button>`}<button class="btn s" data-a="toastMsg" data-v="يُحفظ العقد PDF بترويسة مكتبك.">${ic('print', 14)} PDF</button></div></div>
     <div class="paper rise">${paperHead()}<h3>عقد تقديم خدمات محاماة</h3>
       <p>إنه في يوم ${dTxt(TODAY, 1)} 2026م، تم الاتفاق بين <b>مكتب القحطاني للمحاماة والاستشارات القانونية</b> (الطرف الأول) و<b>${c.name}</b>${c.rep !== '—' ? ' ويمثله ' + c.rep : ''} (الطرف الثاني) على أن يتولى الطرف الأول ${cases[0] ? '«' + cases[0].title + '»' : 'ما يُسند إليه من أعمال'} مقابل أتعاب إجمالية قدرها <b class="num">${fmt(CL.total)}</b> ريال سعودي غير شاملة لضريبة القيمة المضافة، تُسدّد على النحو التالي:</p>
       <table><thead><tr><th>#</th><th>الاستحقاق</th><th>المبلغ</th></tr></thead><tbody>${pl.map((p, i) => `<tr><td>${i + 1}</td><td>${p.l}</td><td class="num">${fmt(p.amt)}</td></tr>`).join('')}</tbody></table>
       <p style="font-size:12px">لا تشمل الأتعاب الرسوم القضائية ومصاريف الخبرة والترجمة. يخضع العقد لنظام المحاماة ولائحته التنفيذية.</p>
-      <div class="sig"><span>الطرف الأول<br>${c.lawyer}</span><span>الطرف الثاني<br>${CL.signed[c.id] ? '<b style="font-family:Amiri,serif;font-size:18px;color:#1F4535">موقّع عبر نفاذ ✓</b>' : '..............'}</span></div></div></div>`;
+      <div class="sig"><span>الطرف الأول<br>${c.lawyer}</span><span>الطرف الثاني<br>${CL.signed[c.id] ? '<b style="font-family:Amiri,serif;font-size:18px;color:#3B2618">موقّع عبر نفاذ ✓</b>' : '..............'}</span></div></div></div>`;
   if (CL.tab === 'log') body = `<div class="col">${[['wa', 'واتساب', 'تذكير بجلسة 9 نوفمبر — قُرئت', 'أمس 6:10 م'], ['link', 'رابط الموكل', 'رفع «صورة عقد المقاولة الأصلي»', '3 نوفمبر'], ['doc', 'بريد', 'إرسال مذكرة الرد للاطلاع', '28 أكتوبر'], ['users', 'اجتماع', 'لقاء في مقر الموكل — محضر مرفق', '20 أكتوبر']].map(([i, k, t, w]) => `<div class="item"><span class="ico">${ic(i, 16)}</span><span class="sp"><b style="font-size:14px">${t}</b><br><small class="muted2">${k}</small></span><small class="muted2">${w}</small></div>`).join('')}</div>`;
   return `
   <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">الموكلون</span><h1 class="t">ملف واحد <b>لكل موكل</b></h1></div><button class="btn p" data-a="clAdd">${ic('plus', 16)} موكل جديد</button></div>
@@ -1049,7 +1066,7 @@ VIEWS.assistant = () => {
     return `<div class="bub ai rise" style="max-width:92%;width:440px"><small style="color:var(--mint);font-weight:700">${ic('spark', 13)} خطة التنفيذ</small>
       ${s.steps.map((x, i) => `<div class="step ${i < st ? 'done' : i === st ? 'now' : 'todo'}"><i>${i < st ? '✓' : i + 1}</i><span>${x}</span></div>`).join('')}
       ${live && s.need === 'cloud' && st === 2 ? `<div class="row" style="margin-top:6px"><a href="#cloud" class="btn p s" data-a="asCloud">${ic('cloud', 14)} افتح المتصفح السحابي وشاهد</a><small class="muted2">لن يبدأ شيء دون موافقتك</small></div>` : ''}
-      ${live && s.need === 'approve' && st === s.steps.length - 1 && !AS.sent ? `<div class="paper" style="margin-top:8px;padding:12px;font-size:13px;white-space:pre-line;border-radius:12px;background:#E7F5EC">${esc(WAMSG)}</div><div class="row" style="margin-top:8px"><button class="btn p s" data-a="asSend">${ic('check', 14, 3)} موافقة وإرسال</button><button class="btn s" data-a="asEdit">تعديل الصياغة</button><button class="btn s g" data-a="asCancel">إلغاء</button></div>` : ''}</div>`;
+      ${live && s.need === 'approve' && st === s.steps.length - 1 && !AS.sent ? `<div class="paper" style="margin-top:8px;padding:12px;font-size:13px;white-space:pre-line;border-radius:12px;background:#F6EBD6">${esc(WAMSG)}</div><div class="row" style="margin-top:8px"><button class="btn p s" data-a="asSend">${ic('check', 14, 3)} موافقة وإرسال</button><button class="btn s" data-a="asEdit">تعديل الصياغة</button><button class="btn s g" data-a="asCancel">إلغاء</button></div>` : ''}</div>`;
   };
   return `
   <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">المساعد الذكي</span><h1 class="t">مساعد يعمل <b>داخل مكتبك</b></h1></div>
@@ -1108,18 +1125,18 @@ const cbApprove = () => `<div class="dlg pop" role="dialog" aria-modal="true" ar
 function cbScreen() {
   const k = CB.i < 0 ? 'idle' : CBST[CB.i][0];
   const url = { idle: 'about:blank', prov: 'about:blank', approve: 'najiz.sa', nafath: 'iam.gov.sa/nafath', home: 'najiz.sa/cases', search: 'najiz.sa/cases?q=', detail: 'najiz.sa/cases/1447-0213', done: 'najiz.sa/cases/1447-0213' }[k];
-  const portal = (inner) => `<div style="padding:14px 18px;background:#F4F7F5;border-bottom:1px solid #DCE5DF" class="row"><b style="color:#1F4535">بوابة الخدمات العدلية</b><small style="color:#6B8174">(واجهة محاكاة)</small><span class="sp"></span><small style="color:#3B5246">أ. سارة القحطاني</small></div><div style="padding:18px;position:relative">${inner}</div>`;
+  const portal = (inner) => `<div style="padding:14px 18px;background:#F8F0E1;border-bottom:1px solid #E6D8BF" class="row"><b style="color:#3B2618">بوابة الخدمات العدلية</b><small style="color:#8A6E55">(واجهة محاكاة)</small><span class="sp"></span><small style="color:#5C4430">أ. سارة القحطاني</small></div><div style="padding:18px;position:relative">${inner}</div>`;
   let inner = '';
-  if (k === 'idle') inner = `<div style="display:grid;place-items:center;height:330px;color:#6B8174;text-align:center">${ic('cloud', 40)}<p>لا توجد جلسة. اضغط «بدء جلسة» ليُجهَّز متصفح جديد معزول.</p></div>`;
-  if (k === 'prov') inner = `<div style="display:grid;place-items:center;height:330px;text-align:center;color:#3B5246"><span class="spin" style="width:40px;height:40px;border:4px solid #C4E3D0;border-top-color:#1F4535;border-radius:50%;display:block"></span><p>جارٍ تجهيز متصفح نظيف — بلا سجل، بلا ملفات سابقة<br><small>الرياض · مركز بيانات داخل المملكة</small></p></div>`;
-  if (k === 'approve') inner = portal(`<div style="height:290px;display:grid;place-items:center;color:#6B8174">${ic('lock', 36)}<p>متوقف — بانتظار موافقة المحامي</p></div>`);
-  if (k === 'nafath') inner = `<div style="height:330px;display:grid;place-items:center;text-align:center;color:#1E2A23"><div><b style="font-size:16px">التحقق عبر نفاذ</b><p style="color:#3B5246;margin:6px 0 14px">افتح تطبيق نفاذ واختر الرقم</p><b class="num pulse" style="display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#1F4535;color:#fff;font-size:34px">47</b><p style="color:#6B8174;font-size:12px;margin-top:12px">ينتهي الطلب خلال 60 ثانية</p></div></div>`;
+  if (k === 'idle') inner = `<div style="display:grid;place-items:center;height:330px;color:#8A6E55;text-align:center">${ic('cloud', 40)}<p>لا توجد جلسة. اضغط «بدء جلسة» ليُجهَّز متصفح جديد معزول.</p></div>`;
+  if (k === 'prov') inner = `<div style="display:grid;place-items:center;height:330px;text-align:center;color:#5C4430"><span class="spin" style="width:40px;height:40px;border:4px solid #E9C98A;border-top-color:#3B2618;border-radius:50%;display:block"></span><p>جارٍ تجهيز متصفح نظيف — بلا سجل، بلا ملفات سابقة<br><small>الرياض · مركز بيانات داخل المملكة</small></p></div>`;
+  if (k === 'approve') inner = portal(`<div style="height:290px;display:grid;place-items:center;color:#8A6E55">${ic('lock', 36)}<p>متوقف — بانتظار موافقة المحامي</p></div>`);
+  if (k === 'nafath') inner = `<div style="height:330px;display:grid;place-items:center;text-align:center;color:#3B2618"><div><b style="font-size:16px">التحقق عبر نفاذ</b><p style="color:#5C4430;margin:6px 0 14px">افتح تطبيق نفاذ واختر الرقم</p><b class="num pulse" style="display:inline-grid;place-items:center;width:84px;height:84px;border-radius:50%;background:#3B2618;color:#fff;font-size:34px">47</b><p style="color:#8A6E55;font-size:12px;margin-top:12px">ينتهي الطلب خلال 60 ثانية</p></div></div>`;
   const rows = [['1447/0213', 'دعوى فسخ عقد مقاولة', 'المحكمة التجارية', 'منظورة'], ['1447/0164', 'تظلم من قرار إداري', 'المحكمة الإدارية', 'صدر حكم'], ['1447/0151', 'مطالبة مالية', 'المحكمة العامة', 'منظورة']];
-  if (k === 'home' || k === 'search') inner = portal(`<b style="color:#1F4535">قضاياي</b><div class="row" style="margin:10px 0;gap:8px"><div class="${k === 'search' ? 'hl' : ''}" style="flex:1;border:1px solid #C9D6CE;border-radius:8px;padding:8px 10px;min-height:20px;font-size:14px" ><span id="cbq" class="num">${CB.typed}</span><span class="blink">|</span></div><span style="background:#1F4535;color:#fff;border-radius:8px;padding:8px 14px;font-size:13px">بحث</span></div>
-    <table style="width:100%;font-size:13px;border-collapse:collapse">${rows.filter((r) => k === 'home' || CB.typed.length < 9 || r[0] === '1447/0213').map((r) => `<tr style="border-top:1px solid #E2E9E4"><td style="padding:8px 4px" class="num">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span style="background:#E7F5EC;border-radius:6px;padding:2px 8px;font-size:12px">${r[3]}</span></td></tr>`).join('')}</table>`);
-  if (k === 'detail' || k === 'done') inner = portal(`<small style="color:#6B8174">قضاياي ‹ 1447/0213</small><b style="display:block;color:#1F4535;font-size:16px;margin:4px 0 12px">دعوى فسخ عقد مقاولة</b>
-    <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;font-size:13px">${[['المحكمة', 'المحكمة التجارية بالرياض'], ['الدائرة', 'الرابعة'], ['الحالة', 'منظورة']].map(([a, b]) => `<div style="background:#F4F7F5;border-radius:8px;padding:8px"><small style="color:#6B8174">${a}</small><br><b>${b}</b></div>`).join('')}<div class="hl" style="background:#E7F5EC;border-radius:8px;padding:8px"><small style="color:#6B8174">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر 2026 — 9:30 ص</b></div></div>
-    ${k === 'done' ? '<div style="margin-top:14px;background:#1F4535;color:#fff;border-radius:10px;padding:10px 12px;font-size:13px">✓ استُخرج الموعد وطوبق مع تقويم المكتب — لا فرق.</div>' : ''}`);
+  if (k === 'home' || k === 'search') inner = portal(`<b style="color:#3B2618">قضاياي</b><div class="row" style="margin:10px 0;gap:8px"><div class="${k === 'search' ? 'hl' : ''}" style="flex:1;border:1px solid #DCCBB0;border-radius:8px;padding:8px 10px;min-height:20px;font-size:14px" ><span id="cbq" class="num">${CB.typed}</span><span class="blink">|</span></div><span style="background:#3B2618;color:#fff;border-radius:8px;padding:8px 14px;font-size:13px">بحث</span></div>
+    <table style="width:100%;font-size:13px;border-collapse:collapse">${rows.filter((r) => k === 'home' || CB.typed.length < 9 || r[0] === '1447/0213').map((r) => `<tr style="border-top:1px solid #EBDFC9"><td style="padding:8px 4px" class="num">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td><span style="background:#F6EBD6;border-radius:6px;padding:2px 8px;font-size:12px">${r[3]}</span></td></tr>`).join('')}</table>`);
+  if (k === 'detail' || k === 'done') inner = portal(`<small style="color:#8A6E55">قضاياي ‹ 1447/0213</small><b style="display:block;color:#3B2618;font-size:16px;margin:4px 0 12px">دعوى فسخ عقد مقاولة</b>
+    <div class="grid" style="grid-template-columns:1fr 1fr;gap:10px;font-size:13px">${[['المحكمة', 'المحكمة التجارية بالرياض'], ['الدائرة', 'الرابعة'], ['الحالة', 'منظورة']].map(([a, b]) => `<div style="background:#F8F0E1;border-radius:8px;padding:8px"><small style="color:#8A6E55">${a}</small><br><b>${b}</b></div>`).join('')}<div class="hl" style="background:#F6EBD6;border-radius:8px;padding:8px"><small style="color:#8A6E55">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر 2026 — 9:30 ص</b></div></div>
+    ${k === 'done' ? '<div style="margin-top:14px;background:#3B2618;color:#fff;border-radius:10px;padding:10px 12px;font-size:13px">✓ استُخرج الموعد وطوبق مع تقويم المكتب — لا فرق.</div>' : ''}`);
   return { url, inner };
 }
 VIEWS.cloud = () => {
@@ -1130,7 +1147,7 @@ VIEWS.cloud = () => {
   <div class="banner rise">${ic('shield', 18)}<span class="sp">عرض توضيحي: الشاشة محاكاة ولا تتصل بناجز. في النسخة الفعلية يعمل متصفح حقيقي معزول يُنشأ لكل مهمة ويُحذف بعدها.</span></div>
   <div class="split">
     <section class="wide col rise">
-      <div class="bw" style="position:relative"><div class="bar2"><span style="display:flex;gap:5px"><i class="dot" style="background:#E07A5F"></i><i class="dot" style="background:#E9C46A"></i><i class="dot" style="background:#81B29A"></i></span><span class="url">${ic('lock', 11)} ${url}</span>${on ? `<span class="chip" style="background:${CB.manual ? '#E9C46A' : CB.paused ? '#C9D6CE' : '#A8D5BA'};color:#173A2C;border:0;font-size:11px">${CB.manual ? 'التحكم بيدك' : CB.paused ? 'متوقف مؤقتاً' : '<i class="dot pulse" style="background:#173A2C"></i> المساعد يعمل'}</span>` : ''}</div>
+      <div class="bw" style="position:relative"><div class="bar2"><span style="display:flex;gap:5px"><i class="dot" style="background:#E07A5F"></i><i class="dot" style="background:#E9C46A"></i><i class="dot" style="background:#81B29A"></i></span><span class="url">${ic('lock', 11)} ${url}</span>${on ? `<span class="chip" style="background:${CB.manual ? '#E9C46A' : CB.paused ? '#DCCBB0' : '#D9A441'};color:#2A1A0F;border:0;font-size:11px">${CB.manual ? 'التحكم بيدك' : CB.paused ? 'متوقف مؤقتاً' : '<i class="dot pulse" style="background:#2A1A0F"></i> المساعد يعمل'}</span>` : ''}</div>
         <div style="min-height:340px">${inner}</div></div>
       ${on ? `<div class="card row" style="padding:12px"><button class="btn" data-a="cbPause">${ic(CB.paused ? 'play' : 'pause', 16)} ${CB.paused ? 'استئناف' : 'إيقاف مؤقت'}</button><button class="btn" data-a="cbTake">${ic('hand', 16)} ${CB.manual ? 'إعادة التحكم للمساعد' : 'تولَّ التحكم'}</button><span class="sp"></span><button class="btn p" data-a="cbEnd">${ic('trash', 16)} إنهاء وحذف الجلسة</button></div>` : ''}
       ${CB.ended ? `<div class="card hot row pop">${ic('check', 20, 3)}<span class="sp"><b>أُنهيت الجلسة وحُذف المتصفح</b><br><small class="muted">حُذفت ملفات تعريف الارتباط والذاكرة المؤقتة وتسجيل الشاشة متاح في سجل التدقيق 30 يوماً.</small></span>${CB.from === 'assistant' ? '<a href="#assistant" class="btn p s">العودة للمساعد</a>' : ''}</div>` : ''}
@@ -1160,23 +1177,23 @@ const MISS = [['m1', 'صورة عقد المقاولة الأصلي', 'PDF أو 
 VIEWS.clientlink = () => {
   const c = caseOf('1447/0213'), done = MISS.filter((m) => CK.up[m[0]] === 100).length;
   let scr = '';
-  if (CK.stage === 'otp') scr = `<div class="col" style="padding:28px 22px;gap:14px;text-align:center;flex:1;justify-content:center">${logo(52, '#1F4535', '#A8D5BA')}<b style="font-size:18px">مكتب القحطاني للمحاماة</b><small style="color:#4B6355">للتحقق أرسلنا رمزاً إلى جوالك المنتهي بـ 412</small>
-    <form data-sub="ckOtp" class="col" style="gap:10px"><label class="sr" for="otp">رمز التحقق</label><input id="otp" class="in num" style="background:#fff;color:#1E2A23;border-color:#C9D6CE;text-align:center;font-size:22px;letter-spacing:8px" inputmode="numeric" maxlength="4" placeholder="••••" data-in="ckOtpIn" value="${esc(CK.otp)}"><button class="btn p" type="submit" style="background:#1F4535;color:#fff">دخول</button><small style="color:#6B8174">للعرض: أي 4 أرقام</small></form></div>`;
-  else scr = `<div style="background:#1F4535;color:#E9F0EC;padding:16px 18px"><small style="opacity:.8">مرحباً م. ماجد</small><br><b style="font-size:16px">${c.title}</b><br><small class="num" style="opacity:.8">${c.ref}</small></div>
+  if (CK.stage === 'otp') scr = `<div class="col" style="padding:28px 22px;gap:14px;text-align:center;flex:1;justify-content:center">${logo(52, '#3B2618', '#D9A441')}<b style="font-size:18px">مكتب القحطاني للمحاماة</b><small style="color:#6B5443">للتحقق أرسلنا رمزاً إلى جوالك المنتهي بـ 412</small>
+    <form data-sub="ckOtp" class="col" style="gap:10px"><label class="sr" for="otp">رمز التحقق</label><input id="otp" class="in num" style="background:#fff;color:#3B2618;border-color:#DCCBB0;text-align:center;font-size:22px;letter-spacing:8px" inputmode="numeric" maxlength="4" placeholder="••••" data-in="ckOtpIn" value="${esc(CK.otp)}"><button class="btn p" type="submit" style="background:#3B2618;color:#fff">دخول</button><small style="color:#8A6E55">للعرض: أي 4 أرقام</small></form></div>`;
+  else scr = `<div style="background:#3B2618;color:#F2E4CB;padding:16px 18px"><small style="opacity:.8">مرحباً م. ماجد</small><br><b style="font-size:16px">${c.title}</b><br><small class="num" style="opacity:.8">${c.ref}</small></div>
     <div class="col" style="padding:14px 16px;gap:12px;overflow:auto">
-      ${CK.show.status ? `<div><small style="color:#4B6355;font-weight:600">مرحلة القضية</small><div class="row" style="gap:4px;margin-top:6px;flex-wrap:nowrap">${STAGES.map((s, i) => `<i style="flex:1;height:6px;border-radius:3px;background:${i <= c.stage ? '#1F4535' : '#D5E0D9'}"></i>`).join('')}</div><b style="font-size:14px">${STAGES[c.stage]}</b></div>` : ''}
-      ${CK.show.next ? `<div style="background:#E7F5EC;border-radius:12px;padding:10px 12px"><small style="color:#4B6355">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر — 9:30 ص</b><br><small style="color:#4B6355">يحضرها ${c.lawyer} نيابة عنكم</small></div>` : ''}
-      ${CK.show.docs ? `<div><div class="row"><small class="sp" style="color:#4B6355;font-weight:600">مستندات مطلوبة منكم</small><small style="font-weight:700;color:#1F4535">${done}/${MISS.length}</small></div>
-        ${MISS.map(([id, t, h]) => { const p = CK.up[id]; return `<div style="border:1px solid #D5E0D9;border-radius:12px;padding:10px;margin-top:8px;background:#fff"><div class="row" style="flex-wrap:nowrap"><span class="sp"><b style="font-size:13px">${t}</b><br><small style="color:#6B8174">${h}</small></span>${p === 100 ? '<span style="color:#1F4535;font-weight:700;font-size:13px">✓ تم</span>' : p >= 0 ? `<small class="num">${p}%</small>` : `<button class="btn s" style="background:#1F4535;color:#fff;border:0" data-a="ckUp" data-v="${id}">${ic('up', 14)} رفع</button>`}</div>${p >= 0 && p < 100 ? `<div style="height:4px;background:#D5E0D9;border-radius:2px;margin-top:8px"><i style="display:block;height:100%;width:${p}%;background:#1F4535;border-radius:2px;transition:width .2s"></i></div>` : ''}</div>`; }).join('')}</div>` : ''}
-      ${CK.show.fees ? `<div style="background:#F4F7F5;border-radius:12px;padding:10px 12px"><small style="color:#4B6355">الأتعاب</small><br><b>المسدد 30,000 · المتبقي 90,000 ر.س</b></div>` : ''}
-      ${done === MISS.length ? '<div class="pop" style="background:#1F4535;color:#fff;border-radius:12px;padding:12px;text-align:center;font-size:14px">شكراً لكم — وصلت جميع المستندات للمكتب ✓</div>' : ''}
-      <small style="color:#6B8174;text-align:center">${ic('lock', 11)} رابط خاص بكم · ينتهي خلال ${CK.hours} ساعة · لا يعرض إلا هذه القضية</small></div>`;
+      ${CK.show.status ? `<div><small style="color:#6B5443;font-weight:600">مرحلة القضية</small><div class="row" style="gap:4px;margin-top:6px;flex-wrap:nowrap">${STAGES.map((s, i) => `<i style="flex:1;height:6px;border-radius:3px;background:${i <= c.stage ? '#3B2618' : '#E2D2B6'}"></i>`).join('')}</div><b style="font-size:14px">${STAGES[c.stage]}</b></div>` : ''}
+      ${CK.show.next ? `<div style="background:#F6EBD6;border-radius:12px;padding:10px 12px"><small style="color:#6B5443">الجلسة القادمة</small><br><b>الأحد 9 نوفمبر — 9:30 ص</b><br><small style="color:#6B5443">يحضرها ${c.lawyer} نيابة عنكم</small></div>` : ''}
+      ${CK.show.docs ? `<div><div class="row"><small class="sp" style="color:#6B5443;font-weight:600">مستندات مطلوبة منكم</small><small style="font-weight:700;color:#3B2618">${done}/${MISS.length}</small></div>
+        ${MISS.map(([id, t, h]) => { const p = CK.up[id]; return `<div style="border:1px solid #E2D2B6;border-radius:12px;padding:10px;margin-top:8px;background:#fff"><div class="row" style="flex-wrap:nowrap"><span class="sp"><b style="font-size:13px">${t}</b><br><small style="color:#8A6E55">${h}</small></span>${p === 100 ? '<span style="color:#3B2618;font-weight:700;font-size:13px">✓ تم</span>' : p >= 0 ? `<small class="num">${p}%</small>` : `<button class="btn s" style="background:#3B2618;color:#fff;border:0" data-a="ckUp" data-v="${id}">${ic('up', 14)} رفع</button>`}</div>${p >= 0 && p < 100 ? `<div style="height:4px;background:#E2D2B6;border-radius:2px;margin-top:8px"><i style="display:block;height:100%;width:${p}%;background:#3B2618;border-radius:2px;transition:width .2s"></i></div>` : ''}</div>`; }).join('')}</div>` : ''}
+      ${CK.show.fees ? `<div style="background:#F8F0E1;border-radius:12px;padding:10px 12px"><small style="color:#6B5443">الأتعاب</small><br><b>المسدد 30,000 · المتبقي 90,000 ر.س</b></div>` : ''}
+      ${done === MISS.length ? '<div class="pop" style="background:#3B2618;color:#fff;border-radius:12px;padding:12px;text-align:center;font-size:14px">شكراً لكم — وصلت جميع المستندات للمكتب ✓</div>' : ''}
+      <small style="color:#8A6E55;text-align:center">${ic('lock', 11)} رابط خاص بكم · ينتهي خلال ${CK.hours} ساعة · لا يعرض إلا هذه القضية</small></div>`;
   return `
   <div class="row rise" style="align-items:flex-end"><div class="col sp" style="gap:4px"><span class="kicker">رابط الموكل</span><h1 class="t">الموكل لا يحتاج حساباً — <b>رابط مؤقت فقط</b></h1></div></div>
   <div class="grid" style="grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:start">
     <section class="card col rise"><h2 class="t">إعداد الرابط — شركة الأفق · 1447/0213</h2>
       <label class="f" for="ck-h">مدة الصلاحية</label><select id="ck-h" class="in" data-ch="ckH">${[24, 72, 168].map((h) => `<option value="${h}" ${CK.hours === h ? 'selected' : ''}>${h === 168 ? '7 أيام' : h + ' ساعة'}</option>`).join('')}</select>
-      <small class="f">ما يراه الموكل</small>${[['status', 'مرحلة القضية'], ['next', 'الجلسة القادمة'], ['docs', 'المستندات المطلوبة ورفعها'], ['fees', 'الأتعاب والمتبقي']].map(([k, l]) => `<label class="row" style="font-size:14px;gap:8px"><input type="checkbox" ${CK.show[k] ? 'checked' : ''} data-ch="ckShow" data-k="${k}" style="accent-color:#A8D5BA;width:16px;height:16px">${l}</label>`).join('')}
+      <small class="f">ما يراه الموكل</small>${[['status', 'مرحلة القضية'], ['next', 'الجلسة القادمة'], ['docs', 'المستندات المطلوبة ورفعها'], ['fees', 'الأتعاب والمتبقي']].map(([k, l]) => `<label class="row" style="font-size:14px;gap:8px"><input type="checkbox" ${CK.show[k] ? 'checked' : ''} data-ch="ckShow" data-k="${k}" style="accent-color:#D9A441;width:16px;height:16px">${l}</label>`).join('')}
       <div class="item" style="direction:ltr"><span class="num sp" style="font-size:13px">wasl.sa/c/7Hq2-k9</span><button class="btn s" data-a="toastMsg" data-v="نُسخ الرابط.">${ic('copy', 14)}</button></div>
       <div class="row"><button class="btn p" data-a="ckSend">${ic('wa', 16)} إرسال عبر واتساب</button><button class="btn" data-a="ckReset">${ic('x', 14)} إلغاء الرابط</button></div>
       <p class="note" style="margin:0">رمز تحقق لمرة واحدة على جوال الموكل المسجّل، والرابط موقّع ومحدود بقضية واحدة. الملفات المرفوعة تُفحص وتدخل ملف القضية مباشرة مع تنبيه للمحامي.</p></section>
